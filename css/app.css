@@ -3,14 +3,12 @@ html, body {
 	padding: 0;
 	font-size: 10px;
 	background-color: #fff;
-}
- 
+} 
 body {
 	height: 100%;
 	display: block;
 	overflow: hidden;
-}
- 
+} 
 section[role="region"] {
 	position: absolute;
 	top: 0;
@@ -18,39 +16,32 @@ section[role="region"] {
 	right: 0;
 	bottom: 0;
 	background: #fff;
+} 
+/*body #home-view  {
+	width: 100%;
+	transform: translateX(0%);
 }
- 
-#settings-view {
-	z-index: 10;
+body #horario-view  {
+	width: 100%;
+	transform: translateX(-100%);
 }
- 
-.move-down {
-	transform: translateY(100%);
-	transition: all 0.2s;
+body #twitter-view  {
+	width: 100%;
+	transform: translateX(-200%);
 }
- 
-.move-up {
-	transform: translateY(0);
-	transition: all 0.2s;
+/*body #info-view  {
+	width: 100%;
+	transform: translateX(-300%);
+}*/
+#home-view {
+	left: 0%;
 }
- 
-section[role="region"] > header:first-child .icon.icon-settings {
-	background-image: url(images/settings.png);
+#horario-view {
+	left: 100%;
 }
- 
-[data-type="list"] li > a aside img {
-	height: 4rem;
-	width: 4rem;
-	margin: 1rem 1rem 0 0;
+#twitter-view {
+	left: 200%;
 }
- 
-[data-type="list"] li > a aside.pack-end.install {
-	background: url(images/download.png) no-repeat;
-	height: 3rem;
-	width: 3rem;
-	margin: 1.5rem 0 0 1rem;
-}
- 
-#settings-view form {
-	margin: 1.5rem;
+#info-view {
+	left: 300%;
 }
