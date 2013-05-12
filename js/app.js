@@ -1,16 +1,18 @@
 //Show / Hide Settings view
-var btnSettings = document.querySelector("#settings-btn");
+var btnHorario = document.querySelector("#horario-btn");
+var viewHorario = document.querySelector("#horario-view");
+var viewInicio = document.querySelector("#home-view");
 
-var viewSettings = document.querySelector("#settings-view");
-
-btnSettings.addEventListener ('click', function () {
-	viewSettings.classList.remove('move-down');
-	viewSettings.classList.add('move-up');
+btnHorario.addEventListener ('click', function () {
+	viewHorario.classList.remove('back-horario-view');
+	viewInicio.classList.add('back-inicio');	
+	viewHorario.classList.add('move-horario-view');
 });
 
-var btnCloseSettings = document.querySelector("#close-btn");
+var btnback = document.querySelector("#back-btn");
 
-btnCloseSettings.addEventListener ('click', function () {
-	viewSettings.classList.remove('move-up');
-	viewSettings.classList.add('move-down');
+btnback.addEventListener ('click', function () {
+	viewInicio.classList.remove('back-inicio');
+	viewHorario.classList.remove('move-horario-view');	
+	viewHorario.classList.add('back-horario-view');
 });

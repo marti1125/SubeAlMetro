@@ -17,31 +17,30 @@ section[role="region"] {
 	bottom: 0;
 	background: #fff;
 } 
-/*body #home-view  {
-	width: 100%;
-	transform: translateX(0%);
-}
-body #horario-view  {
-	width: 100%;
+.move-horario-view  {
+	z-index: 10;
 	transform: translateX(-100%);
+	transition: all 0.2s;
 }
-body #twitter-view  {
-	width: 100%;
-	transform: translateX(-200%);
+.back-inicio {
+	z-index: 0;
 }
-/*body #info-view  {
-	width: 100%;
-	transform: translateX(-300%);
-}*/
+.back-horario-view  {
+	z-index: 10;	
+	transform: translateX(0%);
+	transition: all 0.4s;
+}
 #home-view {
+	width: 100%;
 	left: 0%;
 }
 #horario-view {
+	width: 100%;
 	left: 100%;
 }
-#twitter-view {
+/*#twitter-view {
 	left: 200%;
 }
 #info-view {
 	left: 300%;
-}
+}*/
