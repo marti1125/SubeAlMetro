@@ -3,72 +3,13 @@
     
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Sube al Metro</title>
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/headers.css" />
-        <link rel="stylesheet" type="text/css" href="css/lists.css" />
-        <link rel="stylesheet" type="text/css" href="css/input_areas.css" />
-        <link rel="stylesheet" type="text/css" href="css/toolbars.css" />
-        <link rel="stylesheet" type="text/css" href="css/app.css" />
+        <title>Geolocalización</title>
+       
     </head>
     
-    <body role="application" onload="localizar()">
-        <section role="region" id="home-view">
-            <header>                
-                
-			<h1>Sube al Metro</h1>
-
-            </header>
-            <article id="appList" data-type="list">
-                <div id="map" class="smallmap"></div>
-            </article>
-            <div role="toolbar">				
-				<ul>
-					<li><button id="horario-btn"><i class="icon-time icon-2x"></i></button></li>
-					<li><button id="twitter-btn"><i class="icon-twitter icon-2x"></i></button></li>
-					<li><button id="info-btn"><i class="icon-info-sign icon-2x"></i></button></li>
-				</ul>
-			</div>
-        </section>
-
-        <!-- Horario -->
-        <section role="region" id="horario-view">
-            <header>                
-            <button id="back-btn"><span class="icon icon-back">back</span></button>
-            <h1><i class="icon-time"></i> Horario</h1>
-
-            </header>
-            <article id="appList" data-type="list">
-                <p>Estación Central</p>
-            </article>
-            
-        </section> 
-
-        <!-- Twitter -->
-        <section role="region" id="twitter-view">
-            <header>                
-            <button id="back-btn2"><span class="icon icon-back">back</span></button>
-            <h1><i class="icon-twitter"></i> Twitter</h1>
-
-            </header>
-            <article id="appList" data-type="list">
-                
-            </article>
-            
-        </section>
-
-        <!-- Info -->
-        <section role="region" id="info-view">
-            <header>                
-            <button id="back-btn3"><span class="icon icon-back">back</span></button>
-            <h1><i class="icon-time"></i> Información</h1>
-
-            </header>
-            <article id="appList" data-type="list">
-
-            </article>
-            
-        </section-->        
+    <body onload="localizar()">
+        
+        <div id="map" class="smallmap"></div>      
         
         <script src="js/app.js"></script>
         <script src="js/OpenLayers.js"></script>
