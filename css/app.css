@@ -16,7 +16,11 @@ section[role="region"] {
 	right: 0;
 	bottom: 0;
 	background: #fff;
-} 
+}
+section[role="region"] > header:first-child img {
+    padding-top: 7px;
+    padding-left: 10px;
+}
 .back-inicio {
 	z-index: 0;
 }
