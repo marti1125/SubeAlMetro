@@ -6,9 +6,8 @@
         <title>Sube al Metro</title>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
         <link rel="stylesheet" type="text/css" href="css/headers.css" />
-        <link rel="stylesheet" type="text/css" href="css/lists.css" />
-        <link rel="stylesheet" type="text/css" href="css/input_areas.css" />
-        <link rel="stylesheet" type="text/css" href="css/toolbars.css" />
+        <link rel="stylesheet" type="text/css" href="css/tabs.css" />
+        <link rel="stylesheet" type="text/css" href="css/lists.css" />        
         <link rel="stylesheet" type="text/css" href="css/app.css" />
     </head>
     
@@ -16,60 +15,27 @@
         <section role="region" id="home-view">
             <header>                
                 
-			<h1>Sube al Metro</h1>
+             <h1>Sube al Metro</h1>
 
             </header>
-            <article id="appList" data-type="list">
-                
-            </article>
-            <div role="toolbar">				
-				<ul>
-					<li><button id="horario-btn"><i class="icon-time icon-2x"></i></button></li>
-					<li><button id="twitter-btn"><i class="icon-twitter icon-2x"></i></button></li>
-					<li><button id="info-btn"><i class="icon-info-sign icon-2x"></i></button></li>
-				</ul>
-			</div>
-        </section>
-
-        <!-- Horario -->
-        <section role="region" id="horario-view">
-            <header>                
-            <button id="back-btn"><span class="icon icon-back">back</span></button>
-            <h1><i class="icon-time"></i> Horario</h1>
-
-            </header>
-            <article id="appList" data-type="list">
-                <p>Estación Central</p>
-            </article>
-            
-        </section> 
-
-        <!-- Twitter -->
-        <section role="region" id="twitter-view">
-            <header>                
-            <button id="back-btn2"><span class="icon icon-back">back</span></button>
-            <h1><i class="icon-twitter"></i> Twitter</h1>
-
-            </header>
-            <article id="appList" data-type="list">
-                
-            </article>
+           
+              <ul role="tablist" data-items="3">
+                <li id="panel1" role="tab">
+                  <a href="#panel1"><i class="icon-time icon-2x"></i></a>
+                  <div role="tabpanel">fdsfs</div>
+                </li>
+                <li id="panel2" role="tab">
+                  <a href="#panel2" ><i class="icon-twitter icon-2x"></i></a>
+                  <div role="tabpanel">sdfds</div>
+                </li>               
+                <li id="panel4" role="tab">
+                  <a href="#panel4"><i class="icon-info-sign icon-2x"></i></a>
+                  <div role="tabpanel">sdfsdf</div>
+                </li>
+              </ul>
             
         </section>
 
-        <!-- Info -->
-        <section role="region" id="info-view">
-            <header>                
-            <button id="back-btn3"><span class="icon icon-back">back</span></button>
-            <h1><i class="icon-time"></i> Información</h1>
-
-            </header>
-            <article id="appList" data-type="list">
-                
-            </article>
-            
-        </section-->        
-        
         <script src="js/app.js"></script>
     </body>
 
