@@ -20,6 +20,7 @@ section[role="region"] {
 section[role="region"] > header:first-child img {
     padding-top: 7px;
     padding-left: 10px;
+    float: left;
 }
 .back-inicio {
 	z-index: 0;

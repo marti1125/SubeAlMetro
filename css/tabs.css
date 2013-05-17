@@ -36,9 +36,10 @@
 }
 
 [role="tablist"] > [role="tab"] > a {
+  padding-top: 0.7rem;
   font-size: 1.3rem;
   text-decoration: none;
-  line-height: 4rem;
+  line-height: 2.5rem;
   text-align: center;
   color: #FFF;
   float: left;
