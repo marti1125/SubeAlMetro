@@ -105,6 +105,11 @@
   overflow: auto;
 }
 
+.active {
+  visibility: visible !important;
+}
+
+
 [role="tablist"] :target [role="tabpanel"],
 [role="tablist"] [aria-selected="true"] [role="tabpanel"] {
   z-index: 1;
