@@ -1,3 +1,16 @@
+Zepto(function($){
+
+	// Twitter
+	var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=10&callback=?";
+
+	$.getJSON(twitterTimeLine, function(text){
+  		$.each(text, function(key, value){
+  			$('#tweet').append('<li>'+value.text+'</li>');
+		});
+	});
+
+});
+
 // buttons
 var btnHorario = document.getElementById("btn-horario");
 var btnTwitter = document.getElementById("btn-twitter");
@@ -17,3 +30,6 @@ btnInfo.onclick = function() {
 	var titulo = document.getElementById("info").getAttribute("alt");
 	document.getElementById("titulo").innerHTML = titulo;
 };
+
+
+
