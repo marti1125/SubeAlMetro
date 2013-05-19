@@ -1,11 +1,11 @@
 Zepto(function($){
 
 	// Twitter
-	var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=10&callback=?";
+	var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=7&callback=?";
 
 	$.getJSON(twitterTimeLine, function(text){
   		$.each(text, function(key, value){
-  			$('#tweet').append('<li>'+value.text+'</li>');
+  			$('#tweet').append('<li><p>'+value.text+'</p></li>');
 		});
 	});
 
