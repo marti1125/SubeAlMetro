@@ -1,6 +1,6 @@
 {
-  "name": "Metro",
-  "description": "Sube al Metro de Lima",
+  "name": "Linea 1",
+  "description": "Metro de Lima",
   "launch_path": "/index.html",  
   "developer": {
     "name": "Mozilla Peru",
@@ -14,6 +14,7 @@
   },
   "default_locale": "es",
   "icons": {
+	"128": "/icons/128.png",
     "120": "/icons/120.png",
     "60": "/icons/60.png"
   },
