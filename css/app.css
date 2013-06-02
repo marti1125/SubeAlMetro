@@ -76,3 +76,10 @@ section[role="region"] > header:first-child img {
 	height: 70px;
 	width: 60px;
 }
+.titleTwitter {
+	font-size: 1.4rem;
+}
+.usertwitter {
+	font-size: 0.9rem;
+	color: #9E9E9E;
+}
