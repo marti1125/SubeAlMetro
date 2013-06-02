@@ -71,3 +71,8 @@ section[role="region"] > header:first-child img {
 	width: 100%;
 	left: 300%;
 }
+.imgLeft {
+	float: left;
+	height: 70px;
+	width: 60px;
+}

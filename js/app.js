@@ -7,7 +7,7 @@ Zepto(function($){
 
 	$.getJSON(twitterTimeLine, function(text){
   		$.each(text, function(key, value){
-  			$('#tweet').append('<li><h1>'+value.user.name+' '+'@'+value.user.screen_name+'</h1><p>'+value.text+'</p></li>');
+  			$('#tweet').append('<li><div class="imgLeft"><img src="'+value.user.profile_image_url+'"/></div><div class="contentTweet"><h1>'+value.user.name+' '+'@'+value.user.screen_name+'</h1><p>'+value.text+'</p></div></li>');
 		});
 	});
 	
