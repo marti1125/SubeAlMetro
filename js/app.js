@@ -2,8 +2,15 @@ Zepto(function($){
 
 	$('#tabstart').addClass('active');
 
+	// Estaciones
+	var estaciones = "https://subealmetro.herokuapp.com/stations.json";
+
 	// Twitter
 	var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=7&callback=?";
+
+	$.getJSON(estaciones, function(text){
+		console.log(text);		
+	});
 
 	$.getJSON(twitterTimeLine, function(text){
   		$.each(text, function(key, value){
