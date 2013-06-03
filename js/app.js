@@ -16,8 +16,7 @@ Zepto(function($){
   		$.each(text, function(key, value){
   			$('#tweet').append('<li><div class="imgLeft"><img src="'+value.user.profile_image_url+'"/></div><h1 class="titleTwitter">'+value.user.name+' <span class="usertwitter">'+'@'+value.user.screen_name+'</span></h1><p>'+value.text+'</p></li>');
 		});
-	});
-	
+	});	
 
 	$('#btn-horario').click(function (){
 		$('#tabstart').removeClass('active');
@@ -34,20 +33,13 @@ Zepto(function($){
 		$('#titulo').html($('#info').attr('alt'));
 	});
 
-});
+	$("#dial").on('click', function(){
+		var call = new MozActivity({
+		    name: "dial",
+		    data: {
+		    	number: "0800-11121"
+		  	}
+		  });
+	});
 
-var dial = document.querySelector("#dial");
-if (dial) {
-dial.onclick = function () {
-  var call = new MozActivity({
-    name: "dial",
-    data: {
-    number: "0800-11121"
-  }
-  });
-}
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> 96a401c293080b6a455971808d5d33d3282fd342
+});
