@@ -71,6 +71,17 @@ section[role="region"] > header:first-child img {
 	width: 100%;
 	left: 300%;
 }
+
+#info-page{
+	padding: 0.5% 1.5%;
+}
+#info-page p, #info-page ul li{
+	font-size: 1.2rem;
+}
+#info-page ul li{
+	padding: 0.2% 0;
+	margin-left: -25px;
+}
 .imgLeft {
 	float: left;
 	height: 70px;
