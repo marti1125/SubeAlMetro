@@ -10,7 +10,10 @@ Zepto(function($){
 	var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=7&callback=?";
 
 	$.getJSON(estacionesOffline, function(text){
-		console.log(text);		
+		$.each(text.stations, function(key, value){
+			$('#estaciones').append('<option>'+value.name+'</option>');
+		});		
+		console.log(text.stations);		
 	});
 
 	$.getJSON(twitterTimeLine, function(text){
