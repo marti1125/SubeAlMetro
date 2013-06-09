@@ -1,5 +1,9 @@
 Zepto(function($){
 
+	var xhr = new XMLHttpRequest({
+	    mozSystem: true
+	});
+
 	$('#tabstart').addClass('active');
 
 	// Estaciones
