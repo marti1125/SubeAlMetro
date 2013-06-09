@@ -41,13 +41,4 @@ Zepto(function($){
 		$('#titulo').html($('#info').attr('alt'));
 	});
 
-	$("#dial").on('click', function(){
-		var call = new MozActivity({
-		    name: "dial",
-		    data: {
-		    	number: "0800-11121"
-		  	}
-		  });
-	});
-
 });

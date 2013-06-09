@@ -1,7 +1,12 @@
+@font-face {
+	font-family: MozTT;
+	src: url('MozTT.ttf');
+} 
 html, body {
 	margin: 0;
 	padding: 0;
 	font-size: 10px;
+	font-family: MozTT;
 	background-color: #fff;
 } 
 body {
@@ -72,10 +77,12 @@ section[role="region"] > header:first-child img {
 	left: 300%;
 }
 #info-page{
-	padding: 0.5% 1.5%;
+	padding-left: 5px;
+
 }
 #info-page p, #info-page ul li{
 	font-size: 1.2rem;
+	padding-right: 1.2%;
 }
 #info-page ul li{
 	padding: 0.2% 0;
