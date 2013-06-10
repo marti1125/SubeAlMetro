@@ -77,6 +77,9 @@ section[role="region"] > header:first-child img {
 	width: 100%;
 	left: 300%;
 }
+#tabstart {
+	text-align: center;
+}
 #tabstart, #info-tweet, #info-page {
 	background-color: #FFFFFF;
 }
