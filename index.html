@@ -6,6 +6,7 @@
         <title>Sube al Metro</title>        
         <link rel="stylesheet" type="text/css" href="css/headers.css" />
         <link rel="stylesheet" type="text/css" href="css/progress_activity.css" />
+        <link rel="stylesheet" type="text/css" href="css/toolbars.css" />
         <link rel="stylesheet" type="text/css" href="css/tabs.css" />
         <link rel="stylesheet" type="text/css" href="css/lists.css" />        
         <link rel="stylesheet" type="text/css" href="css/app.css" />
@@ -24,7 +25,16 @@
                      <!--h1>Estación Cercana</h1>
                      <select id="estaciones">
                      </select-->
-                     <div id="map" style="z-index: -1; left:0px; top:0px; width: 100%; height: 100%; position: absolute;"></div>                     
+                     <div id="out"></div>
+                     <div id="map" style="z-index: -1; left:0px; top:0px; width: 100%; height: 100%; position: absolute;"></div>
+                        <div role="toolbar">						
+						<ul>
+							<li><button class="miUbicacion">
+									<img id="hora" alt="Horario" src="img/horario.png" />
+								</button>
+							</li>						
+						</ul>
+						</div>                 
                   </div>
                 </li>
                 <li id="panel2" role="tab">
@@ -63,19 +73,56 @@
         <script type="text/javascript">
 			
 			nokia.Settings.set( "appId", "oXBdneZI8fw0fT9w6bmM");
-			nokia.Settings.set( "authenticationToken", "TyIkck-eTNU2_0dmAxEX6A");			
+			nokia.Settings.set( "authenticationToken", "TyIkck-eTNU2_0dmAxEX6A");
 			
 			var map = new nokia.maps.map.Display(
-				document.getElementById("map"), {
-					components: [
-						new nokia.maps.map.component.zoom.DoubleClick(),
-						// Needed for marker drag
-						new nokia.maps.map.component.objects.DragMarker()],
-					zoomLevel: 15,
-					center: [52.51, 13.4]
-				});
+			document.getElementById("map"), {
+				components: [
+					new nokia.maps.map.component.Behavior()],
+				zoomLevel: 10,
+				center: [-12.050065023002462, -77.069091796875]
+			});	
 			
-			var marker = new nokia.maps.map.StandardMarker([52.51, 13.4], {
+			var latitude;			
+			var longitude;
+			
+			$('.miUbicacion').click(function(){
+				geoFindMe();
+				
+				
+										
+			});
+			
+			function geoFindMe() {				
+				
+				if (!navigator.geolocation){
+					console.log("Geolocation is not supported by your browser");
+					return false;
+				}
+			 
+				function success(position) {
+					latitude  = position.coords.latitude;
+					longitude = position.coords.longitude;
+					
+					var marker = new nokia.maps.map.StandardMarker([latitude, longitude], {
+						text: "Aquí", 
+						draggable: false
+					});
+					
+					map.objects.add(marker);
+											
+				}
+			 
+				function error() {
+					console.log("Unable to retrieve your location");
+				}
+						 
+				navigator.geolocation.getCurrentPosition(success, error);
+			}
+			
+			// no borrar
+			
+			/*var marker = new nokia.maps.map.StandardMarker([52.51, 13.4], {
 				text: "Hi!", 
 				draggable: false 
 			});
@@ -87,7 +134,7 @@
 			});
 			marker.addListener("touchstart", function () {
 				alert('hola');				
-			});			
+			});	*/		
 			
 		</script>
     </body>
