@@ -106,3 +106,7 @@ section[role="region"] > header:first-child img {
 	font-size: 0.9rem;
 	color: #9E9E9E;
 }
+.locateProgress {
+	padding-top: 50%;
+	padding-left: 46%;
+}
