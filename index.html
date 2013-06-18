@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html>
-    
+<html>    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Sube al Metro</title>        
@@ -21,10 +20,7 @@
               <ul role="tablist" data-items="3">
                 <li id="panel1" role="tab">
                   <a href="#panel1" id="btn-horario"><img id="hora" alt="Horario" src="img/horario.png" /></a>
-                  <div role="tabpanel" id="tabstart">
-                     <!--h1>Estación Cercana</h1>
-                     <select id="estaciones">
-                     </select-->
+                  <div role="tabpanel" id="tabstart">                     
                      <div id="out"></div>
                      <div id="map" style="z-index: -1; left:0px; top:0px; width: 100%; height: 100%; position: absolute;"></div>
                         <div role="toolbar">						
@@ -40,7 +36,8 @@
                 <li id="panel2" role="tab">
                   <a href="#panel2" id="btn-twitter"><img alt="Twitter" id="twitter" src="img/twitter.png"/></a>
                   <div id="info-tweet" role="tabpanel">
-                    <section data-type="list">                      
+					<progress></progress>
+                    <section data-type="list">                   
                       <ul id="tweet"></ul>
                     </section>
                   </div>
