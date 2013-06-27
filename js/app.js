@@ -121,7 +121,7 @@ Zepto(function($){
 	var estacionesOffline = "js/stations.json";
 
 	// Twitter
-	var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=7&callback=?";
+	//var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=7&callback=?";
 
 	$.getJSON(estacionesOffline, function(text){
 		$.each(text.stations, function(key, value){
@@ -130,11 +130,12 @@ Zepto(function($){
 		console.log(text.stations);		
 	});
 
-	$.getJSON(twitterTimeLine, function(text){
+	/*$.getJSON(twitterTimeLine, function(text){
   		$.each(text, function(key, value){
   			$('#tweet').append('<li><div class="imgLeft"><img src="'+value.user.profile_image_url+'"/></div><h1 class="titleTwitter">'+value.user.name+' <span class="usertwitter">'+'@'+value.user.screen_name+'</span></h1><p>'+value.text+'</p></li>');
 		});
-	});
+	});*/
+	
 	// No borrar
 	/*marker.addListener("click", function () {
 				alert('hola');				
