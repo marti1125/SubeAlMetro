@@ -1,75 +1,76 @@
 <!DOCTYPE HTML>
 <html>    
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Sube al Metro</title>        
-        <link rel="stylesheet" type="text/css" href="css/headers.css" />
-        <link rel="stylesheet" type="text/css" href="css/progress_activity.css" />
-        <link rel="stylesheet" type="text/css" href="css/toolbars.css" />
-        <link rel="stylesheet" type="text/css" href="css/tabs.css" />
-        <link rel="stylesheet" type="text/css" href="css/lists.css" />        
-        <link rel="stylesheet" type="text/css" href="css/app.css" />
-    </head>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Sube al Metro</title>        
+      <link rel="stylesheet" type="text/css" href="css/headers.css" />
+      <link rel="stylesheet" type="text/css" href="css/progress_activity.css" />
+      <link rel="stylesheet" type="text/css" href="css/toolbars.css" />
+      <link rel="stylesheet" type="text/css" href="css/tabs.css" />
+      <link rel="stylesheet" type="text/css" href="css/lists.css" />        
+      <link rel="stylesheet" type="text/css" href="css/app.css" />
+  </head>
     
-    <body role="application">
+  <body role="application">
 		
-        <section role="region" id="home-view">
-            <header>                
-              <img src="img/logo.png" height="34" />  
-              <h1 id="titulo">Horario</h1>
-            </header>           
-              <ul role="tablist" data-items="3">
-                <li id="panel1" role="tab">
-                  <a href="#panel1" id="btn-horario"><img id="hora" alt="Horario" src="img/horario.png" /></a>
-                  <div role="tabpanel" id="tabstart">                     
-                     <div id="out"></div>
-                     <div id="map" style="z-index: -1; left:0px; top:0px; width: 100%; height: 100%; position: absolute;"></div>
-                        <div role="toolbar">						
-						<ul>
-							<li><button class="miUbicacion">
-									<img id="hora" alt="Horario" src="img/target.png" />
-								</button>
-							</li>													
-						</ul>
-						</div>                 
-                  </div>
-                </li>
-                <li id="panel2" role="tab">
-                  <a href="#panel2" id="btn-twitter"><img alt="Twitter" id="twitter" src="img/twitter.png"/></a>
-                  <div id="info-tweet" role="tabpanel">
-					<!--div class="locateProgress"><progress></progress></div-->
-                    <section data-type="list">                   
-                      <ul id="tweet"></ul>
-                    </section>
-                  </div>
-                </li>               
-                <li id="panel3" role="tab">
-                  <a href="#panel3" id="btn-info"><img id="info" alt="Información" src="img/info.png" /></a>
-                  <div id="info-page" role="tabpanel">
-                    <h1>Información</h1>
-                    <p>Tarjeta: S/5.0</p>
-                    <p>Tarifa adulto: S/. 1.50</p>
-                    <p>Tarifa niño/univ: S/0.75</p>
-                    <p>Atención: L - D de 6 - 10pm</p>
-                    <p>Trámite de tarjeta universitario: estación los cabitos Lunes a Viernes 8am - 1pm, 3pm - 8pm; Sabados 9am - 1pm</p>
-                    <p>Web: <a target="_blank" href="http://www.lineauno.pe/" title="Metro de Lima">lineauno.pe</a> </p>
-                    <p>Servicio al cliente: <a href="tel:0800-11121">0800-11121</a></p>
-                    <p>Objetos perdidos: <a target="_blank" title="Documentos Perdidos" href="http://www.lineauno.pe/documentos.php">aquí</a></p>
-  
-                    <p>Info actualizada el: Mayo 24 del 2013</p>
-                    <p>Más información <a target="_blank" title="Documentos Perdidos" href="http://www.lineauno.pe/">aquí</a></p>
-                  </div>
-                </li>
-              </ul>
-            
-        </section>
+    <section role="region" id="home-view">
 
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script src="js/jquery.xdomainajax.js"></script>
-        <script type="text/javascript" src="http://api.maps.nokia.com/2.2.4/jsl.js?with=all" charset="utf-8"></script>
-		<script src="js/latlong.js"></script>
-        <script src="js/app.js"></script>
+      <header>                
+        <img src="img/logo.png" height="34" />  
+        <h1 id="titulo">Horario</h1>
+      </header> 
+
+        <ul role="tablist" data-items="3">
+
+          <li id="panel1" role="tab">
+            <a href="#panel1" id="btn-horario"><img id="hora" alt="Horario" src="img/horario.png" /></a>
+            <div role="tabpanel">
+              <div role="toolbar">
+                <ul>
+                  <li>
+                    <button class="miUbicacion">
+                          <img id="hora" alt="Horario" src="img/target.png" />
+                      </button>
+                  </li>
+                </ul>
+              </div>
+            </div>                 
+          </li>
+
+          <li id="panel2" role="tab">
+            <a href="#panel2" id="btn-twitter"><img alt="Twitter" id="twitter" src="img/twitter.png"/></a>
+            <div id="info-tweet" role="tabpanel">		         
+              <section data-type="list">                   
+                <ul id="tweet"></ul>
+              </section>
+            </div>
+          </li>
+
+          <li id="panel3" role="tab">
+            <a href="#panel3" id="btn-info"><img id="info" alt="Información" src="img/info.png" /></a>
+            <div id="info-page" role="tabpanel">
+              <h1>Información</h1>
+              <p>Tarjeta: S/5.0</p>
+              <p>Tarifa adulto: S/. 1.50</p>
+              <p>Tarifa niño/univ: S/0.75</p>
+              <p>Atención: L - D de 6 - 10pm</p>
+              <p>Trámite de tarjeta universitario: estación los cabitos Lunes a Viernes 8am - 1pm, 3pm - 8pm; Sabados 9am - 1pm</p>
+              <p>Web: <a target="_blank" href="http://www.lineauno.pe/" title="Metro de Lima">lineauno.pe</a> </p>
+              <p>Servicio al cliente: <a href="tel:0800-11121">0800-11121</a></p>
+              <p>Objetos perdidos: <a target="_blank" title="Documentos Perdidos" href="http://www.lineauno.pe/documentos.php">aquí</a></p>
+              <p>Info actualizada el: Mayo 24 del 2013</p>
+              <p>Más información <a target="_blank" title="Documentos Perdidos" href="http://www.lineauno.pe/">aquí</a></p>
+            </div>
+          </li>
+          
+        </ul>
+
+    </section>
+
+  <script src="js/zepto.min.js"></script>        
+  <script src="js/latlong.js"></script>
+  <script src="js/app.js"></script>
         
-    </body>
+  </body>
 
 </html>

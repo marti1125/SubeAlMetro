@@ -5,6 +5,8 @@ Zepto(function($){
 	    mozSystem: true
 	});
 
+	$('#panel1').addClass('active');
+
 	nokia.Settings.set( "appId", "oXBdneZI8fw0fT9w6bmM");
 	nokia.Settings.set( "authenticationToken", "TyIkck-eTNU2_0dmAxEX6A");
 
