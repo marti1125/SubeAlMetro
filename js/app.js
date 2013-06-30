@@ -7,35 +7,6 @@ Zepto(function($){
 
 	$('#panel1').addClass('active');	
 
-	var latitude;			
-	var longitude;		
-
-	// Obtener posicion
-	function geoFindMe() {				
-				
-		if (!navigator.geolocation){
-			console.log("Geolocation is not supported by your browser");
-			return false;
-		}
-	 
-		function success(position) {
-			latitude  = position.coords.latitude;
-			longitude = position.coords.longitude;
-		}
-	 
-		function error() {
-			console.log("Unable to retrieve your location");
-		}
-				 
-		navigator.geolocation.getCurrentPosition(success, error);
-	}
-
-	$('.miUbicacion').click(function(){
-		geoFindMe();
-	});
-	
-	$('#tabstart').addClass('active');
-
 	$('#btn-horario').click(function (){
 		$('#tabstart').removeClass('active');
 		$('#titulo').html($('#hora').attr('alt'));
@@ -49,6 +20,36 @@ Zepto(function($){
 	$('#btn-info').click(function (){
 		$('#tabstart').removeClass('active');
 		$('#titulo').html($('#info').attr('alt'));
+	});		
+
+	// Obtener posicion
+	function geoFindMe(callback) {
+				
+		if (!navigator.geolocation){
+			console.log("Geolocation is not supported by your browser");
+			return false;
+		}
+	 
+		function success(position) {
+			var latitude  = position.coords.latitude;
+			var longitude = position.coords.longitude;
+			callback(latitude,longitude);			
+		}
+	 
+		function error() {
+			console.log("Unable to retrieve your location");
+		}	
+
+		navigator.geolocation.getCurrentPosition(success, error);			
+	}	
+
+	$('.miUbicacion').click(function(){
+		var lat;
+		geoFindMe(function(latitude,longitude){
+			lat = latitude;
+			log = longitude;
+		});
+
 	});	
 
 	// Estaciones
