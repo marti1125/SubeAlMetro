@@ -1,46 +1,10 @@
-$(document).on('ready', function(){
-  	$.ajax({
-	  type: "GET",
-	  url: "http://marti1125.webfactional.com/SubeAlMetro/lineauno.php",	  
-      dataType: 'json',
-	  crossDomain: true,	  
-	  success: function(){
-		  alert('jejej');
-	  },
-	  error: function(){
-		  alert('ohh..');
-	  }
-	});
-});
-
 Zepto(function($){
 
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
 	    mozSystem: true
 	});
-	
-	var timeline = "http://marti1125.webfactional.com/lineauno/index.php";
-	
-	/*$.ajax({
-    url: "http://marti1125.webfactional.com/lineauno/index.php",
-    type: 'GET',
-    success: function(res) {
-        $.each(text, function(key, value){
-  			$('#tweet').append('<li><div class="imgLeft"><img src="'+value.user.profile_image_url+'"/></div><h1 class="titleTwitter">'+value.user.name+' <span class="usertwitter">'+'@'+value.user.screen_name+'</span></h1><p>'+value.text+'</p></li>');
-		});
-		}
-	});*/
-	
-	/*$.getJSON('lineauno.php', function(text){
-		console.log(text);
-  		$.each(text, function(key, value){
-  			$('#tweet').append('<li><div class="imgLeft"><img src="'+value.user.profile_image_url+'"/></div><h1 class="titleTwitter">'+value.user.name+' <span class="usertwitter">'+'@'+value.user.screen_name+'</span></h1><p>'+value.text+'</p></li>');
-		});
-	});*/
-	
 
-	
 	nokia.Settings.set( "appId", "oXBdneZI8fw0fT9w6bmM");
 	nokia.Settings.set( "authenticationToken", "TyIkck-eTNU2_0dmAxEX6A");
 
@@ -157,16 +121,20 @@ Zepto(function($){
 	var estacionesOffline = "js/stations.json";
 
 	// Twitter
-	var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=7&callback=?";
-	
+	//var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=7&callback=?";
 
 	$.getJSON(estacionesOffline, function(text){
 		$.each(text.stations, function(key, value){
 			$('#estaciones').append('<option>'+value.name+'</option>');
 		});		
-		//console.log(text.stations);		
+		console.log(text.stations);		
 	});
 
+	/*$.getJSON(twitterTimeLine, function(text){
+  		$.each(text, function(key, value){
+  			$('#tweet').append('<li><div class="imgLeft"><img src="'+value.user.profile_image_url+'"/></div><h1 class="titleTwitter">'+value.user.name+' <span class="usertwitter">'+'@'+value.user.screen_name+'</span></h1><p>'+value.text+'</p></li>');
+		});
+	});*/
 	
 	// No borrar
 	/*marker.addListener("click", function () {
