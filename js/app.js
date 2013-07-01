@@ -1,3 +1,41 @@
+// Obtener posicion
+function miPosicion(callback) {
+			
+	if (!navigator.geolocation){
+		console.log("Geolocation is not supported by your browser");
+		return false;
+	}
+ 
+	function success(position) {
+		var latitude  = position.coords.latitude;
+		var longitude = position.coords.longitude;
+		callback(latitude,longitude);			
+	}
+ 
+	function error() {
+		console.log("Unable to retrieve your location");
+	}	
+
+	navigator.geolocation.getCurrentPosition(success, error);			
+}
+
+function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud){
+
+	var R = 6371; // km
+	var dLat = (estacionLatitud-miLatitud).toRad();
+	var dLon = (estacionLongitud-miLongitud).toRad();
+	var lat1 = miLatitud.toRad();
+	var lat2 = estacionLatitud.toRad();
+
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c;
+
+	return d;
+
+}
+
 Zepto(function($){
 
 	// Acceso a internet
@@ -22,49 +60,56 @@ Zepto(function($){
 		$('#titulo').html($('#info').attr('alt'));
 	});		
 
-	// Obtener posicion
-	function geoFindMe(callback) {
-				
-		if (!navigator.geolocation){
-			console.log("Geolocation is not supported by your browser");
-			return false;
-		}
-	 
-		function success(position) {
-			var latitude  = position.coords.latitude;
-			var longitude = position.coords.longitude;
-			callback(latitude,longitude);			
-		}
-	 
-		function error() {
-			console.log("Unable to retrieve your location");
-		}	
-
-		navigator.geolocation.getCurrentPosition(success, error);			
-	}	
-
 	$('.miUbicacion').click(function(){
-		var lat;
-		geoFindMe(function(latitude,longitude){
-			lat = latitude;
-			log = longitude;
+		var miLatitud;
+		var miLongitud;
+
+		miPosicion(function(latitude,longitude){
+
+			miLatitud = latitude;
+			miLongitud = longitude;
+
+			var resultados = [];
+			var distancia;
+
+			$.ajax({ //zeptojs
+			async: true
+			});
+
+			$.getJSON('js/estaciones.json', function(response){
+				$.each(response, function(index, item){
+					$.each(item, function(index, result){											
+						distancia = distaciaMenor(miLatitud, miLongitud, result.latitud, result.longitud)
+						resultados.push(distancia);						
+					});			  
+				});
+			});
+
+			$.ajax({
+			async: false
+			});
+			
+			console.log(resultados);
+			console.log(resultados[0]);
+			console.log(Math.min.apply(Math, resultados));
+
 		});
 
 	});	
 
 	// Estaciones
-	var estaciones = "https://subealmetro.herokuapp.com/stations.json";
-	var estacionesOffline = "js/stations.json";
+	//var estaciones = "https://subealmetro.herokuapp.com/stations.json";
+	//var estacionesOffline = "js/stations.json";
 
 	// Twitter
 	//var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=7&callback=?";
 
-	$.getJSON(estacionesOffline, function(text){
+	/*$.getJSON(estacionesOffline, function(text){
 		$.each(text.stations, function(key, value){
 			$('#estaciones').append('<option>'+value.name+'</option>');
 		});		
 		console.log(text.stations);		
-	});
+	});*/
 
 	/*$.getJSON(twitterTimeLine, function(text){
   		$.each(text, function(key, value){
