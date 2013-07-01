@@ -19,7 +19,7 @@ function miPosicion(callback) {
 	navigator.geolocation.getCurrentPosition(success, error);			
 }
 
-function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud){
+function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud, estacion){
 
 	var R = 6371; // km
 	var dLat = (estacionLatitud-miLatitud).toRad();
@@ -32,7 +32,7 @@ function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud)
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 	var d = R * c;
 
-	return d;
+	return [d,estacion];
 
 }
 
@@ -79,19 +79,33 @@ Zepto(function($){
 			$.getJSON('js/estaciones.json', function(response){
 				$.each(response, function(index, item){
 					$.each(item, function(index, result){											
-						distancia = distaciaMenor(miLatitud, miLongitud, result.latitud, result.longitud)
-						resultados.push(distancia);						
+						distancia = distaciaMenor(miLatitud, miLongitud, result.latitud, result.longitud, result.estacion)
+						resultados.push(distancia);
+						//console.log(distancia);					
 					});			  
 				});
 			});
 
 			$.ajax({
 			async: false
+			});			
+
+			var distaciaMinimo = Math.min.apply(Math, resultados.map(function(i) {
+			    return i[0];
+			}));
+
+			var estacionCercana = $.grep(resultados, function(v,i) {
+			    return v[0] === distaciaMinimo;
 			});
-			
-			console.log(resultados);
-			console.log(resultados[0]);
-			console.log(Math.min.apply(Math, resultados));
+
+			console.log(estacionCercana[0][1])
+
+			$('.estacionCercana').html(estacionCercana[0][1]);
+			//console.log(resultados.filter(isBigEnough);)
+
+			//console.log(resultados);
+			//console.log(resultados[0]);
+			//console.log(Math.min.apply(Math, resultados));
 
 		});
 
