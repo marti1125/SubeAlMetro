@@ -43,20 +43,20 @@ Zepto(function($){
 	    mozSystem: true
 	});
 
-	$('#panel1').addClass('active');	
+	$('.active').addClass('active');	
 
 	$('#btn-horario').click(function (){
-		$('#tabstart').removeClass('active');
+		$('.active').removeClass('active');
 		$('#titulo').html($('#hora').attr('alt'));
 	});
 
 	$('#btn-twitter').click(function (){
-		$('#tabstart').removeClass('active');
+		$('.active').removeClass('active');
 		$('#titulo').html($('#twitter').attr('alt'));
 	});
 
 	$('#btn-info').click(function (){
-		$('#tabstart').removeClass('active');
+		$('.active').removeClass('active');
 		$('#titulo').html($('#info').attr('alt'));
 	});		
 
