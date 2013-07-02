@@ -24,5 +24,6 @@
       "description": "geolocation"     
     },
     "systemXHR": {}
-  }
+  },
+  "type": "privileged"
 }
