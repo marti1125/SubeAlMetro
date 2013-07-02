@@ -109,31 +109,16 @@ Zepto(function($){
 
 		});
 
-	});	
-
-	// Estaciones
-	//var estaciones = "https://subealmetro.herokuapp.com/stations.json";
-	//var estacionesOffline = "js/stations.json";
+	});		
 
 	// Twitter
-	//var twitterTimeLine = "https://api.twitter.com/1/statuses/user_timeline/Lineaunope.json?&count=7&callback=?";
+	var twitterTimeLine = "http://mozilla.pe/metrodelima/lineauno.php";
 
-	/*$.getJSON(estacionesOffline, function(text){
-		$.each(text.stations, function(key, value){
-			$('#estaciones').append('<option>'+value.name+'</option>');
-		});		
-		console.log(text.stations);		
-	});*/
-
-	/*$.getJSON(twitterTimeLine, function(text){
+	$.getJSON(twitterTimeLine, function(text){
   		$.each(text, function(key, value){
   			$('#tweet').append('<li><div class="imgLeft"><img src="'+value.user.profile_image_url+'"/></div><h1 class="titleTwitter">'+value.user.name+' <span class="usertwitter">'+'@'+value.user.screen_name+'</span></h1><p>'+value.text+'</p></li>');
 		});
-	});*/
+	});	
 	
-	// No borrar
-	/*marker.addListener("click", function () {
-				alert('hola');				
-			});*/
 
 });
