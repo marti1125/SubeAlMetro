@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Install</title>
+	</head>
+<body>
+<form id="install">
+	<button style="height:150px; width:150px; font-size:34px;">Install</button>	
+</form>
+
+<script>
+
+function install(){
+	navigator.mozApps.install("manifest.webapp");
+	return false;
+}
+document.getElementById("install").onsubmit = install;
+
+</script>
+
+</body>
+</html>
