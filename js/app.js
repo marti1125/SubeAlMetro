@@ -110,6 +110,15 @@ Zepto(function($){
 		});
 
 	});		
+	
+	// Estaciones
+	$.getJSON('js/estaciones.json', function(response){
+		$.each(response, function(index, item){
+			$.each(item, function(index, result){
+				$('.estaciones').append('<li>Estación <b>'+result.estacion+'</b></li>');
+			});			  
+		});
+	});
 
 	// Twitter
 	var twitterTimeLine = "http://mozilla.pe/metrodelima/lineauno.php";
@@ -120,5 +129,4 @@ Zepto(function($){
 		});
 	});	
 	
-
 });
