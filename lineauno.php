@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 session_start();
 require_once("twitteroauth/twitteroauth.php");
 
-$twitteruser = "lineauno";
+$twitteruser = "Lineaunope";
 $notweets = 7;
 $consumerkey = "K55EvPSwvVjBAqF7iyZmQ";
 $consumersecret = "pIw9eYXMfgAKYwX74qrBU0rcvsKul6fqASTe2FZE";

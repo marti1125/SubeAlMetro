@@ -120,8 +120,8 @@ Zepto(function($){
 		});
 	});
 
-	// Twitter
-	var twitterTimeLine = "http://mozilla.pe/metrodelima/lineauno.php";
+	// Twitter -- Servidor de pruebas
+	var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
 
 	$.getJSON(twitterTimeLine, function(text){
   		$.each(text, function(key, value){
