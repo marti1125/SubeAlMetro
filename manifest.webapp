@@ -23,7 +23,8 @@
     "geolocation": {
       "description": "geolocation"     
     },
-    "systemXHR": {}
-  },
-  "type": "privileged"
+    "systemXHR": {
+      "description": "json"
+    }
+  }
 }
