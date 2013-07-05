@@ -60,54 +60,52 @@ Zepto(function($){
 		$('#titulo').html($('#info').attr('alt'));
 	});		
 
-	$('.miUbicacion').click(function(){
-		var miLatitud;
-		var miLongitud;
+	
+	var miLatitud;
+	var miLongitud;
 
-		miPosicion(function(latitude,longitude){
+	miPosicion(function(latitude,longitude){
 
-			miLatitud = latitude;
-			miLongitud = longitude;
+		miLatitud = latitude;
+		miLongitud = longitude;
 
-			var resultados = [];
-			var distancia;
+		var resultados = [];
+		var distancia;
 
-			$.ajax({ //zeptojs
-			async: true
-			});
-
-			$.getJSON('js/estaciones.json', function(response){
-				$.each(response, function(index, item){
-					$.each(item, function(index, result){											
-						distancia = distaciaMenor(miLatitud, miLongitud, result.latitud, result.longitud, result.estacion)
-						resultados.push(distancia);
-						//console.log(distancia);					
-					});			  
-				});
-			});
-
-			$.ajax({
-			async: false
-			});			
-
-			var distaciaMinimo = Math.min.apply(Math, resultados.map(function(i) {
-			    return i[0];
-			}));
-
-			var estacionCercana = $.grep(resultados, function(v,i) {
-			    return v[0] === distaciaMinimo;
-			});
-
-			console.log(estacionCercana[0][1])
-
-			$('.estacionCercana').html(estacionCercana[0][1]);
-			//console.log(resultados.filter(isBigEnough);)
-
-			//console.log(resultados);
-			//console.log(resultados[0]);
-			//console.log(Math.min.apply(Math, resultados));
-
+		$.ajax({ //zeptojs
+		async: true
 		});
+
+		$.getJSON('js/estaciones.json', function(response){
+			$.each(response, function(index, item){
+				$.each(item, function(index, result){											
+					distancia = distaciaMenor(miLatitud, miLongitud, result.latitud, result.longitud, result.estacion)
+					resultados.push(distancia);
+					//console.log(distancia);					
+				});			  
+			});
+		});
+
+		$.ajax({
+		async: false
+		});			
+
+		var distaciaMinimo = Math.min.apply(Math, resultados.map(function(i) {
+		    return i[0];
+		}));
+
+		var estacionCercana = $.grep(resultados, function(v,i) {
+		    return v[0] === distaciaMinimo;
+		});
+
+		console.log(estacionCercana[0][1])
+
+		alert(estacionCercana[0][1]);
+		//console.log(resultados.filter(isBigEnough);)
+
+		//console.log(resultados);
+		//console.log(resultados[0]);
+		//console.log(Math.min.apply(Math, resultados));
 
 	});		
 	
