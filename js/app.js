@@ -105,24 +105,13 @@ Zepto(function($){
 
 		result = estacionCercana[0][1]
 
-		//console.log(result)
-		//console.log(estacionCercana[0][1])
-
-		//alert(estacionCercana[0][1]);
-		
-		//console.log(resultados.filter(isBigEnough);)
-		//return result;
-
-		verificar(result);
-		//console.log(resultados);
-		//console.log(resultados[0]);
-		//console.log(Math.min.apply(Math, resultados));
+		verificar(result);		
 
 	});
 	
 	$.ajax({
 		async: false
-	});	
+	});
 
 	// Estaciones
 	$.getJSON('js/estaciones.json', function(response){
@@ -137,13 +126,21 @@ Zepto(function($){
 		async: true
 	});	
 
-	function verificar(result){		
-		if($('#IdEstacion').data('estacion') == result){
-			$('#IdEstacion').addClass('estacionActiva');
-			console.log('si')
-		}else {
-			console.log('no')
-		}
+	function verificar(result){
+		//var resultados = [];
+		$("li #IdEstacion").each(function( index ) {
+			
+			console.log('Estación '+ result)
+			console.log($(this).text())
+
+			if($(this).text() == 'Estación '+ result){
+				$(this).addClass('estacionActiva')
+				console.log('si')
+			}else {
+				console.log('si')
+			}
+
+		});
 		
 		return result;
 	}
@@ -161,8 +158,7 @@ Zepto(function($){
   				+		'<h1 class="titleTwitter">'+value.user.name+'<span class="usertwitter"> @' + value.user.screen_name +'</span></h1>' 
   				+		'<p>'+value.text+'</p>'  				
   				+	'</li>'
-  				);
-  			//$('#tweet').append('<li><div class="imgLeft"><img src="'+value.user.profile_image_url+'"/></div><h1 class="titleTwitter">'+value.user.name+' <span class="usertwitter">'+'@'+value.user.screen_name+'</span></h1><p>'+value.text+'</p></li>');
+  				);  			
 		});
 	});	
 	
