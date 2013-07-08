@@ -128,7 +128,7 @@ Zepto(function($){
 	$.getJSON('js/estaciones.json', function(response){
 		$.each(response, function(index, item){
 			$.each(item, function(index, result){
-				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'">Estación <b>'+result.estacion+'</b></li>');
+				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
 			});			  
 		});
 	});
@@ -137,8 +137,7 @@ Zepto(function($){
 		async: true
 	});	
 
-	function verificar(result){
-		var algo = $('#IdEstacion').data('estacion')
+	function verificar(result){		
 		if($('#IdEstacion').data('estacion') == result){
 			$('#IdEstacion').addClass('estacionActiva');
 			console.log('si')
@@ -154,7 +153,16 @@ Zepto(function($){
 
 	$.getJSON(twitterTimeLine, function(text){
   		$.each(text, function(key, value){
-  			$('#tweet').append('<li><div class="imgLeft"><img src="'+value.user.profile_image_url+'"/></div><h1 class="titleTwitter">'+value.user.name+' <span class="usertwitter">'+'@'+value.user.screen_name+'</span></h1><p>'+value.text+'</p></li>');
+  			$('#tweet').append(
+  					'<li>'
+  				+   	'<div class="imgLeft">'
+  				+			'<img src="'+value.user.profile_image_url+'"/>'
+  				+		'</div>'
+  				+		'<h1 class="titleTwitter">'+value.user.name+'<span class="usertwitter"> @' + value.user.screen_name +'</span></h1>' 
+  				+		'<p>'+value.text+'</p>'  				
+  				+	'</li>'
+  				);
+  			//$('#tweet').append('<li><div class="imgLeft"><img src="'+value.user.profile_image_url+'"/></div><h1 class="titleTwitter">'+value.user.name+' <span class="usertwitter">'+'@'+value.user.screen_name+'</span></h1><p>'+value.text+'</p></li>');
 		});
 	});	
 	
