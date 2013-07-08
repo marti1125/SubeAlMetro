@@ -113,3 +113,6 @@ section[role="region"] > header:first-child img {
 .tabactivo {
 	visibility: visible;
 }
+.estacionActiva {
+	color: red !important;
+}

@@ -63,11 +63,16 @@ Zepto(function($){
 	
 	var miLatitud;
 	var miLongitud;
+	
+	var result;
 
-	miPosicion(function(latitude,longitude){
+	var estacionCercana;
+
+	miPosicion(function(latitude,longitude,result){
 
 		miLatitud = latitude;
 		miLongitud = longitude;
+		//result = result
 
 		var resultados = [];
 		var distancia;
@@ -88,35 +93,61 @@ Zepto(function($){
 
 		$.ajax({
 		async: false
-		});			
+		});	
 
 		var distaciaMinimo = Math.min.apply(Math, resultados.map(function(i) {
 		    return i[0];
 		}));
 
-		var estacionCercana = $.grep(resultados, function(v,i) {
+		estacionCercana = $.grep(resultados, function(v,i) {
 		    return v[0] === distaciaMinimo;
 		});
 
-		console.log(estacionCercana[0][1])
+		result = estacionCercana[0][1]
 
-		alert(estacionCercana[0][1]);
+		//console.log(result)
+		//console.log(estacionCercana[0][1])
+
+		//alert(estacionCercana[0][1]);
+		
 		//console.log(resultados.filter(isBigEnough);)
+		//return result;
 
+		verificar(result);
 		//console.log(resultados);
 		//console.log(resultados[0]);
 		//console.log(Math.min.apply(Math, resultados));
 
-	});		
+	});
 	
+	$.ajax({
+		async: false
+	});	
+
 	// Estaciones
 	$.getJSON('js/estaciones.json', function(response){
 		$.each(response, function(index, item){
 			$.each(item, function(index, result){
-				$('.estaciones').append('<li>Estación <b>'+result.estacion+'</b></li>');
+				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'">Estación <b>'+result.estacion+'</b></li>');
 			});			  
 		});
 	});
+
+	$.ajax({
+		async: true
+	});	
+
+	function verificar(result){
+		var algo = $('#IdEstacion').data('estacion')
+		if($('#IdEstacion').data('estacion') == result){
+			$('#IdEstacion').addClass('estacionActiva');
+			console.log('si')
+		}else {
+			console.log('no')
+		}
+		
+		return result;
+	}
 
 	// Twitter -- Servidor de pruebas
 	var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
