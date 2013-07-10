@@ -5,18 +5,32 @@
 		<title>Install</title>
 	</head>
 <body>
-<form id="install">
-	<button style="height:150px; width:150px; font-size:34px;">Install</button>	
-</form>
+
+<button id="install" style="height:250px; width:250px; font-size:34px;">
+  Install this awesome app on your homescreen!
+</button>
 
 <script>
-
-function install(){
-	navigator.mozApps.install("http://subealmetro.willyaguirre.me/manifest.webapp");
-	return false;
-}
-document.getElementById("install").onsubmit = install;
-
+(function(){
+  function install(ev) {
+    ev.preventDefault();
+    // define the manifest URL
+    var manifest_url = "manifest.webapp";
+    // install the app
+    var myapp = navigator.mozApps.install(manifest_url);
+    myapp.onsuccess = function(data) {
+      // App is installed, remove button
+      this.parentNode.removeChild(this);
+    };
+    myapp.onerror = function() {
+      // App wasn't installed, info is in this.error.name
+      console.log('Install failed, error: ' + this.error.name);
+     };
+  };
+  // get a reference to the button and call install() on click
+  var button = document.getElementById('install');
+  button.addEventListener('click', install, false);
+})();
 </script>
 
 </body>
