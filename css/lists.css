@@ -129,11 +129,13 @@
 [data-type="list"] aside img {
   display: block;
   overflow: hidden;
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
   background: transparent center center / cover;
   position: relative;
   z-index: 1;
+  padding-top: 5px;
+  padding-right: 10px;
 }
 
 /* Text content */

@@ -117,7 +117,7 @@ Zepto(function($){
 	$.getJSON('js/estaciones.json', function(response){
 		$.each(response, function(index, item){
 			$.each(item, function(index, result){
-				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
+				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><aside class="pack-end"><img alt="placeholder" src="img/hora.png"></aside><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
 			});			  
 		});
 	});
