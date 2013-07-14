@@ -139,3 +139,19 @@ section[role="region"] > header:first-child img {
 	padding-bottom: 0.8rem !important;
 	font-size: 1.6rem !important;
 }
+
+#home-view {
+	z-index: 11;
+}
+
+.move-up {
+	transform: translateY(0%);
+	transition: all 0.2s;
+	z-index: 12;
+}
+
+.move-down {
+	transform: translateY(100%);
+	transition: all 0.2s;
+	z-index: 11;
+}

@@ -45,7 +45,7 @@ Zepto(function($){
 
 	$('.active').addClass('active');	
 
-	$('#btn-horario').click(function (){
+	$('#btn-estacion').click(function (){
 		$('.active').removeClass('active');
 		$('#titulo').html($('#hora').attr('alt'));
 	});
@@ -117,14 +117,14 @@ Zepto(function($){
 	$.getJSON('js/estaciones.json', function(response){
 		$.each(response, function(index, item){
 			$.each(item, function(index, result){
-				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><aside class="pack-end"><img alt="placeholder" src="img/hora.png"></aside><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
+				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><aside class="pack-end"><img id="hora" alt="placeholder" src="img/hora.png"></aside><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
 			});			  
 		});
 	});
 
 	$.ajax({
 		async: true
-	});	
+	});
 
 	function verificar(result){
 		//var resultados = [];
@@ -160,6 +160,16 @@ Zepto(function($){
   				+	'</li>'
   				);  			
 		});
+	});		
+
+	$(document).on('click', '#hora', function(){
+		$('#settings-view').removeClass('move-down');		
+		$('#settings-view').addClass('move-up');
+	});
+
+	$(document).on('click', '#settings-btn', function(){		
+		$('#settings-view').removeClass('move-up');
+		$('#settings-view').addClass('move-down');
 	});	
-	
+		
 });
