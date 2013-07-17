@@ -47,7 +47,8 @@ Zepto(function($){
 
 	$('#btn-estacion').click(function (){
 		$('.active').removeClass('active');
-		$('#titulo').html($('#hora').attr('alt'));
+		$('#titulo').html($('#estacion').attr('alt'));
+		$('#settings-view').addClass('move-up');
 	});
 
 	$('#btn-twitter').click(function (){
@@ -117,7 +118,7 @@ Zepto(function($){
 	$.getJSON('js/estaciones.json', function(response){
 		$.each(response, function(index, item){
 			$.each(item, function(index, result){
-				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><aside class="pack-end"><img id="hora" alt="placeholder" src="img/hora.png"></aside><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
+				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><aside class="pack-end"><img id="gethora" alt="placeholder" src="img/hora.png"></aside><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
 			});			  
 		});
 	});
@@ -162,7 +163,7 @@ Zepto(function($){
 		});
 	});		
 
-	$(document).on('click', '#hora', function(){
+	$(document).on('click', '#gethora', function(){		
 		$('#settings-view').removeClass('move-down');		
 		$('#settings-view').addClass('move-up');
 	});

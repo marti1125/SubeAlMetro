@@ -15,7 +15,7 @@
   function install(ev) {
     ev.preventDefault();
     // define the manifest URL
-    var manifest_url = "manifest.webapp";
+    var manifest_url = "http://subealmetro.willyaguirre.me/manifest.webapp";
     // install the app
     var myapp = navigator.mozApps.install(manifest_url);
     myapp.onsuccess = function(data) {

@@ -28,39 +28,7 @@ section[role="region"] > header:first-child img {
     padding-left: 10px;
     float: left;
 }
-.back-inicio {
-	z-index: 0;
-}
-.move-horario-view  {
-	z-index: 10;
-	transform: translateX(-100%);
-	transition: all 0.2s;
-}
-.back-horario-view  {
-	z-index: 10;	
-	transform: translateX(0%);
-	transition: all 0.4s;
-}
-.move-twitter-view  {
-	z-index: 20;
-	transform: translateX(-200%);
-	transition: all 0.2s;
-}
-.back-twitter-view  {
-	z-index: 20;
-	transform: translateX(0%);
-	transition: all 0.4s;
-}
-.move-info-view  {
-	z-index: 30;
-	transform: translateX(-300%);
-	transition: all 0.2s;
-}
-.back-info-view  {
-	z-index: 30;
-	transform: translateX(0%);
-	transition: all 1s;
-}
+
 #home-view {
 	width: 100%;
 	left: 0%;
