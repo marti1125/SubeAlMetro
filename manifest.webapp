@@ -26,5 +26,6 @@
     "systemXHR": {
       "description": "json"
     }
-  }
+  },
+  "type": "privileged" 
 }

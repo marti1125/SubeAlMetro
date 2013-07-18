@@ -112,13 +112,13 @@ section[role="region"] > header:first-child img {
 	z-index: 11;
 }
 
-.move-up {
+.subir {
 	transform: translateY(0%);
 	transition: all 0.2s;
 	z-index: 12;
 }
 
-.move-down {
+.bajar {
 	transform: translateY(100%);
 	transition: all 0.2s;
 	z-index: 11;

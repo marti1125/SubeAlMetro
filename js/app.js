@@ -46,17 +46,19 @@ Zepto(function($){
 	$('.active').addClass('active');	
 
 	$('#btn-estacion').click(function (){
-		$('.active').removeClass('active');
-		$('#titulo').html($('#estacion').attr('alt'));
-		$('#settings-view').addClass('move-up');
+		$('#settings-view').removeClass('bajar');
+		$('.active').removeClass('active');		
+		$('#titulo').html($('#estacion').attr('alt'));		
 	});
 
 	$('#btn-twitter').click(function (){
+		$('#settings-view').removeClass('bajar');
 		$('.active').removeClass('active');
 		$('#titulo').html($('#twitter').attr('alt'));
 	});
 
 	$('#btn-info').click(function (){
+		$('#settings-view').removeClass('bajar');
 		$('.active').removeClass('active');
 		$('#titulo').html($('#info').attr('alt'));
 	});		
@@ -163,14 +165,14 @@ Zepto(function($){
 		});
 	});		
 
-	$(document).on('click', '#gethora', function(){		
-		$('#settings-view').removeClass('move-down');		
-		$('#settings-view').addClass('move-up');
+	$(document).on("click", "#gethora", function(){		
+		$("#settings-view").removeClass("bajar");		
+		$("#settings-view").addClass("subir");
 	});
 
 	$(document).on('click', '#settings-btn', function(){		
-		$('#settings-view').removeClass('move-up');
-		$('#settings-view').addClass('move-down');
-	});	
+		$('#settings-view').removeClass('subir');
+		$('#settings-view').addClass('bajar');
+	});
 		
 });
