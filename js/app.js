@@ -163,9 +163,26 @@ Zepto(function($){
   				+	'</li>'
   				);  			
 		});
-	});		
+	});
 
-	$(document).on("click", "#gethora", function(){		
+
+
+	$(document).on("click", "#IdEstacion", function(){
+		//alert($(this).data("estacion"))
+		var estacion = $(this).data("estacion")
+		
+		$.getJSON('js/horarios.json', function(text){
+			//console.log(text.estaciones.salida)
+			//console.log(text.estaciones.estacion)
+			//console.log(estacion)
+			if(estacion == text.estaciones.estacion){
+				$("#listHorarios").html("<li>"+text.estaciones.salida+"</li>")
+			} else {
+				$("#listHorarios").html('');
+			}			
+  			
+		});
+
 		$("#settings-view").removeClass("bajar");		
 		$("#settings-view").addClass("subir");
 	});
