@@ -169,27 +169,19 @@ Zepto(function($){
 
 
 	$(document).on("click", "#IdEstacion", function(){
-		//alert($(this).data("estacion"))
+		
 		var estacion = $(this).data("estacion")
 		$('#tituloNombreEstacion').html(estacion);
 		
 		$.getJSON('js/horarios.json', function(text){
-			//console.log(text.estaciones.salida)
-			//console.log(text.estaciones.estacion)
-			//console.log(estacion)
-			/*if(estacion == text.estaciones.estacion){
-				$("#listHorarios").append("<li><p>"+text.estaciones.salida+"</p></li>")
-			} else {
-				$("#listHorarios").html('');
-			}*/
+			
 			if(estacion == text.estaciones.estacion){
 				$.each(text, function(key, value){
 					//console.log(value.salida.length)
 					var i;
 					for(i=0;i<value.salida.length;i++){					
 						$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+value.salida[i]+"</p></li>")
-					}
-					//$("#listHorarios").append("<li><p>"+value.salida+"</p></li>")
+					}					
 				});
 			}else {
 				$("#listHorarios").html('');
