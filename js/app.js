@@ -169,23 +169,53 @@ Zepto(function($){
 
 
 	$(document).on("click", "#IdEstacion", function(){
-		
+
+		var fechaActual = new Date();
+
+		var hora = fechaActual.getHours() + ":"  
+                 + fechaActual.getMinutes();
+
 		var estacion = $(this).data("estacion")
 		$('#tituloNombreEstacion').html(estacion);
 		
 		$.getJSON('js/horarios.json', function(text){
-			
-			if(estacion == text.estaciones.estacion){
-				$.each(text, function(key, value){
-					//console.log(value.salida.length)
-					var i;
-					for(i=0;i<value.salida.length;i++){					
-						$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+value.salida[i]+"</p></li>")
+
+			$.each(text, function(key, value){
+
+				$.each(value, function(index, result){
+					var validar = false					
+					if(result.nombre == estacion){
+						validar = true
+						$("#listHorarios").html('')	
+					}
+					if(validar){
+						for(i=0;i<result.GRAU.length;i++){
+
+							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p></li>");
+							
+						}
 					}					
+
+				});
+
+			});
+			
+			/*if(estacion == text.estaciones.nombre){
+				$.each(text, function(key, value){
+					var i;
+					for(i=0;i<value.GRAU.length;i++){					
+						$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+value.GRAU[i]+"</p></li>");
+						
+						if(hora < Date.parse("22:20")){							
+							$('#contieneHoraSalida p').css('color','red');
+						} else {
+							$('#contieneHoraSalida p').css('color','green');
+						}
+					}						
 				});
 			}else {
 				$("#listHorarios").html('');
-			}
+			}*/
   			
 		});
 
