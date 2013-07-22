@@ -46,17 +46,19 @@ Zepto(function($){
 	$('.active').addClass('active');	
 
 	$('#btn-estacion').click(function (){
-		$('.active').removeClass('active');
-		$('#titulo').html($('#estacion').attr('alt'));
-		$('#settings-view').addClass('move-up');
+		$('#settings-view').removeClass('bajar');
+		$('.active').removeClass('active');		
+		$('#titulo').html($('#estacion').attr('alt'));		
 	});
 
 	$('#btn-twitter').click(function (){
+		$('#settings-view').removeClass('bajar');
 		$('.active').removeClass('active');
 		$('#titulo').html($('#twitter').attr('alt'));
 	});
 
 	$('#btn-info').click(function (){
+		$('#settings-view').removeClass('bajar');
 		$('.active').removeClass('active');
 		$('#titulo').html($('#info').attr('alt'));
 	});		
@@ -87,7 +89,7 @@ Zepto(function($){
 				$.each(item, function(index, result){											
 					distancia = distaciaMenor(miLatitud, miLongitud, result.latitud, result.longitud, result.estacion)
 					resultados.push(distancia);
-					//console.log(distancia);					
+					console.log(distancia);					
 				});			  
 			});
 		});
@@ -106,7 +108,8 @@ Zepto(function($){
 
 		result = estacionCercana[0][1]
 
-		verificar(result);		
+		verificar(result);
+		console.log(result)	
 
 	});
 	
@@ -161,16 +164,38 @@ Zepto(function($){
   				+	'</li>'
   				);  			
 		});
-	});		
+	});
 
-	$(document).on('click', '#gethora', function(){		
-		$('#settings-view').removeClass('move-down');		
-		$('#settings-view').addClass('move-up');
+
+
+	$(document).on("click", "#IdEstacion", function(){
+		
+		var estacion = $(this).data("estacion")
+		$('#tituloNombreEstacion').html(estacion);
+		
+		$.getJSON('js/horarios.json', function(text){
+			
+			if(estacion == text.estaciones.estacion){
+				$.each(text, function(key, value){
+					//console.log(value.salida.length)
+					var i;
+					for(i=0;i<value.salida.length;i++){					
+						$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+value.salida[i]+"</p></li>")
+					}					
+				});
+			}else {
+				$("#listHorarios").html('');
+			}
+  			
+		});
+
+		$("#settings-view").removeClass("bajar");		
+		$("#settings-view").addClass("subir");
 	});
 
 	$(document).on('click', '#settings-btn', function(){		
-		$('#settings-view').removeClass('move-up');
-		$('#settings-view').addClass('move-down');
-	});	
+		$('#settings-view').removeClass('subir');
+		$('#settings-view').addClass('bajar');
+	});
 		
 });
