@@ -191,7 +191,7 @@ Zepto(function($){
 					if(validar){
 						for(i=0;i<result.GRAU.length;i++){
 
-							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p></li>");
+							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");
 							
 						}
 					}					
