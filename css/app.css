@@ -129,7 +129,16 @@ section[role="region"] > header:first-child img {
 }
 #contieneHoraSalida {
 	padding: 15px;
+	margin-bottom: 10px;
 }
 #horaSalida {
 	font-size: 2.2rem;
+	float: left;
+	padding-left: 13%;
+}
+#horaRegreso {
+	font-size: 2.2rem;
+	float: right;
+	color: black;
+	padding-right: 13%;	
 }
