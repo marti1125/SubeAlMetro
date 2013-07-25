@@ -46,19 +46,17 @@ Zepto(function($){
 	$('.active').addClass('active');	
 
 	$('#btn-estacion').click(function (){
-		$('#settings-view').removeClass('bajar');
-		$('.active').removeClass('active');		
-		$('#titulo').html($('#estacion').attr('alt'));		
+		$('.active').removeClass('active');
+		$('#titulo').html($('#estacion').attr('alt'));
+		$('#settings-view').addClass('move-up');
 	});
 
 	$('#btn-twitter').click(function (){
-		$('#settings-view').removeClass('bajar');
 		$('.active').removeClass('active');
 		$('#titulo').html($('#twitter').attr('alt'));
 	});
 
 	$('#btn-info').click(function (){
-		$('#settings-view').removeClass('bajar');
 		$('.active').removeClass('active');
 		$('#titulo').html($('#info').attr('alt'));
 	});		
@@ -89,7 +87,7 @@ Zepto(function($){
 				$.each(item, function(index, result){											
 					distancia = distaciaMenor(miLatitud, miLongitud, result.latitud, result.longitud, result.estacion)
 					resultados.push(distancia);
-					console.log(distancia);					
+					//console.log(distancia);					
 				});			  
 			});
 		});
@@ -108,8 +106,7 @@ Zepto(function($){
 
 		result = estacionCercana[0][1]
 
-		verificar(result);
-		console.log(result)	
+		verificar(result);		
 
 	});
 	
@@ -150,7 +147,7 @@ Zepto(function($){
 	}
 
 	// Twitter -- Servidor de pruebas
-	var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
+	/*var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
 
 	$.getJSON(twitterTimeLine, function(text){
   		$.each(text, function(key, value){
@@ -164,68 +161,16 @@ Zepto(function($){
   				+	'</li>'
   				);  			
 		});
-	});
+	});*/
 
-
-
-	$(document).on("click", "#IdEstacion", function(){
-
-		var fechaActual = new Date();
-
-		var hora = fechaActual.getHours() + ":"  
-                 + fechaActual.getMinutes();
-
-		var estacion = $(this).data("estacion")
-		$('#tituloNombreEstacion').html(estacion);
-		
-		$.getJSON('js/horarios.json', function(text){
-
-			$.each(text, function(key, value){
-
-				$.each(value, function(index, result){
-					var validar = false					
-					if(result.nombre == estacion){
-						validar = true
-						$("#listHorarios").html('')	
-					}
-					if(validar){
-						for(i=0;i<result.GRAU.length;i++){
-
-							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");
-							
-						}
-					}					
-
-				});
-
-			});
-			
-			/*if(estacion == text.estaciones.nombre){
-				$.each(text, function(key, value){
-					var i;
-					for(i=0;i<value.GRAU.length;i++){					
-						$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+value.GRAU[i]+"</p></li>");
-						
-						if(hora < Date.parse("22:20")){							
-							$('#contieneHoraSalida p').css('color','red');
-						} else {
-							$('#contieneHoraSalida p').css('color','green');
-						}
-					}						
-				});
-			}else {
-				$("#listHorarios").html('');
-			}*/
-  			
-		});
-
-		$("#settings-view").removeClass("bajar");		
-		$("#settings-view").addClass("subir");
+	$(document).on('click', '#gethora', function(){		
+		$('#settings-view').removeClass('move-down');		
+		$('#settings-view').addClass('move-up');
 	});
 
 	$(document).on('click', '#settings-btn', function(){		
-		$('#settings-view').removeClass('subir');
-		$('#settings-view').addClass('bajar');
-	});
+		$('#settings-view').removeClass('move-up');
+		$('#settings-view').addClass('move-down');
+	});	
 		
 });
