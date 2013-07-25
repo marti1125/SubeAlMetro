@@ -51,9 +51,9 @@ Zepto(function($){
 		$('#settings-view').addClass('move-up');
 	});
 
-	$('#btn-twitter').click(function (){
+	$('#btn-mapa').click(function (){
 		$('.active').removeClass('active');
-		$('#titulo').html($('#twitter').attr('alt'));
+		$('#titulo').html($('#mapa').attr('alt'));
 	});
 
 	$('#btn-info').click(function (){
