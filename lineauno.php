@@ -1,5 +1,6 @@
 <?php
-header('Content-Type: application/json');
+header('content-type: application/json; charset=utf-8');
+header("access-control-allow-origin: *");
 session_start();
 require_once("twitteroauth/twitteroauth.php");
 
@@ -19,5 +20,10 @@ $connection = getConnectionWithAccessToken($consumerkey, $consumersecret, $acces
  
 $tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$twitteruser."&count=".$notweets);
  
-echo json_encode($tweets);
+$json = json_encode($tweets);
+
+echo isset($_GET['callback'])
+    ? "{$_GET['callback']}($json)"
+    : $json;
+
 ?>
