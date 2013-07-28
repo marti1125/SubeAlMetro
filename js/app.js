@@ -49,6 +49,11 @@ Zepto(function($){
 			center: [-12.050065023002462, -77.069091796875]
 	});
 
+	var ves = new nokia.maps.map.StandardMarker([-12.207415, -76.933404],{text: "1"});
+	var pi = new nokia.maps.map.StandardMarker([-12.196510, -76.939445],{text: "2"});
+	map.objects.add(ves);
+	map.objects.add(pi);
+
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
 	    mozSystem: true
