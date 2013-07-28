@@ -38,6 +38,17 @@ function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud,
 
 Zepto(function($){
 
+	nokia.Settings.set( "appId", "oXBdneZI8fw0fT9w6bmM");
+	nokia.Settings.set( "authenticationToken", "TyIkck-eTNU2_0dmAxEX6A");
+
+	var map = new nokia.maps.map.Display(
+		document.getElementById("info-mapa"), {
+			components: [
+			new nokia.maps.map.component.Behavior()],
+			zoomLevel: 10,
+			center: [-12.050065023002462, -77.069091796875]
+	});
+
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
 	    mozSystem: true
@@ -68,9 +79,7 @@ Zepto(function($){
 		$('.active').removeClass('active');
 		$('#titulo').html($('#info').attr('alt'));
 	});		
-	
-
-	
+		
 	var miLatitud;
 	var miLongitud;
 	
