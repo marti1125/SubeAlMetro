@@ -46,7 +46,7 @@ Zepto(function($){
 			components: [
 			new nokia.maps.map.component.Behavior()],
 			zoomLevel: 12,
-			center: [-12.050065023002462, -77.069091796875]
+			center: [-12.107227290349885, -76.99493408203125]
 	});
 
 	var ves = new nokia.maps.map.StandardMarker([-12.207415, -76.933404],{text: "1"});
