@@ -36,8 +36,8 @@ function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud,
 
 }
 
-Zepto(function($){
-
+Zepto(function($){		
+	
 	nokia.Settings.set( "appId", "oXBdneZI8fw0fT9w6bmM");
 	nokia.Settings.set( "authenticationToken", "TyIkck-eTNU2_0dmAxEX6A");
 
@@ -49,11 +49,15 @@ Zepto(function($){
 			center: [-12.107227290349885, -76.99493408203125]
 	});
 
-	var ves = new nokia.maps.map.StandardMarker([-12.207415, -76.933404],{text: "1"});
-	var pi = new nokia.maps.map.StandardMarker([-12.196510, -76.939445],{text: "2"});
+	var ves = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.207415, -76.933404),
+		{icon: "img/estacion.png"});
+	var pi = new nokia.maps.map.Marker(new nokia.maps.geo.Coordinate(-12.196510, -76.939445),
+		{icon: "img/estacion.png"});
 	var pu = new nokia.maps.map.StandardMarker([-12.182321, -76.946890],{text: "3"});
 	var vm = new nokia.maps.map.StandardMarker([-12.169285, -76.950356],{text: "4"});
-	var ma = new nokia.maps.map.StandardMarker([-12.161188, -76.956332],{text: "5"});
+	var ma = new nokia.maps.map.Marker(new nokia.maps.geo.Coordinate(-12.161188, -76.956332),
+		{icon: "img/estacion.png",anchor: new nokia.maps.util.Point(30, 30) });
 	var sj = new nokia.maps.map.StandardMarker([-12.156500, -76.965687],{text: "6"});
 	var at = new nokia.maps.map.StandardMarker([-12.150847, -76.979538],{text: "7"});
 	var jch = new nokia.maps.map.StandardMarker([-12.142587, -76.991015],{text: "8"});
