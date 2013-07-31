@@ -50,10 +50,10 @@ Zepto(function($){
 	});
 
 	var ves = new nokia.maps.map.Marker(
-		new nokia.maps.geo.Coordinate(-12.207456466565523, -76.9335450232029),
+		new nokia.maps.geo.Coordinate(-12.207415, -76.933404),
 		{icon: "img/ves.png"});
 	var pi = new nokia.maps.map.Marker(new nokia.maps.geo.Coordinate(-12.196510, -76.939445),
-		{icon: "img/estacion.png"});
+		{icon: "img/pi.png"});
 	var pu = new nokia.maps.map.StandardMarker([-12.182321, -76.946890],{text: "3"});
 	var vm = new nokia.maps.map.StandardMarker([-12.169285, -76.950356],{text: "4"});
 	var ma = new nokia.maps.map.Marker(new nokia.maps.geo.Coordinate(-12.161188, -76.956332),
