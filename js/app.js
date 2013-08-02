@@ -41,6 +41,14 @@ function noNetworkConnection(feature, el){
   $(el).append('<li><p>' + message + '</p></li>');
 }
 
+function setMarker(estacion, map){
+  var marker = new nokia.maps.map.Marker(
+    new nokia.maps.geo.Coordinate(estacion.latitud, estacion.longitud),
+    {icon: estacion.icon}
+  );
+  map.objects.add(marker);
+}
+
 Zepto(function($){		
 
   if (navigator.onLine) {	
@@ -58,72 +66,14 @@ Zepto(function($){
         center: [-12.107227290349885, -76.99493408203125]
     });
 
-    var ves = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.207415, -76.933404),
-      {icon: "img/ves.png"});
-    var pi = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.196510, -76.939445),
-      {icon: "img/pi.png"});
-    var pu = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.182321, -76.946890),
-      {icon: "img/pu.png"});
-    var vm = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.169285, -76.950356),
-      {icon: "img/vm.png"});
-    var ma = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.161188, -76.956332),
-      {icon: "img/ma.png"});
-    var sj = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.156500, -76.965687),
-      {icon: "img/sj.png"});
-    var at = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.150847, -76.979538),
-      {icon: "img/at.png"});
-    var jch = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.142587, -76.991015),
-      {icon: "img/jch.png"});
-    var ay = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.134755, -76.997012),
-      {icon: "img/ay.png"});
-    var ca = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.127667, -77.000669),
-      {icon: "img/ca.png"});
-    var an = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.111075, -77.000208),
-      {icon: "img/an.png"});
-    var sbs = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.100967, -77.001694),
-      {icon: "img/sbs.png"});
-    var lc = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.087475, -77.003678),
-      {icon: "img/lc.png"});
-    var na = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.076029, -77.010992),
-      {icon: "img/na.png"});
-    var ga = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.065137, -77.012411),
-      {icon: "img/ga.png"});
-    var gr = new nokia.maps.map.Marker(
-      new nokia.maps.geo.Coordinate(-12.055529, -77.013857),
-      {icon: "img/gr.png"});		
-    map.objects.add(ves);
-    map.objects.add(pi);
-    map.objects.add(pu);
-    map.objects.add(vm);
-    map.objects.add(ma);
-    map.objects.add(sj);
-    map.objects.add(at);
-    map.objects.add(jch);
-    map.objects.add(ay);
-    map.objects.add(ca);
-    map.objects.add(an);
-    map.objects.add(sbs);
-    map.objects.add(lc);
-    map.objects.add(na);
-    map.objects.add(ga);
-    map.objects.add(gr);
+    $.getJSON('js/estaciones.json', function(response){
+      var estaciones = response.estaciones;
+      $.map(estaciones, function(estacion){
+        setMarker(estacion, map);
+      });
+    });
   } else {
-    noNetworkConnection( 'maps','#info-mapa');
+    noNetworkConnection('maps','#info-mapa');
   }
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
