@@ -45,30 +45,58 @@ Zepto(function($){
 		document.getElementById("info-mapa"), {
 			components: [
 			new nokia.maps.map.component.Behavior()],
-			zoomLevel: 12,
+			zoomLevel: 13,
 			center: [-12.107227290349885, -76.99493408203125]
 	});
 
 	var ves = new nokia.maps.map.Marker(
 		new nokia.maps.geo.Coordinate(-12.207415, -76.933404),
 		{icon: "img/ves.png"});
-	var pi = new nokia.maps.map.Marker(new nokia.maps.geo.Coordinate(-12.196510, -76.939445),
+	var pi = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.196510, -76.939445),
 		{icon: "img/pi.png"});
-	var pu = new nokia.maps.map.StandardMarker([-12.182321, -76.946890],{text: "3"});
-	var vm = new nokia.maps.map.StandardMarker([-12.169285, -76.950356],{text: "4"});
-	var ma = new nokia.maps.map.Marker(new nokia.maps.geo.Coordinate(-12.161188, -76.956332),
-		{icon: "img/estacion.png",anchor: new nokia.maps.util.Point(30, 30) });
-	var sj = new nokia.maps.map.StandardMarker([-12.156500, -76.965687],{text: "6"});
-	var at = new nokia.maps.map.StandardMarker([-12.150847, -76.979538],{text: "7"});
-	var jch = new nokia.maps.map.StandardMarker([-12.142587, -76.991015],{text: "8"});
-	var ay = new nokia.maps.map.StandardMarker([-12.134755, -76.997012],{text: "9"});
-	var ca = new nokia.maps.map.StandardMarker([-12.127667, -77.000669],{text: "10"});
-	var an = new nokia.maps.map.StandardMarker([-12.111075, -77.000208],{text: "11"});
-	var sbs = new nokia.maps.map.StandardMarker([-12.100967, -77.001694],{text: "12"});
-	var lc = new nokia.maps.map.StandardMarker([-12.087475, -77.003678],{text: "13"});
-	var na = new nokia.maps.map.StandardMarker([-12.076029, -77.010992],{text: "14"});
-	var ga = new nokia.maps.map.StandardMarker([-12.065137, -77.012411],{text: "15"});
-	var gr = new nokia.maps.map.StandardMarker([-12.055529, -77.013857],{text: "16"});		
+	var pu = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.182321, -76.946890),
+		{icon: "img/pu.png"});
+	var vm = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.169285, -76.950356),
+		{icon: "img/vm.png"});
+	var ma = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.161188, -76.956332),
+		{icon: "img/ma.png"});
+	var sj = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.156500, -76.965687),
+		{icon: "img/sj.png"});
+	var at = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.150847, -76.979538),
+		{icon: "img/at.png"});
+	var jch = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.142587, -76.991015),
+		{icon: "img/jch.png"});
+	var ay = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.134755, -76.997012),
+		{icon: "img/ay.png"});
+	var ca = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.127667, -77.000669),
+		{icon: "img/ca.png"});
+	var an = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.111075, -77.000208),
+		{icon: "img/an.png"});
+	var sbs = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.100967, -77.001694),
+		{icon: "img/sbs.png"});
+	var lc = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.087475, -77.003678),
+		{icon: "img/lc.png"});
+	var na = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.076029, -77.010992),
+		{icon: "img/na.png"});
+	var ga = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.065137, -77.012411),
+		{icon: "img/ga.png"});
+	var gr = new nokia.maps.map.Marker(
+		new nokia.maps.geo.Coordinate(-12.055529, -77.013857),
+		{icon: "img/gr.png"});		
 	map.objects.add(ves);
 	map.objects.add(pi);
 	map.objects.add(pu);
