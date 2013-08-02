@@ -44,8 +44,11 @@ Zepto(function($){
 	var map = new nokia.maps.map.Display(
 		document.getElementById("info-mapa"), {
 			components: [
-			new nokia.maps.map.component.Behavior()],
-			zoomLevel: 13,
+			new nokia.maps.map.component.Behavior(),
+			new nokia.maps.map.component.ZoomBar(),
+			new nokia.maps.map.component.Overview()
+			],
+			zoomLevel: 12,
 			center: [-12.107227290349885, -76.99493408203125]
 	});
 
