@@ -49,6 +49,14 @@ function setMarker(estacion, map){
   map.objects.add(marker);
 }
 
+function btnEvents(btnName){
+	$('#btn-' + btnName).click(function (){
+		$('#settings-view').removeClass('bajar');
+		$('.active').removeClass('active');		
+		$('#titulo').html($('#' + btnName).attr('alt'));		
+	});
+}
+
 Zepto(function($){		
 
   if (navigator.onLine) {	
@@ -82,30 +90,11 @@ Zepto(function($){
 
 	$('.active').addClass('active');	
 
-	$('#btn-estacion').click(function (){
-		$('#settings-view').removeClass('bajar');
-		$('.active').removeClass('active');		
-		$('#titulo').html($('#estacion').attr('alt'));		
-	});
+  var buttons = ['estacion', 'mapa', 'twitter', 'info'];
+  $.map(buttons, function(button){
+    btnEvents(button);
+  });
 
-	$('#btn-mapa').click(function (){
-		$('#settings-view').removeClass('bajar');
-		$('.active').removeClass('active');
-		$('#titulo').html($('#mapa').attr('alt'));
-	});
-
-	$('#btn-twitter').click(function (){
-		$('#settings-view').removeClass('bajar');
-		$('.active').removeClass('active');
-		$('#titulo').html($('#twitter').attr('alt'));
-	});
-
-	$('#btn-info').click(function (){
-		$('#settings-view').removeClass('bajar');
-		$('.active').removeClass('active');
-		$('#titulo').html($('#info').attr('alt'));
-	});		
-		
 	var miLatitud;
 	var miLongitud;
 	
