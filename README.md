@@ -5,3 +5,8 @@
 ![3](https://raw.github.com/mozillaperu/SubeAlMetro/master/3.png)
 ![4](https://raw.github.com/mozillaperu/SubeAlMetro/master/4.png)
 ![5](https://raw.github.com/mozillaperu/SubeAlMetro/master/5.png)
+
+####Contributors
+* carloshs92
+* ccarruitero
+* pcabellor

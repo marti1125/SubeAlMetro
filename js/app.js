@@ -36,17 +36,16 @@ function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud,
 
 }
 
-function noNetworkConnection(feature, el){
-  var message = 'You need network connection to use ' + feature;
-  $(el).append('<li><p>' + message + '</p></li>');
+function noNetworkConnection(el){
+	var message = 'Necesitas conexión a internet.';
+	$(el).html('<div><p>' + message + '</p></div>');
 }
 
 function setMarker(estacion, map){
-  var marker = new nokia.maps.map.Marker(
+	var marker = new nokia.maps.map.Marker(
     new nokia.maps.geo.Coordinate(estacion.latitud, estacion.longitud),
-    {icon: estacion.icon}
-  );
-  map.objects.add(marker);
+    {icon: estacion.icon});
+	map.objects.add(marker);
 }
 
 function btnEvents(btnName){
@@ -57,32 +56,45 @@ function btnEvents(btnName){
 	});
 }
 
-Zepto(function($){		
+Zepto(function($){
 
-  if (navigator.onLine) {	
-    nokia.Settings.set( "appId", "oXBdneZI8fw0fT9w6bmM");
-    nokia.Settings.set( "authenticationToken", "TyIkck-eTNU2_0dmAxEX6A");
+	var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
 
-    var map = new nokia.maps.map.Display(
-      document.getElementById("info-mapa"), {
-        components: [
-        new nokia.maps.map.component.Behavior(),
-        new nokia.maps.map.component.ZoomBar(),
-        new nokia.maps.map.component.Overview()
-        ],
-        zoomLevel: 12,
-        center: [-12.107227290349885, -76.99493408203125]
+    $.getJSON(twitterTimeLine, function(text){
+        $.each(text, function(key, value){
+          $('#tweet').append(
+              '<li>'
+            +   	'<div class="imgLeft">'
+            +			'<img src="'+value.user.profile_image_url+'"/>'
+            +		'</div>'
+            +		'<h1 class="titleTwitter">'+value.user.name+'<span class="usertwitter"> @' + value.user.screen_name +'</span></h1>' 
+            +		'<p>'+value.text+'</p>'  				
+            +	'</li>'
+            );  			
+      	});
     });
 
-    $.getJSON('js/estaciones.json', function(response){
-      var estaciones = response.estaciones;
-      $.map(estaciones, function(estacion){
-        setMarker(estacion, map);
-      });
-    });
-  } else {
-    noNetworkConnection('maps','#info-mapa');
-  }
+ 	nokia.Settings.set( "appId", "oXBdneZI8fw0fT9w6bmM");
+	nokia.Settings.set( "authenticationToken", "TyIkck-eTNU2_0dmAxEX6A");
+
+	var map = new nokia.maps.map.Display(
+  		document.getElementById("info-mapa"), {
+    		components: [
+    			new nokia.maps.map.component.Behavior(),
+    			new nokia.maps.map.component.ZoomBar(),
+    			new nokia.maps.map.component.Overview()
+    		],
+    	zoomLevel: 12,
+    	center: [-12.107227290349885, -76.99493408203125]
+	});
+
+	$.getJSON('js/estaciones.json', function(response){
+  		var estaciones = response.estaciones;
+  		$.map(estaciones, function(estacion){
+    		setMarker(estacion, map);
+  		});
+	});
+
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
 	    mozSystem: true
@@ -90,10 +102,10 @@ Zepto(function($){
 
 	$('.active').addClass('active');	
 
-  var buttons = ['estacion', 'mapa', 'twitter', 'info'];
-  $.map(buttons, function(button){
-    btnEvents(button);
-  });
+  	var buttons = ['estacion', 'mapa', 'twitter', 'info'];
+  		$.map(buttons, function(button){
+    		btnEvents(button);
+  		});
 
 	var miLatitud;
 	var miLongitud;
@@ -179,26 +191,6 @@ Zepto(function($){
 		return result;
 	}
 
-  if (navigator.onLine){	
-    var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
-
-    $.getJSON(twitterTimeLine, function(text){
-        $.each(text, function(key, value){
-          $('#tweet').append(
-              '<li>'
-            +   	'<div class="imgLeft">'
-            +			'<img src="'+value.user.profile_image_url+'"/>'
-            +		'</div>'
-            +		'<h1 class="titleTwitter">'+value.user.name+'<span class="usertwitter"> @' + value.user.screen_name +'</span></h1>' 
-            +		'<p>'+value.text+'</p>'  				
-            +	'</li>'
-            );  			
-      });
-    });
-  } else {
-    noNetworkConnection('tweets', '#tweet');
-  }
-
 	$(document).on("click", "#IdEstacion", function(){
 
 		var fechaActual = new Date();
@@ -229,24 +221,7 @@ Zepto(function($){
 
 				});
 
-			});
-			
-			/*if(estacion == text.estaciones.nombre){
-				$.each(text, function(key, value){
-					var i;
-					for(i=0;i<value.GRAU.length;i++){					
-						$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+value.GRAU[i]+"</p></li>");
-						
-						if(hora < Date.parse("22:20")){							
-							$('#contieneHoraSalida p').css('color','red');
-						} else {
-							$('#contieneHoraSalida p').css('color','green');
-						}
-					}						
-				});
-			}else {
-				$("#listHorarios").html('');
-			}*/
+			});	
   			
 		});
 
