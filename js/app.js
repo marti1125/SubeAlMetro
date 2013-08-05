@@ -56,7 +56,7 @@ function btnEvents(btnName){
 	});
 }
 
-Zepto(function($){
+$(document).ready(function(){
 
 	var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
 
@@ -73,27 +73,13 @@ Zepto(function($){
             );  			
       	});
     });
-
- 	nokia.Settings.set( "appId", "oXBdneZI8fw0fT9w6bmM");
-	nokia.Settings.set( "authenticationToken", "TyIkck-eTNU2_0dmAxEX6A");
-
-	var map = new nokia.maps.map.Display(
-  		document.getElementById("info-mapa"), {
-    		components: [
-    			new nokia.maps.map.component.Behavior(),
-    			new nokia.maps.map.component.ZoomBar(),
-    			new nokia.maps.map.component.Overview()
-    		],
-    	zoomLevel: 12,
-    	center: [-12.107227290349885, -76.99493408203125]
-	});
-
-	$.getJSON('js/estaciones.json', function(response){
+     	
+	/*$.getJSON('js/estaciones.json', function(response){
   		var estaciones = response.estaciones;
   		$.map(estaciones, function(estacion){
     		setMarker(estacion, map);
   		});
-	});
+	});*/
 
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
@@ -119,6 +105,7 @@ Zepto(function($){
 		miLatitud = latitude;
 		miLongitud = longitude;
 		//result = result
+		console.log(miLatitud+' ' +miLongitud);
 
 		var resultados = [];
 		var distancia;
