@@ -36,18 +36,6 @@ function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud,
 
 }
 
-function noNetworkConnection(el){
-	var message = 'Necesitas conexión a internet.';
-	$(el).html('<div><p>' + message + '</p></div>');
-}
-
-function setMarker(estacion, map){
-	var marker = new nokia.maps.map.Marker(
-    new nokia.maps.geo.Coordinate(estacion.latitud, estacion.longitud),
-    {icon: estacion.icon});
-	map.objects.add(marker);
-}
-
 function btnEvents(btnName){
 	$('#btn-' + btnName).click(function (){
 		$('#settings-view').removeClass('bajar');
@@ -73,13 +61,6 @@ $(document).ready(function(){
             );  			
       	});
     });
-     	
-	/*$.getJSON('js/estaciones.json', function(response){
-  		var estaciones = response.estaciones;
-  		$.map(estaciones, function(estacion){
-    		setMarker(estacion, map);
-  		});
-	});*/
 
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
