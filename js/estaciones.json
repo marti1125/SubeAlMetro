@@ -7,7 +7,9 @@
 		"ubicacion": "Av. Separadora Industrial / Av. Velasco Alvarado",
 		"latitud": -12.207415,
 		"longitud": -76.933404,
-    	"icon": "img/ves.png"
+    	"icon": "img/ves.png",
+    	"w": 42,
+    	"h": 55
 		},
 		{
 		"codigo": "PI",
@@ -16,7 +18,9 @@
 		"ubicacion": "Av. Separadora Industrial / Av. El Sol",
 		"latitud": -12.196510,
 		"longitud": -76.939445,
-    	"icon": "img/pi.png"
+    	"icon": "img/pi.png",
+    	"w": 36,
+    	"h": 56
 		},
 		{
 		"codigo": "PU",
@@ -25,7 +29,9 @@
 		"ubicacion": "Av. La Unión / Pedro Ruiz Gallo / E. Aguirre",
 		"latitud": -12.182321,
 		"longitud": -76.946890,
-    	"icon": "img/pu.png"
+    	"icon": "img/pu.png",
+    	"w": 45,
+    	"h": 45
 		},		
 		{
 		"codigo": "VM",
@@ -34,7 +40,9 @@
 		"ubicacion": "Av. Pachacútec / Av. Santa Rosa",
 		"latitud": -12.169285,
 		"longitud": -76.950356,
-    	"icon": "img/vm.png"
+    	"icon": "img/vm.png",
+    	"w": 33,
+    	"h": 56
 		},
 		{
 		"codigo": "MA",
@@ -43,7 +51,9 @@
 		"ubicacion": "Av. Pachacútec / Av. Manco Cápac",
 		"latitud": -12.161188,
 		"longitud": -76.956332,
-    	"icon": "img/ma.png"
+    	"icon": "img/ma.png",
+    	"w": 43,
+    	"h": 56
 		},
 		{
 		"codigo": "SJ",
@@ -52,7 +62,9 @@
 		"ubicacion": "Los Héroes / Av. César Canevaro",
 		"latitud": -12.156500,
 		"longitud": -76.965687,
-    	"icon": "img/sj.png"
+    	"icon": "img/sj.png",
+    	"w": 32,
+    	"h": 56
 		},
 		{
 		"codigo": "AT",
@@ -61,7 +73,9 @@
 		"ubicacion": "Av. Los Héroes / Av. Buckingham",
 		"latitud": -12.150847,
 		"longitud": -76.979538,
-    	"icon": "img/at.png"
+    	"icon": "img/at.png",
+    	"w": 38,
+    	"h": 45
 		},
 		{
 		"codigo": "JCH",
@@ -70,7 +84,9 @@
 		"ubicacion": "Av. Tomás Marsano / Av. Jorge Chávez",
 		"latitud": -12.142587,
 		"longitud": -76.991015,
-    	"icon": "img/jch.png"
+    	"icon": "img/jch.png",
+    	"w": 33,
+    	"h": 56
 		},		
 		{
 		"codigo": "AY",
@@ -79,7 +95,9 @@
 		"ubicacion": "Av. Tomás Marsano / Av. Ayacucho",
 		"latitud": -12.134755,
 		"longitud": -76.997012,
-    	"icon": "img/ay.png"
+    	"icon": "img/ay.png",
+    	"w": 38,
+    	"h": 45
 		},
 		{
 		"codigo": "CA",
@@ -88,7 +106,9 @@
 		"ubicacion": "Av. Aviación / Óvalo Los Cabitos (Higuereta)",
 		"latitud": -12.127667,
 		"longitud": -77.000669,
-    	"icon": "img/ca.png"
+    	"icon": "img/ca.png",
+    	"w": 33,
+    	"h": 45
 		},
 		{
 		"codigo": "AN",
@@ -97,7 +117,9 @@
 		"ubicacion": "Av. Aviación / Av. Primavera",
 		"latitud": -12.111075,
 		"longitud": -77.000208,
-    	"icon": "img/an.png"
+    	"icon": "img/an.png",
+    	"w": 37,
+    	"h": 45
 		},
 		{
 		"codigo": "SBS",
@@ -106,7 +128,9 @@
 		"ubicacion": "Av. Aviación / Av. San Borja Sur",
 		"latitud": -12.100967,
 		"longitud": -77.001694,
-    	"icon": "img/sbs.png"
+    	"icon": "img/sbs.png",
+    	"w": 35,
+    	"h": 55
 		},
 		{
 		"codigo": "LC",
@@ -115,7 +139,9 @@
 		"ubicacion": "Av. Aviación / Av. Javier Prado",
 		"latitud": -12.087475,
 		"longitud": -77.003678,
-    	"icon": "img/lc.png"
+    	"icon": "img/lc.png",
+    	"w": 33,
+    	"h": 55
 		},
 		{
 		"codigo": "NA",
@@ -124,7 +150,9 @@
 		"ubicacion": "Av. Aviación / Óvalo Arriola",
 		"latitud": -12.076029,
 		"longitud": -77.010992,
-    	"icon": "img/na.png"
+    	"icon": "img/na.png",
+    	"w": 32,
+    	"h": 56
 		},
 		{
 		"codigo": "GA",
@@ -133,7 +161,9 @@
 		"ubicacion": "Av. Aviación / Jirón Hipólito Unanue",
 		"latitud": -12.065137,
 		"longitud": -77.012411,
-    	"icon": "img/ga.png"
+    	"icon": "img/ga.png",
+    	"w": 33,
+    	"h": 45
 		},
 		{
 		"codigo": "GR",
@@ -142,7 +172,9 @@
 		"ubicacion": "Av. Grau / Nicolás Ayllón",
 		"latitud": -12.055529,
 		"longitud": -77.013857,
-    	"icon": "img/gr.png"
+    	"icon": "img/gr.png",
+    	"w": 32,
+    	"h": 45
 		}
 	] 
 }
