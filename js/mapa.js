@@ -13,7 +13,6 @@ var coor_to   = new OpenLayers.Projection("EPSG:900913");
 
 map = new OpenLayers.Map("info-mapa");
 
-map.addControl(new OpenLayers.Control.PanZoomBar());
 map.addLayer(new OpenLayers.Layer.OSM());
 map.zoomToMaxExtent();
 var center    = new OpenLayers.LonLat(-77.0071244, -12.1160213);
