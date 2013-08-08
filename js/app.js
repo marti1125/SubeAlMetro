@@ -44,6 +44,10 @@ function btnEvents(btnName){
 	});
 }
 
+Number.prototype.pad = function (len) {
+    return (new Array(len+1).join("0") + this).slice(-len);
+}
+
 $(document).ready(function(){
 
 	var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
@@ -84,9 +88,7 @@ $(document).ready(function(){
 	miPosicion(function(latitude,longitude,result){
 
 		miLatitud = latitude;
-		miLongitud = longitude;
-		//result = result
-		console.log(miLatitud+' ' +miLongitud);
+		miLongitud = longitude;		
 
 		var resultados = [];
 		var distancia;
@@ -144,14 +146,14 @@ $(document).ready(function(){
 		//var resultados = [];
 		$("li #IdEstacion").each(function( index ) {
 			
-			console.log('Estación '+ result)
-			console.log($(this).text())
+			//console.log('Estación '+ result)
+			//console.log($(this).text())
 
 			if($(this).text() == 'Estación '+ result){
 				$(this).addClass('estacionActiva')
-				console.log('si')
+				//console.log('si')
 			}else {
-				console.log('si')
+				//console.log('si')
 			}
 
 		});
@@ -183,7 +185,10 @@ $(document).ready(function(){
 						for(i=0;i<result.GRAU.length;i++){
 
 							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");
-							
+							var rumboAGrau = new Date('1988','01','01',''+result.GRAU[i].substr(0,2)+'',''+result.GRAU[i].substr(3,5)+'')
+							var rumboAGrauHora = rumboAGrau.getHours().pad(2) + ":"  
+                 								+ rumboAGrau.getMinutes().pad(2)
+							console.log(rumboAGrauHora)
 						}
 					}					
 
