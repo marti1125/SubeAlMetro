@@ -25,6 +25,9 @@
     },
     "systemXHR": {
       "description": "json"
+    },
+    "desktop-notification": {
+      "description" : "Mostrar notificaciones"
     }
   },
   "type": "privileged" 

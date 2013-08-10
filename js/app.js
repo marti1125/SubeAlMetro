@@ -143,14 +143,16 @@ $(document).ready(function(){
 	});
 
 	function verificar(result){
+		var notification = navigator.mozNotification.createNotification(
+                "La estación mas cercana es: ",
+                "Estación "+result+""
+            );
 		//var resultados = [];
 		$("li #IdEstacion").each(function( index ) {
-			
-			//console.log('Estación '+ result)
-			//console.log($(this).text())
 
 			if($(this).text() == 'Estación '+ result){
-				$(this).addClass('estacionActiva')
+				notification.show();
+				$(this).addClass('estacionActiva');
 				//console.log('si')
 			}else {
 				//console.log('si')
