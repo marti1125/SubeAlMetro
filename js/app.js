@@ -161,7 +161,27 @@ $(document).ready(function(){
 		return result;
 	}
 
+	function verificarHora(result){		
+		//var resultados = [];
+		$("li #horaSalida").each(function( index ) {
+		var algo = "16:41"								
+			if(algo == result){	
+				alert('ok')			
+				//s$(this).addClass('horaRumboGrauActual')
+				//console.log('si')
+			}else {
+				//console.log('si')
+			}
+		});
+		
+		return result;
+	}
+
 	$(document).on("click", "#IdEstacion", function(){
+
+		var algo = "16:41";
+
+		verificarHora(algo)
 
 		var fechaActual = new Date();
 
@@ -187,16 +207,19 @@ $(document).ready(function(){
 							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");
 							var rumboAGrau = new Date('1988','01','01',''+result.GRAU[i].substr(0,2)+'',''+result.GRAU[i].substr(3,5)+'')
 							var rumboAGrauHora = rumboAGrau.getHours().pad(2) + ":"  
-                 								+ rumboAGrau.getMinutes().pad(2)
-							console.log(rumboAGrauHora)
+                 								+ rumboAGrau.getMinutes().pad(2);
+                 			               			
+
 						}
+
 					}					
 
 				});
 
 			});	
   			
-		});
+		});	
+		
 
 		$("#settings-view").removeClass("bajar");		
 		$("#settings-view").addClass("subir");
