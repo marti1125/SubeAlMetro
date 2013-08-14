@@ -50,6 +50,15 @@ Number.prototype.pad = function (len) {
 
 $(document).ready(function(){
 
+	// Estaciones
+	$.getJSON('js/estaciones.json', function(response){
+		$.each(response, function(index, item){
+			$.each(item, function(index, result){
+				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><aside class="pack-end"><img id="gethora" alt="placeholder" src="img/hora.png"></aside><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
+			});			  
+		});
+	});
+
 	var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
 
     $.getJSON(twitterTimeLine, function(text){
@@ -62,7 +71,7 @@ $(document).ready(function(){
             +		'<h1 class="titleTwitter">'+value.user.name+'<span class="usertwitter"> @' + value.user.screen_name +'</span></h1>' 
             +		'<p>'+value.text+'</p>'  				
             +	'</li>'
-            );  			
+            );          	
       	});
     });
 
@@ -125,23 +134,6 @@ $(document).ready(function(){
 
 	});
 	
-	$.ajax({
-		async: false
-	});
-
-	// Estaciones
-	$.getJSON('js/estaciones.json', function(response){
-		$.each(response, function(index, item){
-			$.each(item, function(index, result){
-				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><aside class="pack-end"><img id="gethora" alt="placeholder" src="img/hora.png"></aside><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
-			});			  
-		});
-	});
-
-	$.ajax({
-		async: true
-	});
-
 	function verificar(result){
 		var notification = navigator.mozNotification.createNotification(
                 "La estación mas cercana es: ",
