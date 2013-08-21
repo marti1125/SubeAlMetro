@@ -1,8 +1,7 @@
 // Obtener posicion
 function miPosicion(callback) {
 			
-	if (!navigator.geolocation){
-		console.log("Geolocation is not supported by your browser");
+	if (!navigator.geolocation){		
 		return false;
 	}
  
@@ -13,7 +12,7 @@ function miPosicion(callback) {
 	}
  
 	function error() {
-		console.log("Unable to retrieve your location");
+		alert("Unable to retrieve your location");
 	}	
 
 	navigator.geolocation.getCurrentPosition(success, error);			
@@ -110,8 +109,7 @@ $(document).ready(function(){
 			$.each(response, function(index, item){
 				$.each(item, function(index, result){											
 					distancia = distaciaMenor(miLatitud, miLongitud, result.latitud, result.longitud, result.estacion)
-					resultados.push(distancia);
-					//console.log(distancia);					
+					resultados.push(distancia);									
 				});			  
 			});
 		});
@@ -144,10 +142,9 @@ $(document).ready(function(){
 
 			if($(this).text() == 'Estación '+ result){
 				notification.show();
-				$(this).addClass('estacionActiva');
-				//console.log('si')
+				$(this).addClass('estacionActiva');				
 			}else {
-				//console.log('si')
+				
 			}
 
 		});
