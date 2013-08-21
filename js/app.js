@@ -156,26 +156,10 @@ $(document).ready(function(){
 	}
 
 	function verificarHora(result){		
-		//var resultados = [];
-		$("li #horaSalida").each(function( index ) {
-		var algo = "16:41"								
-			if(algo == result){	
-				alert('ok')			
-				//s$(this).addClass('horaRumboGrauActual')
-				//console.log('si')
-			}else {
-				//console.log('si')
-			}
-		});
-		
-		return result;
+		// por construir
 	}
 
 	$(document).on("click", "#IdEstacion", function(){
-
-		var algo = "16:41";
-
-		verificarHora(algo)
 
 		var fechaActual = new Date();
 
