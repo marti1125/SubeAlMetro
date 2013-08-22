@@ -48,12 +48,10 @@ function btnEvents(btnName){
 	});
 }
 
-Number.prototype.pad = function (len) {
-    return (new Array(len+1).join("0") + this).slice(-len);
-}
-
 $(document).ready(function(){
-
+    
+    var ahora = moment();
+    
 	// Estaciones
 	$.getJSON('js/estaciones.json', function(response){
 		$.each(response, function(index, item){
@@ -163,12 +161,8 @@ $(document).ready(function(){
 	}
 
 	$(document).on("click", "#IdEstacion", function(){
-
-		var fechaActual = new Date();
-
-		var hora = fechaActual.getHours() + ":"  
-                 + fechaActual.getMinutes();
-
+        
+        $("#listHorarios").html('')
 		var estacion = $(this).data("estacion")
 		$('#tituloNombreEstacion').html(estacion);
 		
@@ -180,16 +174,11 @@ $(document).ready(function(){
 					var validar = false					
 					if(result.nombre == estacion){
 						validar = true
-						$("#listHorarios").html('')	
+						//$("#listHorarios").html('')	
 					}
 					if(validar){
-						for(i=0;i<result.GRAU.length;i++){
-
-							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");
-							var rumboAGrau = new Date('1988','01','01',''+result.GRAU[i].substr(0,2)+'',''+result.GRAU[i].substr(3,5)+'')
-							var rumboAGrauHora = rumboAGrau.getHours().pad(2) + ":"  
-                 								+ rumboAGrau.getMinutes().pad(2);
-                 			               			
+						for(i=0;i<result.GRAU.length;i++){                            	
+							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
 
 						}
 
