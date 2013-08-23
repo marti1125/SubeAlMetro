@@ -1,5 +1,5 @@
 {
-  "name": "Linea 1",
+  "name": "Sube al Metro de Lima",
   "description": "Metro de Lima",
   "launch_path": "/index.html",  
   "developer": {
@@ -9,7 +9,7 @@
   "locales": {    
     "es": {
       "name": "Metro",
-      "description": "Sube al Metro"
+      "description": "Sube al Metro de Lima"
     }   
   },
   "default_locale": "es",
