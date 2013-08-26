@@ -1,4 +1,8 @@
-##Sube al Metro
+##Sube al Metro de Lima
+
+Puedes instalar la aplicación en esta dirección:
+
+[https://marketplace.firefox.com/app/subealmetrodelima/](https://marketplace.firefox.com/app/subealmetrodelima/)
 
 ![1](https://raw.github.com/mozillaperu/SubeAlMetro/master/1.png)
 ![2](https://raw.github.com/mozillaperu/SubeAlMetro/master/2.png)

@@ -50,8 +50,6 @@ function btnEvents(btnName){
 
 $(document).ready(function(){
     
-    var ahora = moment();
-    
 	// Estaciones
 	$.getJSON('js/estaciones.json', function(response){
 		$.each(response, function(index, item){
@@ -156,13 +154,18 @@ $(document).ready(function(){
 		return result;
 	}
 
-	function verificarHora(result){		
-		// por construir
+	function obtenerHora(){		
+		var hora = new Date();
+    	var horaActual = moment('01/01/2013'+hora.getHours()+':'+hora.getMinutes(),'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm');
+    	return horaActual;
+    	setTimeout("obtenerHora()",1000) 
 	}
 
 	$(document).on("click", "#IdEstacion", function(){
+
+		obtenerHora();    	
         
-        $("#listHorarios").html('')
+        $("#listHorarios").html('');
 		var estacion = $(this).data("estacion")
 		$('#tituloNombreEstacion').html(estacion);
 		
@@ -171,18 +174,26 @@ $(document).ready(function(){
 			$.each(text, function(key, value){
 
 				$.each(value, function(index, result){
-					var validar = false					
+									
 					if(result.nombre == estacion){
-						validar = true
-						//$("#listHorarios").html('')	
-					}
-					if(validar){
 						for(i=0;i<result.GRAU.length;i++){                            	
 							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
+                            var horaSalida = moment('01/01/2013'+result.GRAU[i],'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm');
+                            var horaLlegada = moment('01/01/2013'+result.VES[i],'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm');
+                            
+                            if(obtenerHora() == horaSalida){
 
+                                console.log('ok')
+                            }
+
+                            if (obtenerHora() == horaLlegada){
+                            	console.log('okLLegada')
+                            }
+
+                            
 						}
-
-					}					
+											
+					}										
 
 				});
 
