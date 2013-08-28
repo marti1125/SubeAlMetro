@@ -11,6 +11,7 @@ Puedes instalar la aplicación en esta dirección:
 ![5](https://raw.github.com/mozillaperu/SubeAlMetro/master/5.png)
 
 ####Contributors
-* carloshs92
-* ccarruitero
-* pcabellor
+* [carloshs92](https://github.com/carloshs92)
+* [ccarruitero](https://github.com/ccarruitero)
+* [pcabellor](https://github.com/pcabellor)
+* [juaneladio](https://github.com/juaneladio)
