@@ -23,9 +23,6 @@
     "geolocation": {
       "description": "geolocation"     
     },
-    "systemXHR": {
-      "description": "json"
-    },
     "desktop-notification": {
       "description" : "Mostrar notificaciones"
     }
