@@ -167,7 +167,7 @@ $(document).ready(function(){
         
         $("#listHorarios").html('');
 		var estacion = $(this).data("estacion")
-		$('#tituloNombreEstacion').html(estacion);
+		$('#tituloNombreEstacion').html("<h2>"+estacion+"</h2>Horario: Lunes - Viernes");
 		
 		$.getJSON('js/horarios.json', function(text){
 
