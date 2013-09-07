@@ -73,8 +73,29 @@ $(document).ready(function(){
             +	'</li>'
             );          	
       	});
-    });
+    });   
 
+    function guardarTweets(image,username,screen_name,message){
+    	var store = window.localStorage;
+    	store.setItem('image', image);
+    	store.setItem('username', username);
+    	store.setItem('screen_name', screen_name);
+    	store.setItem('message', message);
+    	var name = store.getItem('message');
+    	
+    }
+
+
+    $.getJSON(twitterTimeLine, function(text){
+        $.each(text, function(key, value){
+        	var image = value.user.profile_image_url;
+        	var username = value.user.name;
+        	var screen_name = value.user.screen_name;
+        	var message = value.text;
+        	guardarTweets(image,username,screen_name,message)	
+      	});
+    });
+ 
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
 	    mozSystem: true
