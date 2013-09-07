@@ -80,11 +80,8 @@ $(document).ready(function(){
     	store.setItem('image', image);
     	store.setItem('username', username);
     	store.setItem('screen_name', screen_name);
-    	store.setItem('message', message);
-    	var name = store.getItem('message');
-    	
+    	store.setItem('message', message); 	
     }
-
 
     $.getJSON(twitterTimeLine, function(text){
         $.each(text, function(key, value){
