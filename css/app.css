@@ -2,6 +2,10 @@
 	font-family: MozTT;
 	src: url('MozTT.ttf');
 } 
+a {
+	color: white;
+	text-decoration: none;
+}
 html, body {
 	color: #383838;
 	margin: 0;
@@ -149,4 +153,11 @@ section[role="region"] > header:first-child img {
 
 .horaRumboGrauActual {
 	color: red !important;
+}
+
+.urlBoton {
+	background-color: #47AA42;
+	border-collapse: separate;
+	border-radius: 2px;
+	padding: 4px;
 }
