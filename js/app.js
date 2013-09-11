@@ -59,21 +59,25 @@ $(document).ready(function(){
 		});
 	});
 
-	var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
+	if(navigator.onLine){
+		var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
 
-    $.getJSON(twitterTimeLine, function(text){
-        $.each(text, function(key, value){
-          $('#tweet').append(
-              '<li>'
-            +   	'<div class="imgLeft">'
-            +			'<img src="'+value.user.profile_image_url+'"/>'
-            +		'</div>'
-            +		'<h1 class="titleTwitter">'+value.user.name+'<span class="usertwitter"> @' + value.user.screen_name +'</span></h1>' 
-            +		'<p>'+value.text+'</p>'  				
-            +	'</li>'
-            );          	
-      	});
-    });   
+	    $.getJSON(twitterTimeLine, function(text){
+	        $.each(text, function(key, value){
+	          $('#tweet').append(
+	              '<li>'
+	            +   	'<div class="imgLeft">'
+	            +			'<img src="'+value.user.profile_image_url+'"/>'
+	            +		'</div>'
+	            +		'<h1 class="titleTwitter">'+value.user.name+'<span class="usertwitter"> @' + value.user.screen_name +'</span></h1>' 
+	            +		'<p>'+value.text+'</p>'  				
+	            +	'</li>'
+	            );          	
+	      	});
+	    }); 
+	} else {
+		$('#info-tweet').append('<br/><h1>Necesita conexión a internet<h1>');
+	}	  
 
     function guardarTweets(image,username,screen_name,message){
     	var store = window.localStorage;

@@ -158,6 +158,6 @@ section[role="region"] > header:first-child img {
 .urlBoton {
 	background-color: #47AA42;
 	border-collapse: separate;
-	border-radius: 2px;
+	border-radius: 5px;
 	padding: 4px;
 }
