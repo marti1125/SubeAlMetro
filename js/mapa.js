@@ -33,5 +33,5 @@ if(navigator.onLine){
 		});
 	});	
 } else {
-	$('#info-mapa').html('<br/><h1>Necesita conexión a internet<h1>');
+	$('#info-mapa').html('<br/><h1 class="mensajeConexion">Necesita conexión a internet<h1>');
 }

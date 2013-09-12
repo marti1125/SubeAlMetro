@@ -76,7 +76,7 @@ $(document).ready(function(){
 	      	});
 	    }); 
 	} else {
-		$('#info-tweet').append('<br/><h1>Necesita conexión a internet<h1>');
+		$('#info-tweet').append('<br/><h1 class="mensajeConexion">Necesita conexión a internet<h1>');
 	}	  
 
     function guardarTweets(image,username,screen_name,message){
@@ -189,7 +189,7 @@ $(document).ready(function(){
         
         $("#listHorarios").html('');
 		var estacion = $(this).data("estacion")
-		$('#tituloNombreEstacion').html("<h2>"+estacion+"</h2>Horario: Lunes - Viernes");
+		$('#tituloNombreEstacion').html("<h2 class='tituloEstacion'>Estación "+estacion+"</h2><span class='condicionHorario'>Horario: Lunes - Viernes</span>");
 		
 		$.getJSON('js/horarios.json', function(text){
 
