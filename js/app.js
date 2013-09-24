@@ -77,25 +77,7 @@ $(document).ready(function(){
 	    }); 
 	} else {
 		$('#info-tweet').append('<br/><h1 class="mensajeConexion">Necesita conexión a internet<h1>');
-	}	  
-
-    function guardarTweets(image,username,screen_name,message){
-    	var store = window.localStorage;
-    	store.setItem('image', image);
-    	store.setItem('username', username);
-    	store.setItem('screen_name', screen_name);
-    	store.setItem('message', message); 	
-    }
-
-    $.getJSON(twitterTimeLine, function(text){
-        $.each(text, function(key, value){
-        	var image = value.user.profile_image_url;
-        	var username = value.user.name;
-        	var screen_name = value.user.screen_name;
-        	var message = value.text;
-        	guardarTweets(image,username,screen_name,message)	
-      	});
-    });
+	}    
  
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
