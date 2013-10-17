@@ -214,5 +214,10 @@ $(document).ready(function(){
 		$('#settings-view').removeClass('subir');
 		$('#settings-view').addClass('bajar');
 	});
+
+	$$('#settings-view').swipeDown(function() {
+		$('#settings-view').removeClass('subir');
+		$('#settings-view').addClass('bajar');
+	});
 		
 });
