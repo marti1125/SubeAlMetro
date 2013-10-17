@@ -49,6 +49,41 @@ function btnEvents(btnName){
 }
 
 $(document).ready(function(){
+
+	var Tweet = Backbone.Model.extend({});
+
+	var TweetList = Backbone.Collection.extend({		
+		model: Tweet,		
+		url: 'http://subealmetro.willyaguirre.me/lineauno.php',
+		parse: function(response) {
+			return response;
+		}
+	});
+
+	var viewTweets = Backbone.View.extend({
+		tagName: "ul",
+		className: "",
+		initialize: function(){
+			this.template = _.template( $("#template").html() );
+		},
+		render: function () {	
+			this.$el.html(this.template({tweet: this.model.toJSON()}));
+			return this;
+		}
+	});
+
+	var tweetList = new TweetList();	
+
+	var tweetView = new viewTweets({model: tweetList});
+
+	if(navigator.onLine){
+		tweetList.bind('reset', function () {	
+			$("#tweets").append(tweetView.render().$el);
+		}); 		
+		tweetList.fetch({reset: true});
+	} else {
+		$('#info-tweet').append('<br/><h1 class="mensajeConexion">Necesita conexión a internet<h1>');
+	}
     
 	// Estaciones
 	$.getJSON('js/estaciones.json', function(response){
@@ -58,26 +93,6 @@ $(document).ready(function(){
 			});			  
 		});
 	});
-
-	if(navigator.onLine){
-		var twitterTimeLine = "http://subealmetro.willyaguirre.me/lineauno.php";
-
-	    $.getJSON(twitterTimeLine, function(text){
-	        $.each(text, function(key, value){
-	          $('#tweet').append(
-	              '<li>'
-	            +   	'<div class="imgLeft">'
-	            +			'<img src="'+value.user.profile_image_url+'"/>'
-	            +		'</div>'
-	            +		'<h1 class="titleTwitter">'+value.user.name+'<span class="usertwitter"> @' + value.user.screen_name +'</span></h1>' 
-	            +		'<p>'+value.text+'</p>'  				
-	            +	'</li>'
-	            );          	
-	      	});
-	    }); 
-	} else {
-		$('#info-tweet').append('<br/><h1 class="mensajeConexion">Necesita conexión a internet<h1>');
-	}    
  
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
