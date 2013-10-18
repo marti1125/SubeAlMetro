@@ -95,3 +95,6 @@ CACHE MANIFEST
 /js/mapa.js
 /js/moment.min.js
 /js/OpenLayers.js
+/js/horarios_sabados.json
+/js/underscore-min.js
+/js/backbone-min.js

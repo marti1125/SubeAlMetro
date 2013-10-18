@@ -1,7 +1,8 @@
 {
   "name": "Sube al Metro de Lima",
   "description": "Metro de Lima",
-  "launch_path": "/index.html",  
+  "launch_path": "/index.html",
+  "version": "1.2",
   "developer": {
     "name": "Willy Aguirre",
     "url": "http://willyaguirre.me/"
@@ -14,7 +15,7 @@
   },
   "default_locale": "es",
   "icons": {
-	"128": "/icons/128.png",
+  "128": "/icons/128.png",
     "120": "/icons/120.png",
     "60": "/icons/60.png"
   },
@@ -23,12 +24,8 @@
     "geolocation": {
       "description": "geolocation"     
     },
-    "systemXHR": {
-      "description": "json"
-    },
     "desktop-notification": {
       "description" : "Mostrar notificaciones"
     }
-  },
-  "type": "privileged" 
+  }
 }
