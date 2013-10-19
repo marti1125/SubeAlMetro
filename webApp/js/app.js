@@ -162,10 +162,8 @@ $(document).ready(function(){
 
 		$.getJSON('js/estaciones.json', function(response){
 			$.each(response, function(index, item){
-				$.each(item, function(index, result){											
-					distancia = distaciaMenor(miLatitud, miLongitud, result.latitud, result.longitud, result.estacion)
-					resultados.push(distancia);									
-				});			  
+				distancia = distaciaMenor(miLatitud, miLongitud, item.latitud, item.longitud, item.estacion);
+				resultados.push(distancia);					 
 			});
 		});
 

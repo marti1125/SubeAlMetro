@@ -27,9 +27,7 @@ if(navigator.onLine){
 
 	$.getJSON('js/estaciones.json', function(response){
 		$.each(response, function(index, item){
-			$.each(item, function(index, result){
-				agregarUbicacion(result.longitud, result.latitud, result.icon, result.w, result.h)
-			});			  
+			agregarUbicacion(item.longitud, item.latitud, item.icon, item.w, item.h);					  
 		});
 	});	
 } else {
