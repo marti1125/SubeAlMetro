@@ -50,6 +50,40 @@ function btnEvents(btnName){
 
 $(document).ready(function(){
 
+	var Estacion = Backbone.Model.extend({});
+
+	var Estaciones = Backbone.Collection.extend({
+		model: Estacion,
+		url: 'js/estaciones.json',
+		parse: function(response) {
+			return response;
+		}
+	});
+
+	var viewEstaciones = Backbone.View.extend({
+		tagName: "ul",
+		className: "",
+		initialize: function(){
+			this.template = _.template( $("#templateEstaciones").html() );
+		},
+		render: function () {	
+			this.$el.html(this.template({estacionMetro: this.model.toJSON()}));
+			return this;
+		}
+	});
+
+	var listEstaciones = new Estaciones();
+
+	var estacionesView = new viewEstaciones({model: listEstaciones});
+
+	console.log(estacionesView)	
+
+	listEstaciones.bind('reset', function () {	
+			$(".estacionesMetro").append(estacionesView.render().$el);			
+		}); 
+
+	listEstaciones.fetch({reset: true});
+
 	var Tweet = Backbone.Model.extend({});
 
 	var TweetList = Backbone.Collection.extend({		
@@ -64,7 +98,7 @@ $(document).ready(function(){
 		tagName: "ul",
 		className: "",
 		initialize: function(){
-			this.template = _.template( $("#template").html() );
+			this.template = _.template( $("#templateTwitter").html() );
 		},
 		render: function () {	
 			this.$el.html(this.template({tweet: this.model.toJSON()}));
@@ -74,7 +108,7 @@ $(document).ready(function(){
 
 	var tweetList = new TweetList();	
 
-	var tweetView = new viewTweets({model: tweetList});
+	var tweetView = new viewTweets({model: tweetList});		
 
 	if(navigator.onLine){
 		tweetList.bind('reset', function () {	
@@ -86,13 +120,13 @@ $(document).ready(function(){
 	}
     
 	// Estaciones
-	$.getJSON('js/estaciones.json', function(response){
+	/*$.getJSON('js/estaciones.json', function(response){
 		$.each(response, function(index, item){
 			$.each(item, function(index, result){
 				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><aside class="pack-end"><img id="gethora" alt="placeholder" src="img/hora.png"></aside><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
 			});			  
 		});
-	});
+	});*/
  
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({

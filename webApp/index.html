@@ -23,7 +23,6 @@
       <script type="text/javascript" src="js/OpenLayers.js" charset="utf-8"></script>
       <script type="text/javascript" src="js/moment.min.js" charset="utf-8"></script>     
       <script type="text/javascript" src="js/app.js" charset="utf-8"></script>
-      <script type="text/javascript" src="js/data.js" charset="utf-8"></script>   
       
   </head>
     
@@ -43,7 +42,7 @@
             <div role="tabpanel" class="active">
               
               <section data-type="list">
-                  <ul class="estaciones">                        
+                  <ul class="estacionesMetro">                        
                   </ul>
               </section>              
               
@@ -113,9 +112,20 @@
 
     </section>
 
-    <script type="text/javascript" src="js/mapa.js" charset="utf-8"></script> 
+    <script type="text/javascript" src="js/mapa.js" charset="utf-8"></script>
 
-    <script id="template" type="text/template"> 
+    <script id="templateEstaciones" type="text/template"> 
+      <% _.each(estacionMetro, function(e) { %>
+        <li id="IdEstacion" data-estacion="<%=e.estacion %>">
+          <aside class="pack-end">
+            <img id="gethora" alt="placeholder" src="img/hora.png">
+          </aside>
+          <p class="nombreEstacion">Estación <b><%=e.estacion %></b></p>                 
+        </li>
+      <% }) %>
+    </script>
+
+    <script id="templateTwitter" type="text/template"> 
       <% _.each(tweet, function(t) { %>
         <li>
           <div class="imgLeft">
@@ -124,10 +134,8 @@
           <h1 class="titleTwitter"><%= t.user.name %><span class="usertwitter"> @<%=t.user.screen_name %></span></h1>
           <p><strong><%= t.text %></strong></p>          
         </li>
-
       <% }) %>
     </script>
-
 
   </body>
 
