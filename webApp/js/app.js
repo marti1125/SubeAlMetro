@@ -179,7 +179,7 @@ $(document).ready(function(){
 		    return v[0] === distaciaMinimo;
 		});
 
-		result = estacionCercana[0][1]
+		result = estacionCercana[0][1]		
 
 		verificar(result);		
 
@@ -190,11 +190,12 @@ $(document).ready(function(){
                 "La estación mas cercana es: ",
                 "Estación "+result+""
             );
-		//var resultados = [];
+
+        notification.show();
+		
 		$("li #IdEstacion").each(function( index ) {
 
-			if($(this).text() == 'Estación '+ result){
-				notification.show();
+			if($(this).text() == 'Estación '+ result){				
 				$(this).addClass('estacionActiva');				
 			}else {
 				
