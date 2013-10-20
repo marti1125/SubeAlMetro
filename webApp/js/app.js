@@ -193,13 +193,13 @@ $(document).ready(function(){
 
         notification.show();
 		
-		$("li #IdEstacion").each(function( index ) {
+		$("li #IdEstacion").each(function( index ) {			
 
-			if($(this).text() == 'Estación '+ result){				
-				$(this).addClass('estacionActiva');				
+			if(result == $(this).data("estacion")){				
+				$(this).addClass('estacionActiva');
 			}else {
-				
-			}
+						
+			}			
 
 		});
 		
