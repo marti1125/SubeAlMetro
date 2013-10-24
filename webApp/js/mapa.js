@@ -9,7 +9,8 @@ function agregarUbicacion(longitud, latitud, icon, w, h){
 }
 
 
-if(navigator.onLine){ 
+if(navigator.onLine){
+	$('.preloadMap').hide();
 	var coor_from = new OpenLayers.Projection("EPSG:4326");
 	var coor_to   = new OpenLayers.Projection("EPSG:900913");
 
@@ -29,7 +30,7 @@ if(navigator.onLine){
 		$.each(response, function(index, item){
 			agregarUbicacion(item.longitud, item.latitud, item.icon, item.w, item.h);					  
 		});
-	});	
+	});
 } else {
 	$('#info-mapa').html('<br/><h1 class="mensajeConexion">Necesita conexión a internet<h1>');
 }

@@ -111,6 +111,7 @@ $(document).ready(function(){
 	var tweetView = new viewTweets({model: tweetList});		
 
 	if(navigator.onLine){
+		$('.preload').hide();
 		tweetList.bind('reset', function () {	
 			$("#tweets").append(tweetView.render().$el);
 		}); 		

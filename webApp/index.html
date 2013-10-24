@@ -9,10 +9,7 @@
       <link rel="stylesheet" type="text/css" href="css/toolbars.css" />
       <link rel="stylesheet" type="text/css" href="css/tabs.css" />
       <link rel="stylesheet" type="text/css" href="css/lists.css" />
-      <link rel="stylesheet" href="js/theme/default/style.css" type="text/css"/>
-      <link rel="stylesheet" type="text/css" href="css/fontello.css" />
-      <link rel="stylesheet" type="text/css" href="css/fontello-codes.css" />
-      <link rel="stylesheet" type="text/css" href="css/fontello-embedded.css" />
+      <link rel="stylesheet" type="text/css" href="css/progress_activity.css" />
       <link rel="stylesheet" type="text/css" href="css/app.css" />
 
       <script type="text/javascript" src="js/jquery-1.10.2.min.js" charset="utf-8"></script>
@@ -52,14 +49,15 @@
           <li id="panel2" role="tab">
             <a href="#panel2" id="btn-mapa"><img alt="Ubicaciones" id="mapa" src="img/mapa.png"/></a>
             <div id="info-mapa" role="tabpanel">		         
-             
+              <progress class="preloadMap"></progress>
             </div>
           </li>
 
           <li id="panel3" role="tab">
             <a href="#panel3" id="btn-twitter"><img alt="Twitter" id="twitter" src="img/twitter.png"/></a>
             <div id="info-tweet" role="tabpanel">            
-              <section data-type="list">                   
+              <section data-type="list">
+                <progress class="preload"></progress>                   
                 <ul id="tweets"></ul>
               </section>
             </div>

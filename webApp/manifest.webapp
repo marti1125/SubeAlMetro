@@ -2,7 +2,7 @@
   "name": "Sube al Metro de Lima",
   "description": "Metro de Lima",
   "launch_path": "/index.html",
-  "version": "1.2",
+  "version": "1.4",
   "developer": {
     "name": "Willy Aguirre",
     "url": "http://willyaguirre.me/"
@@ -16,8 +16,8 @@
   "default_locale": "es",
   "icons": {
   "128": "/icons/128.png",
-    "120": "/icons/120.png",
-    "60": "/icons/60.png"
+  "120": "/icons/120.png",
+  "60": "/icons/60.png"
   },
   "orientation": ["portrait"], 
   "permissions": {

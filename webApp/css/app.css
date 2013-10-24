@@ -165,3 +165,7 @@ section[role="region"] > header:first-child img {
 	padding-left: 0.7rem;
 	font-size: 1.2rem;
 }
+.preload, .preloadMap{
+	margin-top: 20%;
+	margin-left: 45%;
+}

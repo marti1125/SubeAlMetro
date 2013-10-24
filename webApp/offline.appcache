@@ -1,8 +1,9 @@
 CACHE MANIFEST
-# v0.1
+# v0.4
 
 /index.html
 
+/css/progress_activity.css
 /css/app.css
 /css/headers.css
 /css/lists.css
@@ -14,6 +15,10 @@ CACHE MANIFEST
 /css/headers/images/ui/separator.png
 /css/headers/images/ui/shadow.png
 /css/headers/images/ui/subheader.png
+/css/progress_activity/imagesui/activity.png
+/css/progress_activity/imagesui/default.png
+/css/progress_activity/imagesui/default@1.5x.png
+/css/progress_activity/imagesui/default@2x.png
 
 /img/an.png
 /img/at.png
@@ -98,3 +103,4 @@ CACHE MANIFEST
 /js/horarios_sabados.json
 /js/underscore-min.js
 /js/backbone-min.js
+/js/quo.js
