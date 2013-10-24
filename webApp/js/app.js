@@ -50,6 +50,8 @@ function btnEvents(btnName){
 
 $(document).ready(function(){
 
+	$('.rTweets').hide();
+
 	var Estacion = Backbone.Model.extend({});
 
 	var Estaciones = Backbone.Collection.extend({
@@ -110,15 +112,28 @@ $(document).ready(function(){
 
 	var tweetView = new viewTweets({model: tweetList});		
 
-	if(navigator.onLine){
-		$('.preload').hide();
-		tweetList.bind('reset', function () {	
+	if(navigator.onLine){		
+		tweetList.bind('reset', function () {
+			$('.preload').hide();					
 			$("#tweets").append(tweetView.render().$el);
-		}); 		
+		});
 		tweetList.fetch({reset: true});
 	} else {
-		$('#info-tweet').append('<br/><h1 class="mensajeConexion">Necesita conexión a internet<h1>');
+		$('.preload').hide();		
+		$('#info-tweet').append('<h1 class="mensajeConexionT">Necesita conexión a internet<h1>');
+		$('.mensajeConexionT').show();
+		$('.rTweets').show();
 	}
+
+	$('.rTweets').click(function(){
+		$('.mensajeConexionT').hide();
+		$('.rTweets').hide();
+		tweetList.bind('reset', function () {
+			$('.preload').hide();							
+			$("#tweets").append(tweetView.render().$el);
+		});
+		tweetList.fetch({reset: true});		
+	});
     
 	// Estaciones
 	/*$.getJSON('js/estaciones.json', function(response){

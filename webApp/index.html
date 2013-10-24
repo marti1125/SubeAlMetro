@@ -10,6 +10,7 @@
       <link rel="stylesheet" type="text/css" href="css/tabs.css" />
       <link rel="stylesheet" type="text/css" href="css/lists.css" />
       <link rel="stylesheet" type="text/css" href="css/progress_activity.css" />
+      <link rel="stylesheet" type="text/css" href="css/buttons.css" />
       <link rel="stylesheet" type="text/css" href="css/app.css" />
 
       <script type="text/javascript" src="js/jquery-1.10.2.min.js" charset="utf-8"></script>
@@ -48,16 +49,18 @@
 
           <li id="panel2" role="tab">
             <a href="#panel2" id="btn-mapa"><img alt="Ubicaciones" id="mapa" src="img/mapa.png"/></a>
-            <div id="info-mapa" role="tabpanel">		         
+            <div id="info-mapa" role="tabpanel">              	         
               <progress class="preloadMap"></progress>
+              <button class="btnRecargar rMap">Recargar</button> 
             </div>
           </li>
 
           <li id="panel3" role="tab">
             <a href="#panel3" id="btn-twitter"><img alt="Twitter" id="twitter" src="img/twitter.png"/></a>
-            <div id="info-tweet" role="tabpanel">            
-              <section data-type="list">
-                <progress class="preload"></progress>                   
+            <div id="info-tweet" role="tabpanel">
+              <progress class="preload"></progress>  
+              <button class="btnRecargar rTweets">Recargar</button>
+              <section data-type="list">                                              
                 <ul id="tweets"></ul>
               </section>
             </div>

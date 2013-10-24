@@ -153,7 +153,7 @@ section[role="region"] > header:first-child img {
 	border-radius: 5px;
 	padding: 4px;
 }
-.mensajeConexion {
+.mensajeConexionT, .mensajeConexionM {
 	text-align: center;
 }
 .tituloEstacion {
@@ -168,4 +168,10 @@ section[role="region"] > header:first-child img {
 .preload, .preloadMap{
 	margin-top: 20%;
 	margin-left: 45%;
+}
+.btnRecargar {
+	text-align: center;
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 20%;
 }
