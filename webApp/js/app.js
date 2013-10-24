@@ -128,6 +128,7 @@ $(document).ready(function(){
 	$('.rTweets').click(function(){
 		$('.mensajeConexionT').hide();
 		$('.rTweets').hide();
+		$('.preload').show();
 		tweetList.bind('reset', function () {
 			$('.preload').hide();							
 			$("#tweets").append(tweetView.render().$el);
