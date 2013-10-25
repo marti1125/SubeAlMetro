@@ -169,9 +169,52 @@ section[role="region"] > header:first-child img {
 	margin-top: 20%;
 	margin-left: 45%;
 }
-.btnRecargar {
-	text-align: center;
-	width: 50%;
+.btnRecargar {		
 	margin-left: 25%;
 	margin-top: 20%;
+}
+
+.button::-moz-focus-inner,
+a[role="button"]::-moz-focus-inner,
+button::-moz-focus-inner {
+  border: none;
+  outline: none;
+}
+
+button,
+a[role="button"],
+.button {
+  text-align: center;
+  width: 50%;
+  height: 3.8rem;
+  margin: 0 0 1rem;
+  padding: 0 1.5rem;
+  -moz-box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #47AA42;
+  border: 0.1rem solid #3D3D3D;
+  border-radius: 0.2rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 3.8rem;
+  color: white;
+  text-align: center;
+  text-shadow: 0.1rem 0.1rem 0 rgba(255,255,255,0.3);
+  text-decoration: none;
+  outline: none;
+}
+
+/* Press (default & recommend) */
+button:active,
+a[role="button"]:active,
+button.recommend:active,
+a.recommend[role="button"]:active  {
+  border-color: #3D3D3D;
+  background: #5EE857;
+  background-size: auto 50%;
+  color: white;
 }
