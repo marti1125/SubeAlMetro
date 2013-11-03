@@ -12,7 +12,7 @@ function miPosicion(callback) {
 	}
  
 	function error() {
-		alert("Unable to retrieve your location");
+		
 	}	
 
 	navigator.geolocation.getCurrentPosition(success, error);			
