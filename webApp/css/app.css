@@ -218,3 +218,7 @@ a.recommend[role="button"]:active  {
   background-size: auto 50%;
   color: white;
 }
+
+.selectedTab {
+	background-color: #008AAA !important;	
+}

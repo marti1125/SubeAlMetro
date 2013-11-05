@@ -37,14 +37,13 @@ function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud,
 
 function btnEvents(btnName){
 	$('#btn-' + btnName).click(function (){
+		$("#btn-estacion").removeClass('selectedTab');
+		$("#btn-mapa").removeClass('selectedTab');
+		$("#btn-twitter").removeClass('selectedTab');
+		$("#btn-info").removeClass('selectedTab');
+		$(this).addClass('selectedTab');
 		$('#settings-view').removeClass('bajar');
-		$('.active').removeClass('active');		
-		$('#titulo').html($('#' + btnName).attr('alt'));
-        $('#estacion').attr('src','img/estacion.png');
-        $('#mapa').attr('src','img/mapa.png');
-        $('#twitter').attr('src','img/twitter.png');
-        $('#info').attr('src','img/info.png');
-        $('#'+btnName).attr('src','img/'+btnName+'2.png');
+		$('.active').removeClass('active');
 	});
 }
 
@@ -81,8 +80,8 @@ $(document).ready(function(){
 	console.log(estacionesView)	
 
 	listEstaciones.bind('reset', function () {	
-			$(".estacionesMetro").append(estacionesView.render().$el);			
-		}); 
+		$(".estacionesMetro").append(estacionesView.render().$el);			
+	}); 
 
 	listEstaciones.fetch({reset: true});
 
@@ -151,7 +150,9 @@ $(document).ready(function(){
 	});
 
 	$('.active').addClass('active');
-    $('#estacion').attr('src','img/estacion2.png');
+	$("#btn-estacion").addClass('selectedTab');
+
+    //$('#estacion').attr('src','img/estacion2.png');
 
   	var buttons = ['estacion', 'mapa', 'twitter', 'info'];
   		$.map(buttons, function(button){
