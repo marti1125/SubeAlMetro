@@ -288,5 +288,20 @@ $(document).ready(function(){
 
 	// Seccion de Mapas
 	var map = L.mapbox.map('info-mapa', 'osgux.g99506jm');
-		
+
+	$.getJSON('js/estaciones.json', function(response){
+		$.each(response, function(index, item){
+			L.mapbox.markerLayer({
+		        type: 'Feature',
+		        geometry: {
+		          type: 'Point',
+		          coordinates: [item.longitud,item.latitud]
+		        },
+		        properties: {
+		          title: "Estación " + item.estacion		          
+		        }
+		    }).addTo(map);							 
+		});
+	});	
+
 });
