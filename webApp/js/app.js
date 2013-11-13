@@ -285,5 +285,8 @@ $(document).ready(function(){
 		$('#settings-view').removeClass('subir');
 		$('#settings-view').addClass('bajar');
 	});
+
+	// Seccion de Mapas
+	var map = L.mapbox.map('info-mapa', 'osgux.g99506jm');
 		
 });

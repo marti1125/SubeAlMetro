@@ -1,4 +1,4 @@
-function agregarUbicacion(longitud, latitud, icon, w, h, change){
+/*function agregarUbicacion(longitud, latitud, icon, w, h, change){
 	var coor_from = new OpenLayers.Projection("EPSG:4326");
 	var coor_to   = new OpenLayers.Projection("EPSG:900913");
 	var size = new OpenLayers.Size(w,h);
@@ -64,4 +64,15 @@ $('.rMap').click(function(){
 			agregarUbicacion(item.longitud, item.latitud, item.icon, item.w, item.h, markers2);					  
 		});
 	});
-});
+});*/
+
+
+//var map = L.map('info-mapa').setView([51.505, -0.09], 13);
+	
+
+	
+	// add a marker in the given location, attach some popup content to it and open the popup
+
+	/*L.marker([51.5, -0.09]).addTo(map)
+	    .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+	    .openPopup();*/
