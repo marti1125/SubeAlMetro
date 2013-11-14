@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v0.4
+# v0.7
 
 /index.html
 
@@ -25,7 +25,6 @@ CACHE MANIFEST
 /js/horarios.json
 /js/jquery-1.10.2.min.js
 /js/latlong.js
-/js/mapa.js
 /js/moment.min.js
 /js/horarios_sabados.json
 /js/underscore-min.js

@@ -41,15 +41,39 @@ function btnEvents(btnName){
 		$("#btn-mapa").removeClass('selectedTab');
 		$("#btn-twitter").removeClass('selectedTab');
 		$("#btn-info").removeClass('selectedTab');
-		$(this).addClass('selectedTab');
+		$(this).addClass('selectedTab');		
 		$('#settings-view').removeClass('bajar');
 		$('.active').removeClass('active');
+		//Cambiar Titulo
+		$('#titulo').html($('#'+btnName).attr('alt'));				
 	});
+}
+
+function mostrarMapa(){
+	var map = L.mapbox.map('info-mapa', 'osgux.g99506jm');
+
+	$.getJSON('js/estaciones.json', function(response){
+		$.each(response, function(index, item){
+			L.mapbox.markerLayer({
+		        type: 'Feature',
+		        geometry: {
+		          type: 'Point',
+		          coordinates: [item.longitud,item.latitud]
+		        },
+		        properties: {
+		          title: "Estación " + item.estacion,
+			      'marker-color': '#66CD00'
+		        }
+
+		    }).addTo(map);							 
+		});
+	});	
 }
 
 $(document).ready(function(){
 
 	$('.rTweets').hide();
+	$('.rMap').hide();
 
 	var Estacion = Backbone.Model.extend({});
 
@@ -76,8 +100,6 @@ $(document).ready(function(){
 	var listEstaciones = new Estaciones();
 
 	var estacionesView = new viewEstaciones({model: listEstaciones});
-
-	console.log(estacionesView)	
 
 	listEstaciones.bind('reset', function () {	
 		$(".estacionesMetro").append(estacionesView.render().$el);			
@@ -124,26 +146,21 @@ $(document).ready(function(){
 		$('.rTweets').show();
 	}
 
-	$('.rTweets').click(function(){
-		$('.mensajeConexionT').hide();
-		$('.rTweets').hide();
-		$('.preload').show();
-		tweetList.bind('reset', function () {
-			$('.preload').hide();							
-			$("#tweets").append(tweetView.render().$el);
-		});
-		tweetList.fetch({reset: true});		
+	$('.rTweets').click(function(){		
+		if(navigator.onLine){
+			$('.preload').show();
+			$('.mensajeConexionT').hide();
+			$('.rTweets').hide();
+			tweetList.bind('reset', function () {
+				$('.preload').hide();							
+				$("#tweets").append(tweetView.render().$el);
+			});
+			tweetList.fetch({reset: true});
+		} else {
+			
+		}
 	});
-    
-	// Estaciones
-	/*$.getJSON('js/estaciones.json', function(response){
-		$.each(response, function(index, item){
-			$.each(item, function(index, result){
-				$('.estaciones').append('<li id="IdEstacion" data-estacion="'+result.estacion+'"><aside class="pack-end"><img id="gethora" alt="placeholder" src="img/hora.png"></aside><p class="nombreEstacion">Estación <b>'+result.estacion+'</b></p></li>');
-			});			  
-		});
-	});*/
- 
+
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
 	    mozSystem: true
@@ -151,8 +168,6 @@ $(document).ready(function(){
 
 	$('.active').addClass('active');
 	$("#btn-estacion").addClass('selectedTab');
-
-    //$('#estacion').attr('src','img/estacion2.png');
 
   	var buttons = ['estacion', 'mapa', 'twitter', 'info'];
   		$.map(buttons, function(button){
@@ -244,22 +259,18 @@ $(document).ready(function(){
 			$.each(text, function(key, value){
 
 				$.each(value, function(index, result){
-									
+					// Por Implementar				
 					if(result.nombre == estacion){
 						for(i=0;i<result.GRAU.length;i++){                            	
 							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
                             var horaSalida = moment('01/01/2013'+result.GRAU[i],'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm');
                             var horaLlegada = moment('01/01/2013'+result.VES[i],'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm');
                             
-                            if(obtenerHora() == horaSalida){
-
-                                console.log('ok')
+                            if(obtenerHora() == horaSalida){                               
                             }
 
-                            if (obtenerHora() == horaLlegada){
-                            	console.log('okLLegada')
+                            if (obtenerHora() == horaLlegada){                            	
                             }
-
                             
 						}
 											
@@ -287,21 +298,22 @@ $(document).ready(function(){
 	});
 
 	// Seccion de Mapas
-	var map = L.mapbox.map('info-mapa', 'osgux.g99506jm');
+	if(navigator.onLine){		
+		mostrarMapa();
+	} else {		
+		$('#info-mapa').append('<h1 class="mensajeConexionM">Necesita conexión a internet<h1>');
+		$('.mensajeConexionM').show();
+		$('.rMap').show();
+	}
 
-	$.getJSON('js/estaciones.json', function(response){
-		$.each(response, function(index, item){
-			L.mapbox.markerLayer({
-		        type: 'Feature',
-		        geometry: {
-		          type: 'Point',
-		          coordinates: [item.longitud,item.latitud]
-		        },
-		        properties: {
-		          title: "Estación " + item.estacion		          
-		        }
-		    }).addTo(map);							 
-		});
-	});	
+	$('.rMap').click(function(){
+		if(navigator.onLine){
+			$('.mensajeConexionM').hide();
+			$('.rMap').hide();
+			mostrarMapa();
+		} else {
+
+		}
+	});
 
 });
