@@ -49,24 +49,35 @@ function btnEvents(btnName){
 	});
 }
 
+var map;
+var geoJson = [];
 function mostrarMapa(){
-	var map = L.mapbox.map('info-mapa', 'osgux.g99506jm');
+	map = L.mapbox.map('info-mapa', 'osgux.g99506jm');
 
-	$.getJSON('js/estaciones.json', function(response){
-		$.each(response, function(index, item){
-			L.mapbox.markerLayer({
-		        type: 'Feature',
-		        geometry: {
-		          type: 'Point',
-		          coordinates: [item.longitud,item.latitud]
-		        },
-		        properties: {
-		          title: "Estación " + item.estacion,
-			      'marker-color': '#66CD00'
-		        }
+	$.getJSON('js/estaciones.json', function(response){		
+		$.each(response, function(index, item){			
+			geoJson.push({
+			    "type": "Feature",
+			    "geometry": {
+			        "type": "Point",
+			        "coordinates": [item.longitud,item.latitud]
+			    },
+			    "properties": {
+			        "title": "Estación " + item.estacion,
+			        "icon": {
+			            "iconUrl": "./js/train.png",
+			            "iconSize": [32, 37]
+			        }
+			    }
+			});
+			map.markerLayer.on('layeradd', function(e) {
+			    var marker = e.layer,
+			        feature = marker.feature;
 
-		    }).addTo(map);							 
-		});
+			    marker.setIcon(L.icon(feature.properties.icon));
+			});	
+			map.markerLayer.setGeoJSON(geoJson);							 
+		});				
 	});	
 }
 
@@ -288,11 +299,6 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#settings-btn', function(){		
-		$('#settings-view').removeClass('subir');
-		$('#settings-view').addClass('bajar');
-	});
-
-	$$('#settings-view').swipeDown(function() {
 		$('#settings-view').removeClass('subir');
 		$('#settings-view').addClass('bajar');
 	});
