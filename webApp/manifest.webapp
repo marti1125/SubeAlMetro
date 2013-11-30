@@ -2,7 +2,7 @@
   "name": "Sube al Metro de Lima",
   "description": "Metro de Lima",
   "launch_path": "/index.html",  
-  "version": "1.6",
+  "version": "1.6.1",
   "developer": {
     "name": "Willy Aguirre",
     "url": "http://willyaguirre.me/"
