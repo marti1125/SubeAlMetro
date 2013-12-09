@@ -122,7 +122,7 @@ $(document).ready(function(){
 
 	var TweetList = Backbone.Collection.extend({		
 		model: Tweet,		
-		url: 'http://subealmetro.willyaguirre.me/lineauno.php',
+		url: 'http://glacial-gorge-2029.herokuapp.com/lineaunope',
 		parse: function(response) {
 			return response;
 		}
