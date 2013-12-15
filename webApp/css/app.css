@@ -77,6 +77,10 @@ section[role="region"] > header:first-child img {
 	font-size: 1.2rem;
 	color: #9E9E9E;
 }
+.tweetURL {
+    color: black;
+    border-bottom: 1px solid black;
+}
 .locateProgress {
 	padding-top: 55%;
 	padding-left: 46%;

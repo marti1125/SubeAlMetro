@@ -131,7 +131,7 @@
             <img src="<%= t.user.profile_image_url %>"/>
           </div>
           <h1 class="titleTwitter"><%= t.user.name %><span class="usertwitter"> @<%=t.user.screen_name %></span></h1>
-          <p><strong><%= t.text %></strong></p>          
+          <p><strong><%= mostrarUrl(t.text) %></strong></p>          
         </li>
       <% }) %>
     </script>
