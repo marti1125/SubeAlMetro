@@ -258,19 +258,71 @@ $(document).ready(function(){
 	function obtenerHora(){		
 		var hora = new Date();
     	var horaActual = moment('01/01/2013'+hora.getHours()+':'+hora.getMinutes(),'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm');
-    	return horaActual;
-    	setTimeout("obtenerHora()",1000) 
+    	//setTimeout("obtenerHora()",1000) 
+    	return horaActual;    	
 	}
 
 	$(document).on("click", "#IdEstacion", function(){
 
-		obtenerHora();    	
-        
-        $("#listHorarios").html('');
-		var estacion = $(this).data("estacion")
-		$('#tituloNombreEstacion').html("<h2 class='tituloEstacion'>Estación "+estacion+"</h2><span class='condicionHorario'>Horario: Lunes - Viernes</span>");
-		
-		$.getJSON('js/horarios.json', function(text){
+		var dia = new Date();
+		var n = dia.getDay();
+
+		if(n == 0){
+			$("#listHorarios").html('');
+			var estacion = $(this).data("estacion")
+			$('#tituloNombreEstacion').html("<h2 class='tituloEstacion'>Estación "+estacion+"</h2><span class='condicionHorario'>Horario: Domingos y Feriados</span>");
+			$.getJSON('js/horarios_domingo_y_feriados.json', function(text){
+				$.each(text, function(key, value){
+					$.each(value, function(index, result){		
+						if(result.nombre == estacion){
+							for(i=0;i<result.GRAU.length;i++){                            	
+								$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
+	 						}											
+						}
+					});
+				});	  			
+			});			
+		}
+
+		if(n == 1 || n == 2 || n == 3 || n == 4 || n == 5){
+			$("#listHorarios").html('');
+			var estacion = $(this).data("estacion")
+			$('#tituloNombreEstacion').html("<h2 class='tituloEstacion'>Estación "+estacion+"</h2><span class='condicionHorario'>Horario: Lunes - Viernes</span>");			
+			$.getJSON('js/horarios.json', function(text){
+				$.each(text, function(key, value){
+					$.each(value, function(index, result){		
+						if(result.nombre == estacion){
+							for(i=0;i<result.GRAU.length;i++){                            	
+								$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
+	 						}											
+						}
+					});
+				});	  			
+			});
+		}
+
+		if(n == 6){
+			$("#listHorarios").html('');
+			var estacion = $(this).data("estacion")
+			$('#tituloNombreEstacion').html("<h2 class='tituloEstacion'>Estación "+estacion+"</h2><span class='condicionHorario'>Horario: Sabados</span>");
+			$.getJSON('js/horarios_sabados.json', function(text){
+				$.each(text, function(key, value){
+					$.each(value, function(index, result){		
+						if(result.nombre == estacion){
+							for(i=0;i<result.VES.length;i++){
+								if(result.GRAU[i] == undefined){
+									$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'></p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
+								} else {
+									$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
+								}								                            	
+	 						}											
+						}
+					});
+				});	  			
+			});		
+		}
+
+		/*$.getJSON('js/horarios.json', function(text){
 
 			$.each(text, function(key, value){
 
@@ -296,8 +348,7 @@ $(document).ready(function(){
 
 			});	
   			
-		});	
-		
+		});	*/	
 
 		$("#settings-view").removeClass("bajar");		
 		$("#settings-view").addClass("subir");
