@@ -269,7 +269,7 @@ $(document).ready(function(){
 
 		if(n == 0){
 			$("#listHorarios").html('');
-			var estacion = $(this).data("estacion")
+			var estacion = $(this).data("estacion");
 			$('#tituloNombreEstacion').html("<h2 class='tituloEstacion'>Estación "+estacion+"</h2><span class='condicionHorario'>Horario: Domingos y Feriados</span>");
 			$.getJSON('js/horarios_domingo_y_feriados.json', function(text){
 				$.each(text, function(key, value){

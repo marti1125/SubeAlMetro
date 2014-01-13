@@ -27,5 +27,6 @@ CACHE MANIFEST
 /js/latlong.js
 /js/moment.min.js
 /js/horarios_sabados.json
+/js/horarios_domingo_y_feriados.json
 /js/underscore-min.js
 /js/backbone-min.js
