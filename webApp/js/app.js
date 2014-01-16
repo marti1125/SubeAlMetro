@@ -378,4 +378,16 @@ $(document).ready(function(){
 		}
 	});
 
+	// Info
+  	InfoView = Backbone.View.extend({
+	    initialize: function(){
+	        this.render();
+	    },
+	    render: function(){
+	      var template = _.template( $("#InfoView").html(), {} );
+	      this.$el.html( template );
+	    }
+  	});
+  	var infoView = new InfoView({ el: $("#info-page") });
+
 });
