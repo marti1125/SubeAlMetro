@@ -52,7 +52,7 @@ function btnEvents(btnName){
 var map;
 var geoJson = [];
 function mostrarMapa(){
-	map = L.mapbox.map('info-mapa', 'osgux.g99506jm');
+	map = L.mapbox.map('mapbox', 'osgux.g99506jm');
 
 	$.getJSON('js/estaciones.json', function(response){		
 		$.each(response, function(index, item){			
@@ -121,61 +121,7 @@ $(document).ready(function(){
 		$(".estacionesMetro").append(estacionesView.render().$el);			
 	}); 
 
-	listEstaciones.fetch({reset: true});
-
-	var Tweet = Backbone.Model.extend({});
-
-	var TweetList = Backbone.Collection.extend({		
-		model: Tweet,		
-		url: 'http://glacial-gorge-2029.herokuapp.com/lineaunope',
-		parse: function(response) {
-			return response;
-		}
-	});
-
-	var viewTweets = Backbone.View.extend({
-		tagName: "ul",
-		className: "",
-		initialize: function(){
-			this.template = _.template( $("#templateTwitter").html() );
-		},
-		render: function () {	
-			this.$el.html(this.template({tweet: this.model.toJSON()}));
-			return this;
-		}
-	});
-
-	var tweetList = new TweetList();	
-
-	var tweetView = new viewTweets({model: tweetList});		
-
-	if(navigator.onLine){		
-		tweetList.bind('reset', function () {
-			$('.preload').hide();					
-			$("#tweets").append(tweetView.render().$el);
-		});
-		tweetList.fetch({reset: true});
-	} else {
-		$('.preload').hide();		
-		$('#info-tweet').append('<h1 class="mensajeConexionT">Necesita conexión a internet<h1>');
-		$('.mensajeConexionT').show();
-		$('.rTweets').show();
-	}
-
-	$('.rTweets').click(function(){		
-		if(navigator.onLine){
-			$('.preload').show();
-			$('.mensajeConexionT').hide();
-			$('.rTweets').hide();
-			tweetList.bind('reset', function () {
-				$('.preload').hide();							
-				$("#tweets").append(tweetView.render().$el);
-			});
-			tweetList.fetch({reset: true});
-		} else {
-			
-		}
-	});
+	listEstaciones.fetch({reset: true});	
 
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
@@ -320,35 +266,7 @@ $(document).ready(function(){
 					});
 				});	  			
 			});		
-		}
-
-		/*$.getJSON('js/horarios.json', function(text){
-
-			$.each(text, function(key, value){
-
-				$.each(value, function(index, result){
-					// Por Implementar				
-					if(result.nombre == estacion){
-						for(i=0;i<result.GRAU.length;i++){                            	
-							$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
-                            var horaSalida = moment('01/01/2013'+result.GRAU[i],'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm');
-                            var horaLlegada = moment('01/01/2013'+result.VES[i],'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm');
-                            
-                            if(obtenerHora() == horaSalida){                               
-                            }
-
-                            if (obtenerHora() == horaLlegada){                            	
-                            }
-                            
-						}
-											
-					}										
-
-				});
-
-			});	
-  			
-		});	*/	
+		}		
 
 		$("#settings-view").removeClass("bajar");		
 		$("#settings-view").addClass("subir");
@@ -360,7 +278,7 @@ $(document).ready(function(){
 	});
 
 	// Seccion de Mapas
-	if(navigator.onLine){		
+	/*if(navigator.onLine){		
 		mostrarMapa();
 	} else {		
 		$('#info-mapa').append('<h1 class="mensajeConexionM">Necesita conexión a internet<h1>');
@@ -375,6 +293,97 @@ $(document).ready(function(){
 			mostrarMapa();
 		} else {
 
+		}
+	});*/
+
+	// Ubicaciones de las estaciones
+	MapView = Backbone.View.extend({
+		events: {
+        	"click .rMap": "actualizarMapa"
+    	},
+    	actualizarMapa: function(event){
+	        if(navigator.onLine){
+				$('.mensajeConexionM').hide();
+				$('.rMap').hide();
+				mostrarMapa();
+			}
+	    },
+	    initialize: function(){	        	
+	        this.render();
+	    },
+	    render: function(){
+	      	var template = _.template( $("#MapView").html(), {} );	      
+	      	this.$el.html( template );
+	      	this.afterRender();	      	
+	    },
+		afterRender: function() {
+			if(navigator.onLine){
+				$('.rMap').hide();	
+				mostrarMapa();
+			} else {		
+				$('#mapbox').append(
+					'<h1 class="mensajeConexionM">Necesita conexión a internet<h1>'
+				);
+				$('.mensajeConexionM').show();
+				$('.rMap').show();
+			}			
+		}
+  	});
+
+  	var mapView = new MapView({ el: $("#mapa-page") });
+
+  	// Twitter
+  	Tweet = Backbone.Model.extend({});
+
+	TweetCollection = Backbone.Collection.extend({		
+		model: Tweet,		
+		url: 'http://glacial-gorge-2029.herokuapp.com/lineaunope',
+		parse: function(response) {
+			return response;
+		}
+	});
+
+	TweetView = Backbone.View.extend({
+		tagName: "ul",
+		className: "",
+		initialize: function(){
+			this.template = _.template( $("#TweetView").html() );
+		},
+		render: function () {	
+			this.$el.html(this.template({tweet: this.model.toJSON()}));
+			return this;
+		}
+	});
+
+	var tweetCollection = new TweetCollection();	
+
+	var tweetView = new TweetView({model: tweetCollection});		
+
+	if(navigator.onLine){		
+		tweetCollection.bind('reset', function () {
+			$('.preload').hide();					
+			$("#tweets").append(tweetView.render().$el);
+		});
+		tweetCollection.fetch({reset: true});
+	} else {
+		$('.preload').hide();		
+		$('#info-tweet').append('<h1 class="mensajeConexionT">Necesita conexión a internet<h1>');
+		$('.mensajeConexionT').show();
+		$('.rTweets').show();
+	}
+
+	$('.rTweets').click(function(){		
+		if(navigator.onLine){
+			$('.preload').show();
+			$('.mensajeConexionT').hide();
+			$('.rTweets').hide();
+			tweetCollection.bind('reset', function () {
+				$('.preload').hide();							
+				$("#tweets").append(tweetView.render().$el);
+			});
+			tweetCollection.fetch({reset: true});
+		} else {
+			
 		}
 	});
 

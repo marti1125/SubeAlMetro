@@ -48,8 +48,7 @@
 
           <li id="panel2" role="tab">
             <a href="#panel2" id="btn-mapa"><img alt="Ubicaciones" id="mapa" src="img/mapa.png"/></a>
-            <div id="info-mapa" role="tabpanel">
-              <button class="btnRecargar rMap">Recargar</button> 
+            <div id="mapa-page" role="tabpanel">              
             </div>
           </li>
 
@@ -98,7 +97,7 @@
 
     </section>
 
-    <script type="text/javascript" src="js/mapa.js" charset="utf-8"></script>
+    <!--script type="text/javascript" src="js/mapa.js" charset="utf-8"></script-->
 
     <script id="templateEstaciones" type="text/template"> 
       <% _.each(estacionMetro, function(e) { %>
@@ -111,7 +110,12 @@
       <% }) %>
     </script>
 
-    <script id="templateTwitter" type="text/template"> 
+    <script type="text/template" id="MapView">
+      <button class="btnRecargar rMap">Recargar</button>
+      <div id="mapbox"></div>
+    </script>
+
+    <script type="text/template" id="TweetView"> 
       <% _.each(tweet, function(t) { %>
         <li>
           <div class="imgLeft">
