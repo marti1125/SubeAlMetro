@@ -13,7 +13,8 @@
       <link rel="stylesheet" type="text/css" href="http://api.tiles.mapbox.com/mapbox.js/v1.4.2/mapbox.css" />  
       <link rel="stylesheet" type="text/css" href="css/app.css" />      
 
-      <script type="text/javascript" src="js/jquery-1.10.2.min.js" charset="utf-8"></script>
+      <!--script type="text/javascript" src="js/jquery-1.10.2.min.js" charset="utf-8"></script-->
+      <script type="text/javascript" src="js/zepto.min.js" charset="utf-8"></script>
       <script type="text/javascript" src="http://api.tiles.mapbox.com/mapbox.js/v1.4.2/mapbox.js" charset="utf-8"></script>   
       <script type="text/javascript" src="js/underscore-min.js" charset="utf-8"></script>
       <script type="text/javascript" src="js/backbone-min.js" charset="utf-8"></script>
@@ -36,13 +37,7 @@
 
           <li id="panel1" role="tab">
             <a href="#panel1" id="btn-estacion"><img id="estacion" alt="Estaciones" src="img/estacion.png" /></a>
-            <div role="tabpanel" class="active">
-              
-              <section data-type="list">
-                  <ul class="estacionesMetro">                        
-                  </ul>
-              </section>              
-              
+            <div id="estacion-page" role="tabpanel" class="active">              
             </div>                 
           </li>
 
@@ -54,12 +49,8 @@
 
           <li id="panel3" role="tab">
             <a href="#panel3" id="btn-twitter"><img alt="Twitter" id="twitter" src="img/twitter.png"/></a>
-            <div id="info-tweet" role="tabpanel">
-              <progress class="preload"></progress>  
-              <button class="btnRecargar rTweets">Recargar</button>
-              <section data-type="list">                                              
-                <ul id="tweets"></ul>
-              </section>
+            <div id="tweet-page" role="tabpanel">              
+              
             </div>
           </li>
 
@@ -96,18 +87,24 @@
       </section>
 
     </section>
+ 
+    <script type="text/template" id="OfflineView">
+      <h1 class="mensajeConexionT">Necesita conexión a internet<h1>
+    </script>
 
-    <!--script type="text/javascript" src="js/mapa.js" charset="utf-8"></script-->
-
-    <script id="templateEstaciones" type="text/template"> 
-      <% _.each(estacionMetro, function(e) { %>
-        <li id="IdEstacion" data-estacion="<%=e.estacion %>">
-          <aside class="pack-end">
-            <img id="gethora" alt="placeholder" src="img/hora.png">
-          </aside>
-          <p class="nombreEstacion">Estación <b><%=e.estacion %></b></p>                 
-        </li>
-      <% }) %>
+    <script type="text/template" id="EstacionView"> 
+      <section data-type="list">
+        <ul class="estacionesMetro">
+          <% _.each(estacionMetro, function(e) { %>
+            <li id="IdEstacion" data-estacion="<%=e.estacion %>">
+              <aside class="pack-end">
+                <img id="gethora" alt="placeholder" src="img/hora.png">
+              </aside>
+              <p class="nombreEstacion">Estación <b><%=e.estacion %></b></p>                 
+            </li>
+          <% }) %>
+        </ul>
+      </section>
     </script>
 
     <script type="text/template" id="MapView">
@@ -115,16 +112,20 @@
       <div id="mapbox"></div>
     </script>
 
-    <script type="text/template" id="TweetView"> 
-      <% _.each(tweet, function(t) { %>
-        <li>
-          <div class="imgLeft">
-            <img src="<%= t.user.profile_image_url %>"/>
-          </div>
-          <h1 class="titleTwitter"><%= t.user.name %><span class="usertwitter"> @<%=t.user.screen_name %></span></h1>
-          <p><strong><%= mostrarUrl(t.text) %></strong></p>          
-        </li>
-      <% }) %>
+    <script type="text/template" id="TweetView">
+      <section data-type="list">                                              
+        <ul id="tweets">
+        <% _.each(tweet, function(t) { %>
+          <li>
+            <div class="imgLeft">
+              <img src="<%= t.user.profile_image_url %>"/>
+            </div>
+            <h1 class="titleTwitter"><%= t.user.name %><span class="usertwitter"> @<%=t.user.screen_name %></span></h1>
+            <p><strong><%= mostrarUrl(t.text) %></strong></p>          
+          </li>
+        <% }) %>
+        </ul>
+      </section>
     </script>
 
     <script type="text/template" id="InfoView">

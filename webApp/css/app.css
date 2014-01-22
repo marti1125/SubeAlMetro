@@ -51,7 +51,7 @@ section[role="region"] > header:first-child img {
 #tabstart {
 	text-align: center;
 }
-#tabstart, #info-tweet, #info-page {
+#tabstart, #tweet-info, #info-page {
 	background-color: #FFFFFF;
 }
 #info-page{

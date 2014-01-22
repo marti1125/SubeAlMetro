@@ -19,7 +19,6 @@ function miPosicion(callback) {
 }
 
 function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud, estacion){
-
 	var R = 6371; // km
 	var dLat = (estacionLatitud-miLatitud).toRad();
 	var dLon = (estacionLongitud-miLongitud).toRad();
@@ -32,7 +31,19 @@ function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud,
 	var d = R * c;
 
 	return [d,estacion];
+}
 
+function marcarEstacion(result){
+	var notification = navigator.mozNotification.createNotification(
+            "La estación mas cercana es: ",
+            "Estación "+result+""
+        );
+    notification.show();	
+	$("li #IdEstacion").each(function( index ) {
+		if(result == $(this).data("estacion")){				
+			$(this).addClass('estacionActiva');
+		}
+	});
 }
 
 function btnEvents(btnName){
@@ -88,41 +99,6 @@ function mostrarUrl(tweet) {
 
 $(document).ready(function(){
 
-	$('.rTweets').hide();
-	$('.rMap').hide();
-
-	var Estacion = Backbone.Model.extend({});
-
-	var Estaciones = Backbone.Collection.extend({
-		model: Estacion,
-		url: 'js/estaciones.json',
-		parse: function(response) {
-			return response;
-		}
-	});
-
-	var viewEstaciones = Backbone.View.extend({
-		tagName: "ul",
-		className: "",
-		initialize: function(){
-			this.template = _.template( $("#templateEstaciones").html() );
-		},
-		render: function () {	
-			this.$el.html(this.template({estacionMetro: this.model.toJSON()}));
-			return this;
-		}
-	});
-
-	var listEstaciones = new Estaciones();
-
-	var estacionesView = new viewEstaciones({model: listEstaciones});
-
-	listEstaciones.bind('reset', function () {	
-		$(".estacionesMetro").append(estacionesView.render().$el);			
-	}); 
-
-	listEstaciones.fetch({reset: true});	
-
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
 	    mozSystem: true
@@ -132,83 +108,21 @@ $(document).ready(function(){
 	$("#btn-estacion").addClass('selectedTab');
 
   	var buttons = ['estacion', 'mapa', 'twitter', 'info'];
-  		$.map(buttons, function(button){
-    		btnEvents(button);
-  		});
-
-	var miLatitud;
-	var miLongitud;
-	
-	var result;
-
-	var estacionCercana;
-
-	miPosicion(function(latitude,longitude,result){
-
-		miLatitud = latitude;
-		miLongitud = longitude;		
-
-		var resultados = [];
-		var distancia;
-
-		$.ajax({ //zeptojs
-		async: true
-		});
-
-		$.getJSON('js/estaciones.json', function(response){
-			$.each(response, function(index, item){
-				distancia = distaciaMenor(miLatitud, miLongitud, item.latitud, item.longitud, item.estacion);
-				resultados.push(distancia);					 
-			});
-		});
-
-		$.ajax({
-		async: false
-		});	
-
-		var distaciaMinimo = Math.min.apply(Math, resultados.map(function(i) {
-		    return i[0];
-		}));
-
-		estacionCercana = $.grep(resultados, function(v,i) {
-		    return v[0] === distaciaMinimo;
-		});
-
-		result = estacionCercana[0][1]		
-
-		verificar(result);		
-
+	$.map(buttons, function(button){
+		btnEvents(button);
 	});
-	
-	function verificar(result){
-		var notification = navigator.mozNotification.createNotification(
-                "La estación mas cercana es: ",
-                "Estación "+result+""
-            );
 
-        notification.show();
-		
-		$("li #IdEstacion").each(function( index ) {			
+	$('.rTweets').hide();
+	$('.rMap').hide();	
 
-			if(result == $(this).data("estacion")){				
-				$(this).addClass('estacionActiva');
-			}else {
-						
-			}			
-
-		});
-		
-		return result;
-	}
-
-	function obtenerHora(){		
+	/*function obtenerHora(){		
 		var hora = new Date();
     	var horaActual = moment('01/01/2013'+hora.getHours()+':'+hora.getMinutes(),'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm');
     	//setTimeout("obtenerHora()",1000) 
     	return horaActual;    	
-	}
+	}*/
 
-	$(document).on("click", "#IdEstacion", function(){
+	/*$(document).on("click", "#IdEstacion", function(){
 
 		var dia = new Date();
 		var n = dia.getDay();
@@ -276,27 +190,71 @@ $(document).ready(function(){
 		$('#settings-view').removeClass('subir');
 		$('#settings-view').addClass('bajar');
 	});
+	*/
+	
+	// Estaciones
+	Estacion = Backbone.Model.extend({});
 
-	// Seccion de Mapas
-	/*if(navigator.onLine){		
-		mostrarMapa();
-	} else {		
-		$('#info-mapa').append('<h1 class="mensajeConexionM">Necesita conexión a internet<h1>');
-		$('.mensajeConexionM').show();
-		$('.rMap').show();
-	}
-
-	$('.rMap').click(function(){
-		if(navigator.onLine){
-			$('.mensajeConexionM').hide();
-			$('.rMap').hide();
-			mostrarMapa();
-		} else {
-
+	EstacionCollection = Backbone.Collection.extend({		
+		model: Estacion,
+		url: 'js/estaciones.json',		
+		parse: function(response) {
+			return response;
 		}
-	});*/
+	});
 
-	// Ubicaciones de las estaciones
+	EstacionView = Backbone.View.extend({
+		events: {
+	        "click #IdEstacion": "obtenerHorario"
+	    },
+	    obtenerHorario: function(ev){
+	    	var estacion = $(ev.currentTarget).text().replace("Estación ","");
+	    },
+		initialize: function(){			
+			this.template = _.template( $("#EstacionView").html() );						
+		},
+		render: function () {	
+			this.$el.html(this.template({estacionMetro: this.collection.toJSON()}));			
+	        this.afterRender();
+			return this;
+		},
+		afterRender: function() {
+			var miLatitud;
+			var miLongitud;
+			var collection = this.collection;		
+			miPosicion(function(latitude,longitude){	
+				miLatitud = latitude;
+				miLongitud = longitude;
+				var resultados = [];		
+				collection.each(function(model) {
+					var lat = model.get("latitud")
+					var lon = model.get("longitud")
+					var est = model.get("estacion")
+					resultados.push(distaciaMenor(miLatitud, miLongitud, lat, lon, est));
+				});
+				var distaciaMinimo = Math.min.apply(Math, resultados.map(function(i) {
+				    return i[0];
+				}));
+				estacionCercana = $.grep(resultados, function(v,i) {
+				    return v[0] === distaciaMinimo;
+				});
+				var resultado = estacionCercana[0][1]
+				marcarEstacion(resultado)
+			});								
+		}
+	});
+
+	var estacionCollection = new EstacionCollection();
+
+	var estacionView = new EstacionView({collection: estacionCollection});
+
+	estacionCollection.fetch({reset: true});
+
+	estacionCollection.bind('reset', function () {	
+		$("#estacion-page").append(estacionView.render().$el);
+	});
+
+	// Mapa de ubicaciones de las estaciones
 	MapView = Backbone.View.extend({
 		events: {
         	"click .rMap": "actualizarMapa"
@@ -344,8 +302,6 @@ $(document).ready(function(){
 	});
 
 	TweetView = Backbone.View.extend({
-		tagName: "ul",
-		className: "",
 		initialize: function(){
 			this.template = _.template( $("#TweetView").html() );
 		},
@@ -357,22 +313,24 @@ $(document).ready(function(){
 
 	var tweetCollection = new TweetCollection();	
 
-	var tweetView = new TweetView({model: tweetCollection});		
+	var tweetView = new TweetView({model: tweetCollection});
 
-	if(navigator.onLine){		
-		tweetCollection.bind('reset', function () {
-			$('.preload').hide();					
-			$("#tweets").append(tweetView.render().$el);
-		});
-		tweetCollection.fetch({reset: true});
+	tweetCollection.bind('reset', function () {						
+		$("#tweet-page").append(tweetView.render().$el);
+	});
+
+	tweetCollection.fetch({reset: true});		
+
+	/*if(navigator.onLine){		
+		
 	} else {
 		$('.preload').hide();		
 		$('#info-tweet').append('<h1 class="mensajeConexionT">Necesita conexión a internet<h1>');
 		$('.mensajeConexionT').show();
 		$('.rTweets').show();
-	}
+	}*/
 
-	$('.rTweets').click(function(){		
+	/*$('.rTweets').click(function(){		
 		if(navigator.onLine){
 			$('.preload').show();
 			$('.mensajeConexionT').hide();
@@ -385,7 +343,7 @@ $(document).ready(function(){
 		} else {
 			
 		}
-	});
+	});*/
 
 	// Info
   	InfoView = Backbone.View.extend({
@@ -397,6 +355,7 @@ $(document).ready(function(){
 	      this.$el.html( template );
 	    }
   	});
+  	
   	var infoView = new InfoView({ el: $("#info-page") });
 
 });
