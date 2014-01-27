@@ -60,40 +60,6 @@ function btnEvents(btnName){
 	});
 }
 
-var map;
-var geoJson = [];
-function mostrarMapa(){
-
-	map = L.mapbox.map('mapbox', 'osgux.g99506jm');
-
-	$.getJSON('js/estaciones.json', function(response){		
-		$.each(response, function(index, item){			
-			geoJson.push({
-			    "type": "Feature",
-			    "geometry": {
-			        "type": "Point",
-			        "coordinates": [item.longitud,item.latitud]
-			    },
-			    "properties": {
-			        "title": "Estación " + item.estacion,
-			        "icon": {
-			            "iconUrl": "./js/train.png",
-			            "iconSize": [32, 37]
-			        }
-			    }
-			});
-			
-			map.markerLayer.on('layeradd', function(e) {
-			    var marker = e.layer,
-			        feature = marker.feature;
-
-			    marker.setIcon(L.icon(feature.properties.icon));
-			});	
-			map.markerLayer.setGeoJSON(geoJson);							 
-		});				
-	});		
-}
-
 function mostrarUrl(tweet) {
 	var url_regexp = /\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/gi;
   	return tweet.replace(url_regexp,"<a href='$1' class='tweetURL' target='_blank'>$1</a>");
@@ -266,13 +232,16 @@ Zepto(function($){
 	    },
 	    render: function(){
 	      	var template = _.template( $("#MapView").html(), {} );	      
-	      	this.$el.html( template );	      		
+	      	this.$el.html( template );
+	      	this.afterRender();	      		
 	      	return this;      	
+	    },
+	    afterRender: function(){	    	
 	    }
   	});
 
-  	var mapView = new MapView({ el: $("#mapa-page") });
-  	mostrarMapa();	
+  	var mapView = new MapView({ el: $("#mapa-page") });  	
+  	
   	// Twitter
   	Tweet = Backbone.Model.extend({});
 

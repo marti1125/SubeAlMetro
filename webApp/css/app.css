@@ -143,10 +143,6 @@ section[role="region"] > header:first-child img {
 	color: black;
 	padding-right: 13%;	
 }
-#mapbox {
-	width: 100%;
-	height: 100%;
-}
 .horaRumboGrauActual {
 	color: red !important;
 }
