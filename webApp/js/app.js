@@ -39,7 +39,7 @@ function marcarEstacion(result){
             "Estación "+result+""
         );
     notification.show();	
-	$("li #IdEstacion").each(function( index ) {
+	$("li [data-view-name='estacion']").each(function( index ) {
 		if(result == $(this).data("estacion")){				
 			$(this).addClass('estacionActiva');
 		}
@@ -113,101 +113,19 @@ $(document).ready(function(){
 	});
 
 	$('.rTweets').hide();
-	$('.rMap').hide();	
-
-	/*function obtenerHora(){		
-		var hora = new Date();
-    	var horaActual = moment('01/01/2013'+hora.getHours()+':'+hora.getMinutes(),'DD/MM/YYYY HH:mm').format('YYYY-MM-DD HH:mm');
-    	//setTimeout("obtenerHora()",1000) 
-    	return horaActual;    	
-	}*/
-
-	/*$(document).on("click", "#IdEstacion", function(){
-
-		var dia = new Date();
-		var n = dia.getDay();
-
-		if(n == 0){
-			$("#listHorarios").html('');
-			var estacion = $(this).data("estacion");
-			$('#tituloNombreEstacion').html("<h2 class='tituloEstacion'>Estación "+estacion+"</h2><span class='condicionHorario'>Horario: Domingos y Feriados</span>");
-			$.getJSON('js/horarios_domingo_y_feriados.json', function(text){
-				$.each(text, function(key, value){
-					$.each(value, function(index, result){		
-						if(result.nombre == estacion){
-							for(i=0;i<result.GRAU.length;i++){                            	
-								$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
-	 						}											
-						}
-					});
-				});	  			
-			});			
-		}
-
-		if(n == 1 || n == 2 || n == 3 || n == 4 || n == 5){
-			$("#listHorarios").html('');
-			var estacion = $(this).data("estacion")
-			$('#tituloNombreEstacion').html("<h2 class='tituloEstacion'>Estación "+estacion+"</h2><span class='condicionHorario'>Horario: Lunes - Viernes</span>");			
-			$.getJSON('js/horarios.json', function(text){
-				$.each(text, function(key, value){
-					$.each(value, function(index, result){		
-						if(result.nombre == estacion){
-							for(i=0;i<result.GRAU.length;i++){                            	
-								$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
-	 						}											
-						}
-					});
-				});	  			
-			});
-		}
-
-		if(n == 6){
-			$("#listHorarios").html('');
-			var estacion = $(this).data("estacion")
-			$('#tituloNombreEstacion').html("<h2 class='tituloEstacion'>Estación "+estacion+"</h2><span class='condicionHorario'>Horario: Sabados</span>");
-			$.getJSON('js/horarios_sabados.json', function(text){
-				$.each(text, function(key, value){
-					$.each(value, function(index, result){		
-						if(result.nombre == estacion){
-							for(i=0;i<result.VES.length;i++){
-								if(result.GRAU[i] == undefined){
-									$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'></p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
-								} else {
-									$("#listHorarios").append("<li id='contieneHoraSalida'><p id='horaSalida'>"+result.GRAU[i]+"</p><p id='horaRegreso'>"+result.VES[i]+"</p></li>");	
-								}								                            	
-	 						}											
-						}
-					});
-				});	  			
-			});		
-		}		
-
-		$("#settings-view").removeClass("bajar");		
-		$("#settings-view").addClass("subir");
-	});
-
-	$(document).on('click', '#settings-btn', function(){		
-		$('#settings-view').removeClass('subir');
-		$('#settings-view').addClass('bajar');
-	});
-	*/
+	$('.rMap').hide();
 
 	// Horarios
 	Horario = Backbone.Model.extend({});
 
 	HorarioCollection = Backbone.Collection.extend({		
 		model: Horario,
-		url: 'js/horarios_domingo_y_feriados.json',
-		initialize: function(estacionNumero) {
-	    	this.estacion = estacionNumero;
-	  	},
 		parse: function(response) {
-			//console.log(JSON.stringify(response[this.estacion]))			
-			return response[this.estacion];
+			return response;		
 		}
 	});
 
-	HorarioView = Backbone.View.extend({		
+	var HorarioView = Backbone.View.extend({		
 		events: {
 	        "click #settings-btn": "cerrarHorario"
 	    },
@@ -215,30 +133,16 @@ $(document).ready(function(){
 			$('#settings-view').removeClass('subir');
 			$('#settings-view').addClass('bajar');
 		},
-		initialize: function(){
+		initialize: function(attrs){
+			this.estacionNombre = attrs;
 			this.listenTo(this.collection, 'change', this.render);				
 			this.template = _.template( $("#HorarioView").html() );			
 		},
 		render: function () {			
-			console.log(JSON.stringify(this.collection))
-			this.$el.html(this.template({ horarios: this.collection.toJSON() }));
+			this.$el.html(this.template({ horarios: _.where(this.collection.toJSON(), {nombre: this.estacionNombre.attrs }) }));  
 			return this;	    
 		}
 	});
-
-	//var horarioView = new HorarioView({ el: $("#horarios-page") });	
-
-	/*var horarioView = new HorarioView({ el: $("#horarios-page") });
-	
-	var horarioCollection = new HorarioCollection();	
-
-	var horarioView = new HorarioView({collection: horarioCollection});
-
-	horarioCollection.fetch({reset: true});
-
-	horarioCollection.bind('reset', function () {				
-		$("#horarios-page").append(horarioView.render().$el);
-	});*/
 	
 	// Estaciones
 	Estacion = Backbone.Model.extend({});
@@ -249,43 +153,65 @@ $(document).ready(function(){
 		parse: function(response) {
 			return response;
 		}
-	});
+	});	
 
 	EstacionView = Backbone.View.extend({
 		events: {
-	        "click #IdEstacion": "obtenerHorario"
+	        'click [data-view-name="estacion"]': 'obtenerHorario'
 	    },
 	    obtenerHorario: function(ev){
-	     
-	    	$("#settings-view").removeClass("bajar");		
-			$("#settings-view").addClass("subir");
 
-	    	var estacion = $(ev.currentTarget).text().replace("Estación ","").trim();
-	    	var value = $(ev.currentTarget).data("value");	    	
-
-	    	var horarioCollection = new HorarioCollection(value);
-
-	    	var horarioView = new HorarioView({collection: horarioCollection});
-
-	    	horarioCollection.fetch({reset: true});    	
-
-	    	horarioCollection.bind('reset', function () {						
-				$("#horarios-page").append(horarioView.render().$el);
-			});
+	    	var estacion = $(ev.currentTarget).text().replace("Estación ","").trim();	    	
 
 	    	var dia = new Date();
-			var n = dia.getDay();			
-	    	$("#tituloNombreEstacion").html(" Estación " + estacion);
-	    	/*if(n == 0){
-	    		$("#horariosDiaSemana").html("Domingos y Feriados");
+			var n = dia.getDay();
+
+			if(n == 0){
+				var horarioCollection = new HorarioCollection();
+
+		    	horarioCollection.fetch({url: 'js/horarios_domingo_y_feriados.json', reset: true});  
+
+		    	var horarioView = new HorarioView({collection: horarioCollection, attrs: estacion});
+
+		    	horarioCollection.bind('reset', function () {						
+					$("#horarios-page").html(horarioView.render().$el);
+					horarioView.$("#settings-view").removeClass("bajar");		
+					horarioView.$("#settings-view").addClass("subir");
+					horarioView.$("#tituloNombreEstacion").html(" Estación " + estacion);
+					horarioView.$("#horariosDiaSemana").html("Domingos y Feriados");
+				});	    		
 			}
 			if(n == 1 || n == 2 || n == 3 || n == 4 || n == 5){
-				$("#horariosDiaSemana").html("Lunes - Viernes");
+				var horarioCollection = new HorarioCollection();
+
+		    	horarioCollection.fetch({url: 'js/horarios.json', reset: true});  
+
+		    	var horarioView = new HorarioView({collection: horarioCollection, attrs: estacion});
+
+		    	horarioCollection.bind('reset', function () {						
+					$("#horarios-page").html(horarioView.render().$el);
+					horarioView.$("#settings-view").removeClass("bajar");		
+					horarioView.$("#settings-view").addClass("subir");
+					horarioView.$("#tituloNombreEstacion").html(" Estación " + estacion);
+					horarioView.$("#horariosDiaSemana").html("Lunes - Viernes");
+				});				
 			}
 	    	if(n == 6){
-	    		$("#horariosDiaSemana").html("Sabados");
-	    	}*/
-	    	
+	    		var horarioCollection = new HorarioCollection();
+
+		    	horarioCollection.fetch({url: 'js/horarios_sabados.json', reset: true});  
+
+		    	var horarioView = new HorarioView({collection: horarioCollection, attrs: estacion});
+
+		    	horarioCollection.bind('reset', function () {						
+					$("#horarios-page").html(horarioView.render().$el);
+					horarioView.$("#settings-view").removeClass("bajar");		
+					horarioView.$("#settings-view").addClass("subir");
+					horarioView.$("#tituloNombreEstacion").html(" Estación " + estacion);
+					horarioView.$("#horariosDiaSemana").html("Sabados");
+				});	    		
+	    	} 
+
 	    },
 		initialize: function(){		 		
 			this.template = _.template( $("#EstacionView").html() );						
@@ -397,31 +323,7 @@ $(document).ready(function(){
 		$("#tweet-page").append(tweetView.render().$el);
 	});
 
-	tweetCollection.fetch({reset: true});		
-
-	/*if(navigator.onLine){		
-		
-	} else {
-		$('.preload').hide();		
-		$('#info-tweet').append('<h1 class="mensajeConexionT">Necesita conexión a internet<h1>');
-		$('.mensajeConexionT').show();
-		$('.rTweets').show();
-	}*/
-
-	/*$('.rTweets').click(function(){		
-		if(navigator.onLine){
-			$('.preload').show();
-			$('.mensajeConexionT').hide();
-			$('.rTweets').hide();
-			tweetCollection.bind('reset', function () {
-				$('.preload').hide();							
-				$("#tweets").append(tweetView.render().$el);
-			});
-			tweetCollection.fetch({reset: true});
-		} else {
-			
-		}
-	});*/
+	tweetCollection.fetch({reset: true});
 
 	// Info
   	InfoView = Backbone.View.extend({

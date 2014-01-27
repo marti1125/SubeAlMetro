@@ -75,7 +75,7 @@
       <section data-type="list">
         <ul class="estacionesMetro">          
           <% _.each(estacionMetro, function(e) { %>
-            <li id="IdEstacion" data-estacion="<%=e.estacion %>" data-value="<%=e.value %>">
+            <li data-view-name="estacion" class="IdEstacion" data-estacion="<%=e.estacion %>" data-value="<%=e.value %>">
               <aside class="pack-end">
                 <img id="gethora" alt="placeholder" src="img/hora.png">
               </aside>
