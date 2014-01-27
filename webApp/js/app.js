@@ -217,7 +217,6 @@ $(document).ready(function(){
 			this.template = _.template( $("#EstacionView").html() );						
 		},
 		render: function () {
-
 			this.$el.html(this.template({estacionMetro: this.collection.toJSON()}));			
 	        this.afterRender();
 			return this;
@@ -259,17 +258,7 @@ $(document).ready(function(){
 	});	
 
 	// Mapa de ubicaciones de las estaciones
-	MapView = Backbone.View.extend({
-		events: {
-        	"click .rMap": "actualizarMapa"
-    	},
-    	actualizarMapa: function(event){
-	        if(navigator.onLine){
-				$('.mensajeConexionM').hide();
-				$('.rMap').hide();
-				mostrarMapa();
-			}
-	    },
+	MapView = Backbone.View.extend({		
 	    initialize: function(){	        	
 	        this.render();
 	    },
@@ -279,16 +268,7 @@ $(document).ready(function(){
 	      	this.afterRender();	      	
 	    },
 		afterRender: function() {
-			if(navigator.onLine){
-				$('.rMap').hide();	
-				mostrarMapa();
-			} else {		
-				$('#mapbox').append(
-					'<h1 class="mensajeConexionM">Necesita conexión a internet<h1>'
-				);
-				$('.mensajeConexionM').show();
-				$('.rMap').show();
-			}			
+			mostrarMapa();					
 		}
   	});
 
