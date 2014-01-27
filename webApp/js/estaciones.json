@@ -5,7 +5,8 @@
 		"distrito": "Villa El Salvador",
 		"ubicacion": "Av. Separadora Industrial / Av. Velasco Alvarado",
 		"latitud": -12.207415,
-		"longitud": -76.933404
+		"longitud": -76.933404,
+		"value": 0
 	},
 	{
 		"codigo": "PI",
@@ -13,7 +14,8 @@
 		"distrito": "Villa El Salvador",
 		"ubicacion": "Av. Separadora Industrial / Av. El Sol",
 		"latitud": -12.196510,
-		"longitud": -76.939445
+		"longitud": -76.939445,
+		"value": 1
 	},
 	{
 		"codigo": "PU",
@@ -21,7 +23,8 @@
 		"distrito": "VM del Triunfo",
 		"ubicacion": "Av. La Unión / Pedro Ruiz Gallo / E. Aguirre",
 		"latitud": -12.182321,
-		"longitud": -76.946890
+		"longitud": -76.946890,
+		"value": 2
 	},		
 	{
 		"codigo": "VM",
@@ -29,7 +32,8 @@
 		"distrito": "VM del Triunfo",
 		"ubicacion": "Av. Pachacútec / Av. Santa Rosa",
 		"latitud": -12.169285,
-		"longitud": -76.950356
+		"longitud": -76.950356,
+		"value": 3
 	},
 	{
 		"codigo": "MA",
@@ -37,7 +41,8 @@
 		"distrito": "VM del Triunfo",
 		"ubicacion": "Av. Pachacútec / Av. Manco Cápac",
 		"latitud": -12.161188,
-		"longitud": -76.956332
+		"longitud": -76.956332,
+		"value": 4
 	},
 	{
 		"codigo": "SJ",
@@ -45,7 +50,8 @@
 		"distrito": "SJ de Miraflores",
 		"ubicacion": "Los Héroes / Av. César Canevaro",
 		"latitud": -12.156500,
-		"longitud": -76.965687
+		"longitud": -76.965687,
+		"value": 5
 	},
 	{
 		"codigo": "AT",
@@ -53,7 +59,8 @@
 		"distrito": "SJ de Miraflores",
 		"ubicacion": "Av. Los Héroes / Av. Buckingham",
 		"latitud": -12.150847,
-		"longitud": -76.979538
+		"longitud": -76.979538,
+		"value": 6
 	},
 	{
 		"codigo": "JCH",
@@ -61,7 +68,8 @@
 		"distrito": "Santiago de Surco",
 		"ubicacion": "Av. Tomás Marsano / Av. Jorge Chávez",
 		"latitud": -12.142587,
-		"longitud": -76.991015
+		"longitud": -76.991015,
+		"value": 7
 	},		
 	{
 		"codigo": "AY",
@@ -69,7 +77,8 @@
 		"distrito": "Santiago de Surco",
 		"ubicacion": "Av. Tomás Marsano / Av. Ayacucho",
 		"latitud": -12.134755,
-		"longitud": -76.997012
+		"longitud": -76.997012,
+		"value": 8
 	},
 	{
 		"codigo": "CA",
@@ -77,7 +86,8 @@
 		"distrito": "Santiago de Surco",
 		"ubicacion": "Av. Aviación / Óvalo Los Cabitos (Higuereta)",
 		"latitud": -12.127667,
-		"longitud": -77.000669
+		"longitud": -77.000669,
+		"value": 9
 	},
 	{
 		"codigo": "AN",
@@ -85,7 +95,8 @@
 		"distrito": "San Borja",
 		"ubicacion": "Av. Aviación / Av. Primavera",
 		"latitud": -12.111075,
-		"longitud": -77.000208
+		"longitud": -77.000208,
+		"value": 10
 	},
 	{
 		"codigo": "SBS",
@@ -93,7 +104,8 @@
 		"distrito": "San Borja",
 		"ubicacion": "Av. Aviación / Av. San Borja Sur",
 		"latitud": -12.100967,
-		"longitud": -77.001694
+		"longitud": -77.001694,
+		"value": 11
 	},
 	{
 		"codigo": "LC",
@@ -101,7 +113,8 @@
 		"distrito": "San Borja",
 		"ubicacion": "Av. Aviación / Av. Javier Prado",
 		"latitud": -12.087475,
-		"longitud": -77.003678
+		"longitud": -77.003678,
+		"value": 12
 	},
 	{
 		"codigo": "NA",
@@ -109,7 +122,8 @@
 		"distrito": "La Victoria",
 		"ubicacion": "Av. Aviación / Óvalo Arriola",
 		"latitud": -12.076029,
-		"longitud": -77.010992
+		"longitud": -77.010992,
+		"value": 13
 	},
 	{
 		"codigo": "GA",
@@ -117,7 +131,8 @@
 		"distrito": "La Victoria",
 		"ubicacion": "Av. Aviación / Jirón Hipólito Unanue",
 		"latitud": -12.065137,
-		"longitud": -77.012411
+		"longitud": -77.012411,
+		"value": 14
 	},
 	{
 		"codigo": "GR",
@@ -125,6 +140,7 @@
 		"distrito": "Cercado de Lima",
 		"ubicacion": "Av. Grau / Nicolás Ayllón",
 		"latitud": -12.055529,
-		"longitud": -77.013857
+		"longitud": -77.013857,
+		"value": 15
 	}
 ]

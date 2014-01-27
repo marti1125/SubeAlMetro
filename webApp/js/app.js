@@ -191,6 +191,54 @@ $(document).ready(function(){
 		$('#settings-view').addClass('bajar');
 	});
 	*/
+
+	// Horarios
+	Horario = Backbone.Model.extend({});
+
+	HorarioCollection = Backbone.Collection.extend({		
+		model: Horario,
+		url: 'js/horarios_domingo_y_feriados.json',
+		initialize: function(estacionNumero) {
+	    	this.estacion = estacionNumero;
+	  	},
+		parse: function(response) {
+			//console.log(JSON.stringify(response[this.estacion]))			
+			return response[this.estacion];
+		}
+	});
+
+	HorarioView = Backbone.View.extend({		
+		events: {
+	        "click #settings-btn": "cerrarHorario"
+	    },
+		cerrarHorario: function(){		
+			$('#settings-view').removeClass('subir');
+			$('#settings-view').addClass('bajar');
+		},
+		initialize: function(){
+			this.listenTo(this.collection, 'change', this.render);				
+			this.template = _.template( $("#HorarioView").html() );			
+		},
+		render: function () {			
+			console.log(JSON.stringify(this.collection))
+			this.$el.html(this.template({ horarios: this.collection.toJSON() }));
+			return this;	    
+		}
+	});
+
+	//var horarioView = new HorarioView({ el: $("#horarios-page") });	
+
+	/*var horarioView = new HorarioView({ el: $("#horarios-page") });
+	
+	var horarioCollection = new HorarioCollection();	
+
+	var horarioView = new HorarioView({collection: horarioCollection});
+
+	horarioCollection.fetch({reset: true});
+
+	horarioCollection.bind('reset', function () {				
+		$("#horarios-page").append(horarioView.render().$el);
+	});*/
 	
 	// Estaciones
 	Estacion = Backbone.Model.extend({});
@@ -208,12 +256,42 @@ $(document).ready(function(){
 	        "click #IdEstacion": "obtenerHorario"
 	    },
 	    obtenerHorario: function(ev){
-	    	var estacion = $(ev.currentTarget).text().replace("Estación ","");
+	     
+	    	$("#settings-view").removeClass("bajar");		
+			$("#settings-view").addClass("subir");
+
+	    	var estacion = $(ev.currentTarget).text().replace("Estación ","").trim();
+	    	var value = $(ev.currentTarget).data("value");	    	
+
+	    	var horarioCollection = new HorarioCollection(value);
+
+	    	var horarioView = new HorarioView({collection: horarioCollection});
+
+	    	horarioCollection.fetch({reset: true});    	
+
+	    	horarioCollection.bind('reset', function () {						
+				$("#horarios-page").append(horarioView.render().$el);
+			});
+
+	    	var dia = new Date();
+			var n = dia.getDay();			
+	    	$("#tituloNombreEstacion").html(" Estación " + estacion);
+	    	/*if(n == 0){
+	    		$("#horariosDiaSemana").html("Domingos y Feriados");
+			}
+			if(n == 1 || n == 2 || n == 3 || n == 4 || n == 5){
+				$("#horariosDiaSemana").html("Lunes - Viernes");
+			}
+	    	if(n == 6){
+	    		$("#horariosDiaSemana").html("Sabados");
+	    	}*/
+	    	
 	    },
-		initialize: function(){			
+		initialize: function(){		 		
 			this.template = _.template( $("#EstacionView").html() );						
 		},
-		render: function () {	
+		render: function () {
+
 			this.$el.html(this.template({estacionMetro: this.collection.toJSON()}));			
 	        this.afterRender();
 			return this;
@@ -252,7 +330,7 @@ $(document).ready(function(){
 
 	estacionCollection.bind('reset', function () {	
 		$("#estacion-page").append(estacionView.render().$el);
-	});
+	});	
 
 	// Mapa de ubicaciones de las estaciones
 	MapView = Backbone.View.extend({

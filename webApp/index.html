@@ -64,29 +64,8 @@
 
     </section>
 
-    <section role="region" id="settings-view">
-      <header>        
-        <menu type="toolbar">
-            <button id="settings-btn"><span class="icon icon-close">close</span></button>
-        </menu>
-        <img src="img/logo.png" height="34" />
-        <div id="tituloNombreEstacion"></div>
-        <ul role="tablist" data-type="filter" data-items="2">
-          <li id="filter1-1" role="tab"><a href="#filter1-1">Hacia GRAU</a></li>
-          <li id="filter1-2" role="tab"><a href="#filter1-2">Hacia VES</a></li>
-        </ul>
-
-      </header>
-
-      <section id="listaDeHorarios" data-type="list">
-        <br/>
-        <br/>
-        <br/>
-        <ul id="listHorarios">          
-        </ul>
-      </section>
-
-    </section>
+    <div id="horarios-page"></div>
+    
  
     <script type="text/template" id="OfflineView">
       <h1 class="mensajeConexionT">Necesita conexión a internet<h1>
@@ -94,9 +73,9 @@
 
     <script type="text/template" id="EstacionView"> 
       <section data-type="list">
-        <ul class="estacionesMetro">
+        <ul class="estacionesMetro">          
           <% _.each(estacionMetro, function(e) { %>
-            <li id="IdEstacion" data-estacion="<%=e.estacion %>">
+            <li id="IdEstacion" data-estacion="<%=e.estacion %>" data-value="<%=e.value %>">
               <aside class="pack-end">
                 <img id="gethora" alt="placeholder" src="img/hora.png">
               </aside>
@@ -104,6 +83,38 @@
             </li>
           <% }) %>
         </ul>
+      </section>
+    </script>
+
+    <script type="text/template" id="HorarioView">      
+      <section role="region" id="settings-view">
+        <header>        
+          <menu type="toolbar">
+              <button id="settings-btn"><span class="icon icon-close">close</span></button>
+          </menu>
+          <img src="img/logo.png" height="34" />
+          <h3 id="tituloNombreEstacion"></h3>
+          <p id="horariosDiaSemana"></p>
+          <ul role="tablist" data-type="filter" data-items="2">
+            <li id="filter1-1" role="tab"><a href="#filter1-1">Hacia GRAU</a></li>
+            <li id="filter1-2" role="tab"><a href="#filter1-2">Hacia VES</a></li>
+          </ul>
+        </header>
+        <section id="listaDeHorarios" data-type="list">
+          <br/>
+          <br/>
+          <br/>
+          <ul id="listHorarios">
+            <% _.each(horarios, function(e) { %>              
+                <% for(i=0;i<e.GRAU.length;i++) { %>
+                  <li id="contieneHoraSalida">
+                    <p id='horaSalida'><%= e.GRAU[i] %></p>
+                    <p id='horaRegreso'><%= e.VES[i] %></p>
+                  </li>
+                <% } %>  
+            <% }); %>    
+          </ul>
+        </section>
       </section>
     </script>
 
@@ -120,10 +131,13 @@
             <div class="imgLeft">
               <img src="<%= t.user.profile_image_url %>"/>
             </div>
-            <h1 class="titleTwitter"><%= t.user.name %><span class="usertwitter"> @<%=t.user.screen_name %></span></h1>
+            <h1 class="titleTwitter">
+              <%= t.user.name %>
+              <span class="usertwitter"> @<%=t.user.screen_name %></span>
+            </h1>
             <p><strong><%= mostrarUrl(t.text) %></strong></p>          
           </li>
-        <% }) %>
+        <% }); %>
         </ul>
       </section>
     </script>

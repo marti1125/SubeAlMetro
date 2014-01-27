@@ -226,3 +226,21 @@ a.recommend[role="button"]:active  {
 .selectedTab {
 	background-color: #008AAA !important;	
 }
+#tituloNombreEstacion {
+	font-size: 1.5rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: visible;
+    margin: 0rem 0rem 0rem 0rem;
+    padding-top: 0.8rem;
+    height: 0rem;
+
+}
+#horariosDiaSemana {
+	text-align: center;
+	font-size: 1.5rem;
+	height: 0rem;
+}
