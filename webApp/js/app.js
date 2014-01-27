@@ -63,6 +63,7 @@ function btnEvents(btnName){
 var map;
 var geoJson = [];
 function mostrarMapa(){
+
 	map = L.mapbox.map('mapbox', 'osgux.g99506jm');
 
 	$.getJSON('js/estaciones.json', function(response){		
@@ -81,6 +82,7 @@ function mostrarMapa(){
 			        }
 			    }
 			});
+			
 			map.markerLayer.on('layeradd', function(e) {
 			    var marker = e.layer,
 			        feature = marker.feature;
@@ -89,7 +91,7 @@ function mostrarMapa(){
 			});	
 			map.markerLayer.setGeoJSON(geoJson);							 
 		});				
-	});	
+	});		
 }
 
 function mostrarUrl(tweet) {
@@ -97,7 +99,7 @@ function mostrarUrl(tweet) {
   	return tweet.replace(url_regexp,"<a href='$1' class='tweetURL' target='_blank'>$1</a>");
 }
 
-$(document).ready(function(){
+Zepto(function($){
 
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
@@ -259,21 +261,18 @@ $(document).ready(function(){
 
 	// Mapa de ubicaciones de las estaciones
 	MapView = Backbone.View.extend({		
-	    initialize: function(){	        	
+	    initialize: function(){      	
 	        this.render();
 	    },
 	    render: function(){
 	      	var template = _.template( $("#MapView").html(), {} );	      
-	      	this.$el.html( template );
-	      	this.afterRender();	      	
-	    },
-		afterRender: function() {
-			mostrarMapa();					
-		}
+	      	this.$el.html( template );	      		
+	      	return this;      	
+	    }
   	});
 
   	var mapView = new MapView({ el: $("#mapa-page") });
-
+  	mostrarMapa();	
   	// Twitter
   	Tweet = Backbone.Model.extend({});
 
