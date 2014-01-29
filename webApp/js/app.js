@@ -231,7 +231,12 @@ Zepto(function($){
 	        this.render();
 	    },
 	    render: function(){
-	      	var template = _.template( $("#MapView").html(), {} );	      
+	    	var template;
+	    	if (navigator.onLine) { 
+	      		template = _.template( $("#MapView").html(), {} );
+	      	} else {
+	      		template = _.template( $("#OfflineView").html(), {} );
+	      	}	      
 	      	this.$el.html( template );
 	      	this.afterRender();	      		
 	      	return this;      	
@@ -255,7 +260,11 @@ Zepto(function($){
 
 	TweetView = Backbone.View.extend({
 		initialize: function(){
-			this.template = _.template( $("#TweetView").html() );
+			if (navigator.onLine) { 
+				this.template = _.template( $("#TweetView").html() );
+			} else {
+				this.template = _.template( $("#OfflineView").html() );
+			}
 		},
 		render: function () {	
 			this.$el.html(this.template({tweet: this.model.toJSON()}));

@@ -23,10 +23,8 @@ CACHE MANIFEST
 /js/app.js
 /js/estaciones.json
 /js/horarios.json
-/js/jquery-1.10.2.min.js
 /js/zepto.min.js
 /js/latlong.js
-/js/moment.min.js
 /js/horarios_sabados.json
 /js/horarios_domingo_y_feriados.json
 /js/underscore-min.js
