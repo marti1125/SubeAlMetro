@@ -56,7 +56,7 @@ function btnEvents(btnName){
 		$('#settings-view').removeClass('bajar');
 		$('.active').removeClass('active');
 		//Cambiar Titulo
-		$('#titulo').html($('#'+btnName).attr('alt'));				
+		$('#titulo').html("&nbsp;"+$('#'+btnName).attr('alt'));				
 	});
 }
 

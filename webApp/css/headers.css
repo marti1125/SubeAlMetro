@@ -7,7 +7,7 @@ section[role="region"] > header:first-child {
   padding: 0;
   height: 5rem;
   color: #fff;
-  background: url(headers/images/ui/headerMetro.png) repeat-x 0 0;
+ // background: url(headers/images/ui/headerMetro.png) repeat-x 0 0;
   background-size: auto 100%;
   border: none;
 }
@@ -27,7 +27,7 @@ section[role="region"] > header:first-child:after {
 section[role="region"] > header:first-child h1 {
   font: 2.5rem/4.8rem "MozTT", Sans-serif;
   text-align: left;
-  color: #fff;
+  color: #66CD00;
   white-space: nowrap;
   text-overflow: ellipsis;
   display: block;
