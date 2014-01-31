@@ -27,7 +27,7 @@ section[role="region"] > header:first-child:after {
 section[role="region"] > header:first-child h1 {
   font: 2.5rem/4.8rem "MozTT", Sans-serif;
   text-align: left;
-  color: #66CD00;
+  color: #363636;
   white-space: nowrap;
   text-overflow: ellipsis;
   display: block;
