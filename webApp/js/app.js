@@ -129,12 +129,85 @@ Zepto(function($){
 	    },
 	    obtenerHorario: function(ev){
 
+	    	function feriados(nombreDeLaFecha){
+	    		var horarioCollection = new HorarioCollection();
+
+		    	horarioCollection.fetch({url: 'js/horarios_domingo_y_feriados.json', reset: true});  
+
+		    	var horarioView = new HorarioView({collection: horarioCollection, attrs: estacion});
+
+		    	horarioCollection.bind('reset', function () {						
+					$("#horarios-page").html(horarioView.render().$el);
+					horarioView.$("#settings-view").removeClass("bajar");		
+					horarioView.$("#settings-view").addClass("subir");
+					horarioView.$("#tituloNombreEstacion").html(" Estación " + estacion);
+					horarioView.$("#horariosDiaSemana").html(""+nombreDeLaFecha+"");
+				});
+	    	}
+
+	    	// Dias feriados, 0 - 11 Meses del año segun Javascript
+	    	var ene1 = new Date(2014,0,1);
+	    	var abr17 = new Date(2014,3,17);
+	    	var abr18 = new Date(2014,3,18);
+	    	var may1 = new Date(2014,4,1);
+	    	var jun29 = new Date(2014,5,29);
+	    	var jul28 = new Date(2014,6,28);
+	    	var jul29 = new Date(2014,6,29);
+	    	var agos30 = new Date(2014,7,30);
+	    	var oct8 = new Date(2014,9,8);
+	    	var nov1 = new Date(2014,10,1);
+	    	var dic8 = new Date(2014,11,8);
+	    	var dic25 = new Date(2014,11,25);
+
+	    	function getFullDay(date){
+	    		return date.getFullYear() + '-' +  date.getMonth() + '-' + date.getDate();
+	    	}
+
 	    	var estacion = $(ev.currentTarget).text().replace("Estación ","").trim();	    	
 
 	    	var dia = new Date();
+	    	dia.setHours(0,0,0,0);
+	    	var fullDay = dia.getFullYear() + '-' +  dia.getMonth() + '-' + dia.getDate();
+
 			var n = dia.getDay();
 
-			if(n == 0){
+			if(fullDay == getFullDay(ene1)){
+				var fechaEspecial = "Primer día del año";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(abr17)){
+				var fechaEspecial = "¡Feliz Semana Santa!";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(abr18)){
+				var fechaEspecial = "¡Feliz Semana Santa!";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(may1)){
+				var fechaEspecial = "Día del trabajador";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(jun29)){
+				var fechaEspecial = "Día de San Pedro y San Pablo";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(jul28)){
+				var fechaEspecial = "Día de la Independencia del Perú";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(jul29)){
+				var fechaEspecial = "¡Felices Fiestas Patrias!";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(agos30)){
+				var fechaEspecial = "Santa Rosa de Lima";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(oct8)){
+				var fechaEspecial = "Combate de Angamos";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(nov1)){
+				var fechaEspecial = "Día de todos los Santos";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(dic8)){
+				var fechaEspecial = "Día de la Inmaculada Concepción";
+				feriados(fechaEspecial)				
+			} else if(fullDay == getFullDay(dic8)){
+				var fechaEspecial = "¡Feliz Navidad!";
+				feriados(fechaEspecial)				
+			} else if(n == 0){
 				var horarioCollection = new HorarioCollection();
 
 		    	horarioCollection.fetch({url: 'js/horarios_domingo_y_feriados.json', reset: true});  
@@ -146,10 +219,9 @@ Zepto(function($){
 					horarioView.$("#settings-view").removeClass("bajar");		
 					horarioView.$("#settings-view").addClass("subir");
 					horarioView.$("#tituloNombreEstacion").html(" Estación " + estacion);
-					horarioView.$("#horariosDiaSemana").html("Domingos y Feriados");
+					horarioView.$("#horariosDiaSemana").html("Domingos");
 				});	    		
-			}
-			if(n == 1 || n == 2 || n == 3 || n == 4 || n == 5){
+			} else if(n == 1 || n == 2 || n == 3 || n == 4 || n == 5){				
 				var horarioCollection = new HorarioCollection();
 
 		    	horarioCollection.fetch({url: 'js/horarios.json', reset: true});  
@@ -163,8 +235,7 @@ Zepto(function($){
 					horarioView.$("#tituloNombreEstacion").html(" Estación " + estacion);
 					horarioView.$("#horariosDiaSemana").html("Lunes - Viernes");
 				});				
-			}
-	    	if(n == 6){
+			} else if(n == 6){
 	    		var horarioCollection = new HorarioCollection();
 
 		    	horarioCollection.fetch({url: 'js/horarios_sabados.json', reset: true});  
@@ -178,7 +249,7 @@ Zepto(function($){
 					horarioView.$("#tituloNombreEstacion").html(" Estación " + estacion);
 					horarioView.$("#horariosDiaSemana").html("Sabados");
 				});	    		
-	    	} 
+	    	}
 
 	    },
 		initialize: function(){		 		
