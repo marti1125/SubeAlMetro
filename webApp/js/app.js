@@ -33,7 +33,7 @@ function distaciaMenor(miLatitud, miLongitud, estacionLatitud, estacionLongitud,
 	return [d,estacion];
 }
 
-function marcarEstacion(result){
+function marcarEstacion(result){	
 	var notification = navigator.mozNotification.createNotification(
             "La estación mas cercana es: ",
             "Estación "+result+""
@@ -65,8 +65,21 @@ function mostrarUrl(tweet) {
   	return tweet.replace(url_regexp,"<a href='$1' class='tweetURL' target='_blank'>$1</a>");
 }
 
-Zepto(function($){
+function obtenerHora(){	
+	var hora = new Date();    
+    horaActual = hora.getHours()+':'+(hora.getMinutes()<10?'0':'') + hora.getMinutes();
+    return horaActual;
+    console.log(horaActual)
+    setTimeout("obtenerHora()",1000)
+}
 
+function mostrarSiguienteHora(horaActual,hora){
+	var miFecha = new Date("1990-01-01" + hora);
+	var hora = hora.getHours()+':'+(hora.getMinutes()<10?'0':'') + hora.getMinutes();	
+}
+
+Zepto(function($){
+	alert(obtenerHora())
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
 	    mozSystem: true
@@ -280,7 +293,7 @@ Zepto(function($){
 				estacionCercana = $.grep(resultados, function(v,i) {
 				    return v[0] === distaciaMinimo;
 				});
-				var resultado = estacionCercana[0][1]
+				var resultado = estacionCercana[0][1]				
 				marcarEstacion(resultado)
 			});								
 		}
