@@ -10,4 +10,3 @@ Más Información sobre la aplicacion lo encontraras en la [wiki](https://github
 * [carloshs92](https://github.com/carloshs92)
 * [ccarruitero](https://github.com/ccarruitero)
 * [pcabellor](https://github.com/pcabellor)
-* [juaneladio](https://github.com/juaneladio)
