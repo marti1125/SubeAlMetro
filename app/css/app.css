@@ -239,3 +239,15 @@ a.recommend[role="button"]:active  {
 	font-size: 1.5rem;
 	height: 0rem;
 }
+.horaPico {
+	color: white !important;
+	background-color: green !important;
+	padding: 1rem !important;
+	text-align: center;	
+}
+
+x-tabbar-tab img {
+	width: 2.1rem !important;
+	height: 2.4rem !important;
+	padding-top: 1rem !important;
+}

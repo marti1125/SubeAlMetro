@@ -78,8 +78,31 @@ function mostrarSiguienteHora(horaActual,hora){
 	var hora = hora.getHours()+':'+(hora.getMinutes()<10?'0':'') + hora.getMinutes();	
 }
 
+function pintarHorasPunta(hora){
+	
+	var horasPico = 
+	[
+    "06:30","06:36","06:42","06:48","06:54","07:00","07:06","07:12","07:18",
+    "07:24","07:30","07:36","07:42","07:48","07:54","08:00","08:06","08:12",
+    "08:18","08:24","08:30","08:36","08:42","08:48","08:54","09:00","09:06",
+    "09:12","09:18","09:24","09:30","09:36","09:42","09:48","09:54","10:00",
+    "17:00","17:06","17:12","17:18","17:24","17:30","17:36","17:42","17:48",
+    "17:54","18:00","18:06","18:12","18:18","18:24","18:30","18:36","18:42",
+    "18:48","18:54","19:00","19:06","19:12","19:18","19:24","19:30","19:36",
+    "19:42","19:48","19:54","20:00","20:06"
+    ]
+
+	for(var i = 0; i < horasPico.length; i++){  		
+  		if(hora == horasPico[i]){  			
+  			return '<span class="horaPico">'+hora+'</span>';
+  		} 
+  	}
+
+	return hora;
+}
+
 Zepto(function($){
-	alert(obtenerHora())
+	
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
 	    mozSystem: true
@@ -234,7 +257,7 @@ Zepto(function($){
 					horarioView.$("#tituloNombreEstacion").html(" Estación " + estacion);
 					horarioView.$("#horariosDiaSemana").html("Domingos");
 				});	    		
-			} else if(n == 1 || n == 2 || n == 3 || n == 4 || n == 5){				
+			} else if(n == 1 || n == 2 || n == 3 || n == 4 || n == 5 || n == 6){				
 				var horarioCollection = new HorarioCollection();
 
 		    	horarioCollection.fetch({url: 'js/horarios.json', reset: true});  
@@ -248,7 +271,7 @@ Zepto(function($){
 					horarioView.$("#tituloNombreEstacion").html(" Estación " + estacion);
 					horarioView.$("#horariosDiaSemana").html("Lunes - Viernes");
 				});				
-			} else if(n == 6){
+			} /*else if(n == 6){
 	    		var horarioCollection = new HorarioCollection();
 
 		    	horarioCollection.fetch({url: 'js/horarios_sabados.json', reset: true});  
@@ -262,7 +285,7 @@ Zepto(function($){
 					horarioView.$("#tituloNombreEstacion").html(" Estación " + estacion);
 					horarioView.$("#horariosDiaSemana").html("Sabados");
 				});	    		
-	    	}
+	    	}*/
 
 	    },
 		initialize: function(){		 		
