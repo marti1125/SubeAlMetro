@@ -6,7 +6,7 @@ Ofrece listado de estaciones, horarios por estación, mapa de estaciones, twits 
 
 Puedes instalar la aplicación en esta dirección:
 
-[https://marketplace.firefox.com/app/subealmetrodelima/](https://marketplace.firefox.com/app/subealmetrodelima/)
+[https://marketplace.firefox.com/app/sube-al-metro-de-lima/](https://marketplace.firefox.com/app/sube-al-metro-de-lima/)
 
 Más Información sobre la aplicacion lo encontraras en la [wiki](https://github.com/marti1125/SubeAlMetro/wiki)
 
