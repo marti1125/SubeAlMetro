@@ -94,7 +94,7 @@
           <h3 id="tituloNombreEstacion"></h3>
           <p id="horariosDiaSemana"></p>
           <ul role="tablist" data-type="filter" data-items="2">
-            <li id="filter1-1" role="tab"><a>Hacia GRAU</a></li>
+            <li id="filter1-1" role="tab"><a>Hacia BAYOVAR</a></li>
             <li id="filter1-2" role="tab"><a>Hacia VES</a></li>
           </ul>
         </header>
@@ -104,10 +104,10 @@
           <br/>
           <ul id="listHorarios">
             <% _.each(horarios, function(e) { %>              
-                <% for(i=0;i<e.GRAU.length;i++) { %>
+                <% for(i=0;i<e.BAYOVAR.length;i++) { %>
                   <li id="contieneHoraSalida">
-                    <p id='horaSalida'><%= e.GRAU[i] %></p>
-                    <p id='horaRegreso'><%= e.VES[i] %></p>
+                    <p id='horaSalida'><%= mostrarHora(e.BAYOVAR[i]) %></p>
+                    <p id='horaRegreso'><%= mostrarHora(e.VES[i]) %></p>
                   </li>
                 <% } %>  
             <% }); %>    
