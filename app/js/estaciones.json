@@ -126,5 +126,85 @@
 		"ubicacion": "Av. Grau / Nicolás Ayllón",
 		"latitud": -12.055529,
 		"longitud": -77.013857
+	},
+	{
+		"codigo": "LA",
+		"estacion": "El Ángel",
+		"distrito": "El Agustino",
+		"ubicacion": "Av. Locumba Nro. S/N (Cementerio el Ángel)",
+		"latitud": -12.0470641706471,
+		"longitud": -77.0092678070068
+	},
+	{
+		"codigo": "PM",
+		"estacion": "Presbítero Maestro",
+		"distrito": "El Agustino",
+		"ubicacion": "Av. Locumba Nro. S/N (Cementerio Presbítero Maestro)",
+		"latitud": -12.0411043364487,
+		"longitud": -77.0122504234314
+	},
+	{
+		"codigo": "CA",
+		"estacion": "Caja de Agua",
+		"distrito": "San Juan de Lurigancho",
+		"ubicacion": "AV. Próceres de la Independencia / Óvalo Zárate",
+		"latitud": -12.0286491152322,
+		"longitud": -77.0114886760712
+	},
+	{
+		"codigo": "PS",
+		"estacion": "Pirámides del Sol",
+		"distrito": "San Juan de Lurigancho",
+		"ubicacion": "Av. Próceres de la Independencia / Av. Pirámides del Sol",
+		"latitud": -12.0179982367649,
+		"longitud": -77.0025837421417
+	},
+	{
+		"codigo": "LJ",
+		"estacion": "Los Jardines",
+		"distrito": "San Juan de Lurigancho",
+		"ubicacion": "Av. Próceres de la Independencia / Av. Los Jardines",
+		"latitud": -12.005993194596,
+		"longitud": -77.0060062408447
+	},
+	{
+		"codigo": "LP",
+		"estacion": "Los Postes",
+		"distrito": "San Juan de Lurigancho",
+		"ubicacion": "Av. Próceres de la Independencia / Av. Los Postes",
+		"latitud": -11.9972829077824,
+		"longitud": -77.0096325874329
+	},
+	{
+		"codigo": "SC",
+		"estacion": "San Carlos",
+		"distrito": "San Juan de Lurigancho",
+		"ubicacion": "Av. Próceres de la Independencia / Av. El Sol",
+		"latitud": -11.9848991240844,
+		"longitud": -77.0067143440247
+	},
+	{
+		"codigo": "SM",
+		"estacion": "San Martín",
+		"distrito": "San Juan de Lurigancho",
+		"ubicacion": "Av. Próceres de la Independencia / Av. Canto Rey",
+		"latitud": -11.9748972297447,
+		"longitud": -77.0002770423889
+	},
+	{
+		"codigo": "SR",
+		"estacion": "Santa Rosa",
+		"distrito": "San Juan de Lurigancho",
+		"ubicacion": "Av. Próceres de la Independencia / Av. Santa Rosa",
+		"latitud": -11.9688203470689,
+		"longitud": -76.9939148426056
+	},
+	{
+		"codigo": "BA",
+		"estacion": "Bayóvar",
+		"distrito": "San Juan de Lurigancho",
+		"ubicacion": "Av. Próceres de la Independencia / Av. Bayóvar",
+		"latitud": -11.9588598414759,
+		"longitud": -76.9868445396423
 	}
 ]

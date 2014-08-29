@@ -65,6 +65,10 @@ function mostrarUrl(tweet) {
   	return tweet.replace(url_regexp,"<a href='$1' class='tweetURL' target='_blank'>$1</a>");
 }
 
+function mostrarHora(hora){
+	return hora.substring(0, 2) + ":" + hora.substring(2, 4);
+ }
+
 function obtenerHora(){	
 	var hora = new Date();    
     horaActual = hora.getHours()+':'+(hora.getMinutes()<10?'0':'') + hora.getMinutes();
@@ -240,7 +244,7 @@ Zepto(function($){
 			} else if(fullDay == getFullDay(dic8)){
 				var fechaEspecial = "Día de la Inmaculada Concepción";
 				feriados(fechaEspecial)				
-			} else if(fullDay == getFullDay(dic8)){
+			} else if(fullDay == getFullDay(dic25)){
 				var fechaEspecial = "¡Feliz Navidad!";
 				feriados(fechaEspecial)				
 			} else if(n == 0){

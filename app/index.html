@@ -11,7 +11,6 @@
       <link rel="stylesheet" type="text/css" href="css/lists.css" />
       <link rel="stylesheet" type="text/css" href="css/progress_activity.css" />
       <link rel="stylesheet" type="text/css" href="http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.css" />
-      <link rel="stylesheet" type="text/css" href="css/brick.min.css" />   
       <link rel="stylesheet" type="text/css" href="css/app.css" />
 
       <script type="text/javascript" src="js/zepto.min.js" charset="utf-8"></script>
@@ -19,46 +18,12 @@
       <script type="text/javascript" src="js/underscore-min.js" charset="utf-8"></script>
       <script type="text/javascript" src="js/backbone-min.js" charset="utf-8"></script>
       <script type="text/javascript" src="js/latlong.js" charset="utf-8"></script>
-      <script type="text/javascript" src="js/brick.min.js" charset="utf-8"></script>
       <script type="text/javascript" src="js/app.js" charset="utf-8"></script>
       
   </head>
     
   <body role="application">
 
-    <!--section role="region" id="home-view">
-      <header>                
-        <img src="img/logo.png" height="50" width="60" />  
-        <h1 id="titulo">&nbsp;Estaciones</h1>
-      </header>
-
-      <x-tabbar>
-          <x-tabbar-tab target-selector="#estacion-pagee" selected="true">
-            <img id="estacion" alt="Estaciones" src="img/estacion.png" />
-          </x-tabbar-tab>
-
-          <x-tabbar-tab target-selector="#mapa-pagee">
-            <img alt="Ubicaciones" id="mapa" src="img/mapa.png"/>
-          </x-tabbar-tab>
-
-          <x-tabbar-tab target-selector="#tweet-pagee">
-            <img alt="Twitter" id="twitter" src="img/twitter.png"/>
-          </x-tabbar-tab>
-
-          <x-tabbar-tab target-selector="#info-pagee">
-            <img id="info" alt="Información" src="img/info.png" />
-          </x-tabbar-tab>
-          
-      </x-tabbar>
-
-      <x-deck class="component-demo" transition-type="coverDown">
-        <x-card id="estacion-pagee">b</x-card>
-        <x-card id="mapa-pagee">g</x-card>
-        <x-card id="tweet-pagee">z</x-card>
-        <x-card id="info-pagee">a</x-card>
-      </x-deck>     
-
-		</section-->
     <section role="region" id="home-view">
 
       <header>                
@@ -129,7 +94,7 @@
           <h3 id="tituloNombreEstacion"></h3>
           <p id="horariosDiaSemana"></p>
           <ul role="tablist" data-type="filter" data-items="2">
-            <li id="filter1-1" role="tab"><a>Hacia GRAU</a></li>
+            <li id="filter1-1" role="tab"><a>Hacia BAYOVAR</a></li>
             <li id="filter1-2" role="tab"><a>Hacia VES</a></li>
           </ul>
         </header>
@@ -139,10 +104,10 @@
           <br/>
           <ul id="listHorarios">
             <% _.each(horarios, function(e) { %>              
-                <% for(i=0;i<e.GRAU.length;i++) { %>
+                <% for(i=0;i<e.BAYOVAR.length;i++) { %>
                   <li id="contieneHoraSalida">
-                    <p id='horaSalida'><%= e.GRAU[i] %></p>
-                    <p id='horaRegreso'><%= e.VES[i] %></p>
+                    <p id='horaSalida'><%= mostrarHora(e.BAYOVAR[i]) %></p>
+                    <p id='horaRegreso'><%= mostrarHora(e.VES[i]) %></p>
                   </li>
                 <% } %>  
             <% }); %>    
