@@ -1,11 +1,11 @@
 {
-  "name": "Sube al Metro de Lima",
+  "name": "SubeAlMetro",
   "description": "Metro de Lima",
   "launch_path": "/index.html",  
-  "version": "1.8.1",
+  "version": "1.9",
   "developer": {
     "name": "Willy Aguirre",
-    "url": "http://willyaguirre.me/"
+    "url": "https://github.com/marti1125"
   },  
   "locales": {    
     "es": {
