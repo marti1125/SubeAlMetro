@@ -105,7 +105,7 @@ function pintarHorasPunta(hora){
 	return hora;
 }
 
-Zepto(function($){
+$(function() {
 	
 	// Acceso a internet
 	var xhr = new XMLHttpRequest({
@@ -346,7 +346,7 @@ Zepto(function($){
 	    	if (navigator.onLine) { 
 	      		template = _.template( $("#MapView").html(), {} );
 	      	} else {
-	      		template = _.template( $("#OfflineView").html(), {} );
+	      		template = _.template( $("#MapOfflineView").html(), {} );
 	      	}	      
 	      	this.$el.html( template );
 	      	this.afterRender();	      		
@@ -370,15 +370,11 @@ Zepto(function($){
 	});
 
 	TweetView = Backbone.View.extend({
-		initialize: function(){
-			if (navigator.onLine) { 
-				this.template = _.template( $("#TweetView").html() );
-			} else {
-				this.template = _.template( $("#OfflineView").html() );
-			}
+		initialize: function(){	
+			this.template = _.template( $("#TweetView").html() );			
 		},
-		render: function () {	
-			this.$el.html(this.template({tweet: this.model.toJSON()}));
+		render: function () {
+			this.$el.html(this.template({tweet: this.model.toJSON()}));	
 			return this;
 		}
 	});
@@ -392,6 +388,10 @@ Zepto(function($){
 	});
 
 	tweetCollection.fetch({reset: true});
+
+	if(!navigator.onLine) {
+  		$("#tweet-page").html("<br/><br/><br/><h1 class='mensajeConexionT'>Necesita conexión a internet<h1>");
+  	}
 
 	// Info
   	InfoView = Backbone.View.extend({
