@@ -1,4 +1,4 @@
-##Sube al Metro de Lima
+## Sube al Metro de Lima
 
 Una aplicación para Firefox OS, para usuarios de la Línea 1 del Tren Eléctrico de Lima, un sistema de transporte público en Perú.
 
@@ -10,7 +10,7 @@ Puedes instalar la aplicación en esta dirección:
 
 Más Información sobre la aplicacion lo encontraras en la [wiki](https://github.com/marti1125/SubeAlMetro/wiki)
 
-####Contributors
+#### Contributors
 * [carloshs92](https://github.com/carloshs92)
 * [ccarruitero](https://github.com/ccarruitero)
 * [pcabellor](https://github.com/pcabellor)
